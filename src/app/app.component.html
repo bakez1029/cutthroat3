@@ -1,7 +1,52 @@
-<h1>
-  {{title}}
-</h1>
-<button md-button>FLAT</button>
-<button md-raised-button md-tooltip="This is a tooltip!">RAISED</button>
-<button md-raised-button color="primary">PRIMARY RAISED</button>
-<button md-raised-button color="accent">ACCENT RAISED</button>
+<header>
+  <div style="float:left; width: 200px; background-color: aquamarine">
+    <img id="logo" src="assets/images/logo.png" height="300" width="200" style="float: left">
+  </div>
+  <div style="margin-left: 200px">
+    <md-grid-list cols="3" rowHeight="150px">
+      <md-grid-tile style="background-color: fuchsia">1</md-grid-tile>
+      <md-grid-tile>2</md-grid-tile>
+      <md-grid-tile>3</md-grid-tile>
+      <md-grid-tile>4</md-grid-tile>
+      <md-grid-tile>5</md-grid-tile>
+      <md-grid-tile>6</md-grid-tile>
+    </md-grid-list>
+  </div>
+</header>
+<div style="clear: both"></div>
+<aside>
+  <div style="float:left; width: 200px; background-color: aquamarine">
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/products">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/barbers">Barbers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/services">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/photos">Photos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</aside>
+<main style="background-color:darkgrey; margin-left: 200px">
+  <router-outlet></router-outlet>
+</main>
+<footer style="clear: both; height: 50px; background-color: antiquewhite">
+  footer
+</footer>
