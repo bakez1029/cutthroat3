@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material'
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AuthService } from './auth.service';
+
 import { HomeComponent } from './home/home.component';
 import { PhotosComponent } from './photos/photos.component';
 import { ProductsComponent } from './products/products.component';
@@ -15,6 +18,19 @@ import { AdminComponent } from './admin/admin.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
+
+
+var firebaseConfig = {
+  apiKey: "",
+  authDomain: "cutthroat3-e9643.firebaseapp.com",
+  databaseURL: "https://cutthroat3-e9643.firebaseio.com",
+  storageBucket: "cutthroat3-e9643.appspot.com",
+  messagingSenderId: "783552334671"
+};
+const firebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+};
 
 @NgModule({
   declarations: [
@@ -33,6 +49,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     MaterialModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
@@ -46,7 +63,7 @@ import { LoginComponent } from './login/login.component';
       { path: 'login', component: LoginComponent },
     ])
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
