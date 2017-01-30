@@ -18,10 +18,13 @@ import { AdminComponent } from './admin/admin.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
+import { AccountComponent } from './account/account.component';
+import { CreateAccountComponent, DialogContent } from './account/create-account/create-account.component';
+import { BobComponent } from './bob/bob.component';
 
 
 var firebaseConfig = {
-  apiKey: "",
+  apiKey: "AIzaSyDGFYKBqQX8cHJAIbn0WuqFGNqctpYZMHc",
   authDomain: "cutthroat3-e9643.firebaseapp.com",
   databaseURL: "https://cutthroat3-e9643.firebaseio.com",
   storageBucket: "cutthroat3-e9643.appspot.com",
@@ -43,7 +46,9 @@ const firebaseAuthConfig = {
     AdminComponent,
     JobsComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    AccountComponent,
+    CreateAccountComponent, DialogContent, BobComponent
   ],
   imports: [
     BrowserModule,
@@ -61,8 +66,11 @@ const firebaseAuthConfig = {
       { path: 'jobs', component: JobsComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'register', component: CreateAccountComponent },
+      { path: 'bob', component: BobComponent },
     ])
   ],
+  entryComponents: [DialogContent],
   providers: [AuthService],
   bootstrap: [AppComponent]
 })

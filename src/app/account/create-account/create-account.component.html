@@ -1,0 +1,49 @@
+<md-card class="example-card">
+  <md-card-header>
+    <md-card-title>New User</md-card-title>
+    <md-card-subtitle></md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <md-input-container>
+              <input md-input placeholder="First name" name="first">
+            </md-input-container>
+          </td>
+          <td>
+            <md-input-container>
+              <input md-input placeholder="Last Name" name="last">
+            </md-input-container>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <md-input-container>
+              <input md-input placeholder="Email" name="email">
+            </md-input-container>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <md-input-container>
+              <input md-input placeholder="Password">
+            </md-input-container>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <md-input-container>
+              <input md-input placeholder="Password Confirm">
+            </md-input-container>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </md-card-content>
+  <md-card-actions>
+    <button md-raised-button>Cancel</button>
+    <button md-raised-button color="primary" (click)="openDialog()">Register</button>
+  </md-card-actions>
+</md-card>
