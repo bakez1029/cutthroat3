@@ -21,7 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CreateAccountComponent, DialogContent } from './account/create-account/create-account.component';
 import { BobComponent } from './bob/bob.component';
-
+import { UploadComponent } from './upload.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyDGFYKBqQX8cHJAIbn0WuqFGNqctpYZMHc",
@@ -48,7 +48,8 @@ const firebaseAuthConfig = {
     ContactComponent,
     LoginComponent,
     AccountComponent,
-    CreateAccountComponent, DialogContent, BobComponent
+    CreateAccountComponent, DialogContent, BobComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,
