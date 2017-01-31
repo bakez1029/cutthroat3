@@ -24,7 +24,7 @@ import { BobComponent } from './bob/bob.component';
 
 
 var firebaseConfig = {
-  apiKey: "",
+  apiKey: "AIzaSyDGFYKBqQX8cHJAIbn0WuqFGNqctpYZMHc",
   authDomain: "cutthroat3-e9643.firebaseapp.com",
   databaseURL: "https://cutthroat3-e9643.firebaseio.com",
   storageBucket: "cutthroat3-e9643.appspot.com",

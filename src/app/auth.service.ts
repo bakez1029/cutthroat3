@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from 'angularfire2'
+import { AngularFire, FirebaseAuthState } from 'angularfire2'
 
 @Injectable()
 export class AuthService {
@@ -17,13 +17,17 @@ export class AuthService {
 
   }
 
-  login(username: string, password: string): any {
+  login(username: string, password: string): firebase.Promise<FirebaseAuthState> {
     return this.af.auth.login({ email: username, password: password });
   }
 
   logout() {
     this.af.auth.logout();
     this.uid = "not authenticated";
+  }
+
+  createNewUser(email: string, password: string): firebase.Promise<FirebaseAuthState> {
+    return this.af.auth.createUser({ email: email, password: password});
   }
 
 }

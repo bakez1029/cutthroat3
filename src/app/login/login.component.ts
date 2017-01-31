@@ -14,15 +14,25 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.authService.logout();
+    console.log('nginit');
+    
+    //this.authService.logout();
 
     this.authService.login('tbaker000@gmail.com', 'dipdip11').then((auth) => {
       this.uid = auth.uid;
       console.log('xxuser => ', this.uid);
     }).catch((error) => {
-        console.log('Error', error);
-      });
-    }
+      console.log('Error', error);
+    });
+
+
+    var items = this.af.database.list('/items');
+    items.push("poopy").then((msg) => {
+      console.log('msg', msg);
+    });
+
+
+
+  }
 
 }
