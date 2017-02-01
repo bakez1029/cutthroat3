@@ -41,17 +41,18 @@ export class UploadComponent {
     imageList: Observable<Image[]>;
 
     constructor(public af: AngularFire, public router: Router) {
+
     }
     ngOnInit() {
-
+  
     }
 
     ngOnChanges() {
         console.log("new values for folder");
         let storage = firebase.storage();
 
-        this.fileList = this.af.database.list(`/${this.folder}/images`);
-        console.log("Rendering all images in ", `/${this.folder}/images`)
+        this.fileList = this.af.database.list(`/${this.folder}`);
+        console.log("Rendering all images in ", `/${this.folder}`)
         this.imageList = this.fileList.map(itemList =>
             itemList.map(item => {
                 var pathReference = storage.ref(item.path);
@@ -78,15 +79,15 @@ export class UploadComponent {
             let path = `/${this.folder}/${selectedFile.name}`;
             var iRef = storageRef.child(path);
             iRef.put(selectedFile).then((snapshot) => {
-                console.log('Uploaded a blob or file! Now storing the reference at', `/${this.folder}/images/`);
-                af.database.list(`/${folder}/images/`).push({ path: path, filename: selectedFile.name })
+                console.log('Uploaded a blob or file! Now storing the reference at', `/${this.folder}/`);
+                af.database.list(`/${folder}/`).push({ path: path, filename: selectedFile.name })
             });
         }
 
     }
     delete(image: Image) {
         let storagePath = image.path;
-        let referencePath = `${this.folder}/images/` + image.$key;
+        let referencePath = `${this.folder}/` + image.$key;
 
         // Do these as two separate steps so you can still try delete ref if file no longer exists
 

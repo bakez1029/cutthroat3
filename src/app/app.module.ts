@@ -20,7 +20,6 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CreateAccountComponent, DialogContent } from './account/create-account/create-account.component';
-import { BobComponent } from './bob/bob.component';
 import { UploadComponent } from './upload.component';
 
 var firebaseConfig = {
@@ -48,7 +47,7 @@ const firebaseAuthConfig = {
     ContactComponent,
     LoginComponent,
     AccountComponent,
-    CreateAccountComponent, DialogContent, BobComponent,
+    CreateAccountComponent, DialogContent,
     UploadComponent,
   ],
   imports: [
@@ -68,7 +67,7 @@ const firebaseAuthConfig = {
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: CreateAccountComponent },
-      { path: 'bob', component: BobComponent },
+      { path: 'admin/add/products', component: UploadComponent },
     ])
   ],
   entryComponents: [DialogContent],
