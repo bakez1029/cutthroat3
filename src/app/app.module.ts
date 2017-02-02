@@ -69,7 +69,7 @@ const firebaseAuthConfig = {
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: CreateAccountComponent },
-      { path: 'admin/add/products', component: AddProductComponent },
+      { path: 'admin/products/add', component: AddProductComponent },
     ])
   ],
   entryComponents: [DialogContent],

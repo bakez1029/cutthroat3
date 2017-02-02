@@ -16,19 +16,18 @@ interface Image {
 @Component({
     selector: 'image-upload',
     template: `
-  <h2>Upload a File</h2>
-  <form ngNoForm>
-    <input id="file" name="file" type="file" >
-    <button (click)="upload()" type="button">Upload</button>
-    </form>
-    <h2>File Gallery</h2>
-    <div style="overflow:hidden;">
-        <div *ngFor="let img of imageList | async" style="position:relative;width:100px;height:100px;float:left;display:flex;justify-content:center;align-items:center;">
-            <img [src]="img.downloadURL | async" style="max-width:100px;max-height:100px;">
-            <button (click)="delete(img)" style="position:absolute;top:2px;right:2px;">[x]</button>
-        </div>
-    </div>
-  `,
+        <h2>Upload a File</h2>
+        <form ngNoForm>
+            <input id="file" name="file" type="file" >
+            <button (click)="upload()" type="button">Upload</button>
+        </form>
+        <h2>File Gallery</h2>
+        <div style="overflow:hidden;">
+            <div *ngFor="let img of imageList | async" style="position:relative;width:100px;height:100px;float:left;display:flex;justify-content:center;align-items:center;">
+                <img [src]="img.downloadURL | async" style="max-width:100px;max-height:100px;">
+                <button (click)="delete(img)" style="position:absolute;top:2px;right:2px;">[x]</button>
+            </div>
+        </div>`,
 })
 export class UploadComponent {
     /**
@@ -44,7 +43,7 @@ export class UploadComponent {
 
     }
     ngOnInit() {
-  
+
     }
 
     ngOnChanges() {

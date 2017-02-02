@@ -1,3 +1,23 @@
-<p>
-  add-product works!
+<p>  
+  Add Product
 </p>
+<md-input-container>
+  <input md-input placeholder="Name">
+</md-input-container><br/>
+<md-input-container>
+  <input md-input placeholder="Brand">
+</md-input-container><br/>
+<md-input-container>
+  <input md-input placeholder="Price">
+</md-input-container><br/><br/>
+<img [src]="imageSrc" alt="coming soon" width="200" height="300"><br/>
+<input id="file" name="file" type="file" (change)="onChange($event)"><br/><br/>
+<button md-raised-button color="primary" (click)="upload()">Add Product</button>
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+require admin rights on this page
