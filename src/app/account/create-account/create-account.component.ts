@@ -2,7 +2,7 @@ import { Component, OnInit, Optional } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { Router } from '@angular/router'
 import { AuthService } from '../../auth.service'
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-account',
@@ -28,25 +28,28 @@ export class CreateAccountComponent implements OnInit {
 
     if (!this.email || this.email.length < 5 || !this.password || this.password.length < 5) {
       console.log('bad registration');
-      
+
       return;
     }
 
-    this.authService.createNewUser(this.email, this.password).then((msg) => {
-      console.log('msg', msg);
-      
-      let dialogRef = this.dialog.open(DialogContent);
+    var user = { 
+      email: this.email, 
+      password: this.password, 
+      first: this.firstName, 
+      last: this.lastName 
+    };
+    this.authService.createNewUser(user);
 
-      dialogRef.afterClosed().subscribe(result => {
-        this.lastDialogResult = result;
-       // this.router.navigate(['/home']);
-       this.location.back();
-      });
-    })
+    let dialogRef = this.dialog.open(DialogContent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.lastDialogResult = result;
+      // this.router.navigate(['/home']);
+      // this.location.back();
+    });
   }
 
   goBack() {
-     this.location.back();
+    this.location.back();
   }
 }
 

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     //this.logout();
+    this.sendPasswordEmail();
   }
 
   login() {
@@ -34,6 +35,10 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
     console.log('logged out');
     this.uid = "";
+  }
+
+  sendPasswordEmail() {
+    this.authService.sendPasswordResetEmail("tbaker000@gmail.com");
   }
 
 }

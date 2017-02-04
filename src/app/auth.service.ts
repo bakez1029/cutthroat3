@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseAuthState } from 'angularfire2'
 
+import * as firebase from 'firebase';
+
 @Injectable()
 export class AuthService {
 
@@ -12,8 +14,10 @@ export class AuthService {
       if (auth) {
         console.log('service has auth', auth);
         this.uid = auth.uid;
+        auth.auth.sendEmailVerification();
       }
     });
+
 
   }
 
@@ -26,8 +30,29 @@ export class AuthService {
     this.uid = "not authenticated";
   }
 
-  createNewUser(email: string, password: string): firebase.Promise<FirebaseAuthState> {
-    return this.af.auth.createUser({ email: email, password: password});
+  createNewUser(user: any) {
+    this.af.auth.createUser({ email: user.email, password: user.password }).then((auth) => {
+      // add extra profile infomation to authUser
+      auth.auth.updateProfile({displayName: user.first, photoURL: user.photoUrl});
+
+      // create new user object ('/users/<key>' - not auth user as above) and add user properties
+      var userObj = this.af.database.object('/users/' + auth.uid);
+      userObj.set({
+        uid: auth.uid,
+        first: user.first,
+        last: user.last
+      });
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  sendPasswordResetEmail(email: string) {
+    firebase.auth().sendPasswordResetEmail(email).then(() => {
+      console.log('email sent');
+    }).catch(() => {
+      console.log('error sending');
+    });
   }
 
 }
