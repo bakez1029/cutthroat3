@@ -9,30 +9,31 @@ import { AuthService } from '../auth.service'
 })
 export class LoginComponent implements OnInit {
   uid: string;
+  email: string;
+  password: string;
 
   constructor(public af: AngularFire, private authService: AuthService) {
   }
 
   ngOnInit() {
-    console.log('nginit');
-    
-    //this.authService.logout();
+    //this.logout();
+  }
 
-    this.authService.login('tbaker000@gmail.com', 'dipdip11').then((auth) => {
+  login() {
+    this.authService.login(this.email, this.password).then((auth) => {
       this.uid = auth.uid;
       console.log('xxuser => ', this.uid);
+      this.email = "";
+      this.password = "";
     }).catch((error) => {
       console.log('Error', error);
     });
+  }
 
-
-    var items = this.af.database.list('/items');
-    items.push("poopy").then((msg) => {
-      console.log('msg', msg);
-    });
-
-
-
+  logout() {
+    this.authService.logout();
+    console.log('logged out');
+    this.uid = "";
   }
 
 }

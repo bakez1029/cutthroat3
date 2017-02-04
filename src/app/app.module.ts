@@ -22,6 +22,7 @@ import { AccountComponent } from './account/account.component';
 import { CreateAccountComponent, DialogContent } from './account/create-account/create-account.component';
 import { UploadComponent } from './upload.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
+import { AddBarberComponent } from './admin/add-barber/add-barber.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyDGFYKBqQX8cHJAIbn0WuqFGNqctpYZMHc",
@@ -48,9 +49,11 @@ const firebaseAuthConfig = {
     ContactComponent,
     LoginComponent,
     AccountComponent,
-    CreateAccountComponent, DialogContent,
+    CreateAccountComponent, 
+    DialogContent,
     UploadComponent,
     AddProductComponent,
+    AddBarberComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,9 @@ const firebaseAuthConfig = {
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: CreateAccountComponent },
+      { path: 'admin', component: AdminComponent },
       { path: 'admin/products/add', component: AddProductComponent },
+      { path: 'admin/barbers/add', component: AddBarberComponent },
     ])
   ],
   entryComponents: [DialogContent],

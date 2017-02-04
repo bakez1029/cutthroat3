@@ -1,23 +1,15 @@
-<p>  
+<p>
   Add Product
 </p>
-<md-input-container>
-  <input md-input placeholder="Name">
-</md-input-container><br/>
-<md-input-container>
-  <input md-input placeholder="Brand">
-</md-input-container><br/>
-<md-input-container>
-  <input md-input placeholder="Price">
-</md-input-container><br/><br/>
+<input placeholder="Name" type="text" style="width:300px" [(ngModel)]="productName"><br/>
+<input placeholder="Brand" style="width:300px" [(ngModel)]="productBrand"><br/>
+<input md-input placeholder="Price" style="width:300px" [(ngModel)]="productPrice"><br/><br/>
+Image<br/>
 <img [src]="imageSrc" alt="coming soon" width="200" height="300"><br/>
 <input id="file" name="file" type="file" (change)="onChange($event)"><br/><br/>
-<button md-raised-button color="primary" (click)="upload()">Add Product</button>
-
-
+<button md-raised-button color="primary" (click)="createProduct()">Add Product</button>
 <br/>
 <br/>
 <br/>
 <br/>
-<br/>
-require admin rights on this page
+<br/> require admin rights on this page

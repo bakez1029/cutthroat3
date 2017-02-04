@@ -1,5 +1,12 @@
-<p>
-  login works!
-</p>
+<input placeholder="email" [(ngModel)]="email" style="width: 300px"><br/>
+<input placeholder="password" [(ngModel)]="password" style="width: 300px"><br/>
+<button md-raised-button color="primary" (click)="login()">Login</button>
+<br/>
+<br/>
 
 user's uid = {{uid}}
+<br/>
+<br/>
+
+
+<button md-raised-button color="accent" (click)="logout()">Logout</button>
