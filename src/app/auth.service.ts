@@ -7,18 +7,18 @@ import * as firebase from 'firebase';
 export class AuthService {
 
   uid: string = 'not authenticated';
+  authUser: FirebaseAuthState;
 
   constructor(public af: AngularFire) {
 
     this.af.auth.subscribe(auth => {
       if (auth) {
-        console.log('service has auth', auth);
+        console.log('service has auth[', auth, ']');
+        this.authUser = auth;
+        console.log('setting uid', this.uid);
         this.uid = auth.uid;
-        auth.auth.sendEmailVerification();
       }
     });
-
-
   }
 
   login(username: string, password: string): firebase.Promise<FirebaseAuthState> {
@@ -27,13 +27,14 @@ export class AuthService {
 
   logout() {
     this.af.auth.logout();
-    this.uid = "not authenticated";
+    //this.uid = "not authenticated";
+    //auth.auth.sendEmailVerification();
   }
 
   createNewUser(user: any) {
     this.af.auth.createUser({ email: user.email, password: user.password }).then((auth) => {
       // add extra profile infomation to authUser
-      auth.auth.updateProfile({displayName: user.first, photoURL: user.photoUrl});
+      auth.auth.updateProfile({ displayName: user.first, photoURL: user.photoUrl });
 
       // create new user object ('/users/<key>' - not auth user as above) and add user properties
       var userObj = this.af.database.object('/users/' + auth.uid);
@@ -53,6 +54,10 @@ export class AuthService {
     }).catch(() => {
       console.log('error sending');
     });
+  }
+
+  getCurrentUser(): firebase.User {
+    return firebase.auth().currentUser;
   }
 
 }
