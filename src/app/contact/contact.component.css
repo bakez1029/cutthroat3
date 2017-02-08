@@ -1,1 +1,6 @@
-body{background-color:#000 !important}
+body{
+background-color:#000 !important;
+}
+.title{
+border-bottom: 1px solid darkgrey !important;
+}
