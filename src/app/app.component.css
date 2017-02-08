@@ -1,0 +1,113 @@
+.nav-link{padding:0}
+/*.nav-link:hover{background-color: #A00000; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease;
+-o-transition: all 0.5s ease; transition: all 0.5s ease;}*/
+
+.PropertyBox{width:200px; height:130px; padding:3%; padding-top:5px; padding-bottom: 5px;overflow:hidden; text-align:center; 
+background-color: #fff; border-radius:5px; -webkit-border-radius:5px; display:block;
+-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+.PropertyBox:hover, .MOBILE .PropertyBox:hover{background-color:#e0e5e9;
+    -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+.PropertyBox img{width:60%;}
+.PropertyBox .PropertyTopic{display:block; color:#000; font-size:16px; margin-bottom:10px;}
+.PropertyBox .PropertyText{display:block; color:#000; font-size:12px; font-family:'RobotoRegular';}
+
+.MOBILE .PropertyBox{width:27%; height:250px; float:left; padding:3%; overflow:hidden; text-align:center; border-radius:5px; -webkit-border-radius:5px; display:block;
+    -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+.MOBILE .PropertyBox img{width:80%;}
+.MOBILE .PropertyBox .PropertyTopic{display:block; color:#DB2226; font-size:12px;}
+.MOBILE .PropertyBox .PropertyText{display:block; color:#000; font-size:11px;}
+
+.my-btn {cursor: pointer}
+.my-btn a {text-decoration:none}
+.my-btn a {color: #000; text-decoration:none}
+.my-btn a:hover {color: #fff;text-decoration:none}
+
+.MainLinkText{color:#fff; font-size:16px; margin:0px 0px 0px 30px; display:block; font-family: 'Franklin Gothic Medium' !important}
+.MainLinkText a{color:#fff;}
+.MenuSideMainLink{width:100%; height:25px; display:block; cursor:pointer;}
+.MenuSideMainLink:hover{background-color: #A00000; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+
+.copyright{
+float:left; 
+padding-top: 80px;
+font-size:12px;
+font-weight: bold;	
+}	
+.footer-icons{
+float:right;
+padding-top: 60px
+}
+
+/* FOOTER ICONS */
+i.material-icons {
+		font-size: 1.5rem;
+		color: white;
+		position: relative;
+		border-radius: 50%;
+		margin: 3px;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+		transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+}
+
+i.material-icons:after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		transform: scale(0.8);
+		position: absolute;
+		top: -2px;
+		left: -2px;
+		border-radius: 50%;
+		transition: all 0.3s ease;
+}
+
+i.material-icons:hover:after {
+		transform: scale(1);
+		box-shadow: 10px 0 5px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
+}
+
+
+i.material-icons:nth-of-type(1) {
+		background-color: #c41200;
+}
+
+i.material-icons:nth-of-type(1):hover {
+		color: #c41200;
+}
+
+i.material-icons:nth-of-type(1):after {
+		border-color: transparent;
+}
+
+i.material-icons:nth-of-type(2) {
+		background-color: brown;
+}
+
+i.material-icons:nth-of-type(2):hover {
+		color: brown;
+}
+
+i.material-icons:nth-of-type(2):after {
+		border-color: transparent;
+}
+
+i.material-icons:nth-of-type(3) {
+		background-color: #3b5998;
+}
+
+i.material-icons:nth-of-type(3):hover {
+		color: #3b5998;
+}
+
+i.material-icons:nth-of-type(3):after {
+		border-color: transparent;
+}
+
+i.material-icons:hover {
+		background-color: transparent;
+		transform: rotate(90deg);
+		cursor: pointer;
+		box-shadow: none;
+}
+/* END FOOTER ICONS */
+

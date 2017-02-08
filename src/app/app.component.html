@@ -1,45 +1,109 @@
 <header>
-  <div style="float:left; width: 200px; background-color: aquamarine">
+  <div style="float:left; width: 200px; background-color: black">
     <img id="logo" src="assets/images/logo.png" height="300" width="200" style="float: left">
   </div>
-  <div style="margin-left: 200px; height: 300px; overflow: hidden">
-    <md-grid-list cols="3" rowHeight="160px" gutterSize="0">
-      <md-grid-tile style="background-color: fuchsia">1</md-grid-tile>
-      <md-grid-tile>2</md-grid-tile>
-      <md-grid-tile>3</md-grid-tile>
-      <md-grid-tile>4</md-grid-tile>
-      <md-grid-tile>5</md-grid-tile>
-      <md-grid-tile>6</md-grid-tile>
+  <div class="hidden-xs hidden-sm hidden-md" style="margin-left: 200px; height: 292px; overflow: hidden; background-color: #000">
+  <md-grid-list cols="3" rowHeight="140px" gutterSize="1" style="margin-top:10px">
+
+      <md-grid-tile>
+
+
+        <div class="PropertyBox">
+          <a class='my-btn' (click)='onClick5()'>
+            <img src="/assets/images/barbs.png" style="width: 50px; height: 50px">
+            <p style="font-size:16px">
+              <span class="PropertyTopic">SERVICES</span>
+              <span class="PropertyText">Find out what services we offer and our pricing.</span></p>
+          </a>
+        </div>
+
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <div class="PropertyBox">
+          <a class='my-btn' (click)='onClick5()'>
+            <img src="/assets/images/hair2.png" style="width: 50px; height: 50px">
+            <p style="font-size:16px">
+              <span class="PropertyTopic">PRODUCTS</span>
+              <span class="PropertyText">We sell multiple hair and beard products.</span></p>
+          </a>
+        </div>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <div class="PropertyBox" style="float:left">
+          <a class='my-btn' (click)='onClick5()'>
+            <img src="/assets/images/jobs2.png" style="width: 50px; height: 50px">
+            <p style="font-size:16px">
+              <span class="PropertyTopic">JOBS</span>
+              <span class="PropertyText">Click this link to fill out a form.</span></p>
+          </a>
+        </div>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <div class="PropertyBox">
+          <a class='my-btn' (click)='onClick5()'>
+            <img src="/assets/images/artists.png" style="width: 50px; height: 50px">
+            <p style="font-size:16px">
+              <span class="PropertyTopic">BARBERS</span>
+              <span class="PropertyText">Meet our barbers and know who is cutting your hair.</span></p>
+          </a>
+        </div>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <div class="PropertyBox">
+          <a class='my-btn' (click)='onClick5()'>
+            <img src="/assets/images/comm3.png" style="width: 50px; height: 50px">
+            <p style="font-size:16px">
+              <span class="PropertyTopic">COMMUNITY</span>
+              <span class="PropertyText">Get active in our community.<br>Come see what we are doing.</span></p>
+          </a>
+        </div>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <div class="PropertyBox">
+          <a class='my-btn' (click)='onClick5()'>
+            <img src="/assets/images/social2.png" style="width: 50px; height: 50px">
+            <p style="font-size:16px">
+              <span class="PropertyTopic">CONNECT</span>
+              <span class="PropertyText">Click any of the links at the bottom of our page to join our social media.</span></p>
+          </a>
+        </div>
+      </md-grid-tile>
     </md-grid-list>
   </div>
+
 </header>
 <div style="clear: both"></div>
 <aside>
-  <div style="float:left; width: 200px; background-color: aquamarine">
+  <div style="float:left; width: 200px; background-color: black">
     <ul class="nav navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/home">Home</a>
+        <a class="nav-link" routerLink="/home"><span class="MenuSideMainLink"><span class="MainLinkText">HOME</span></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/products">Products</a>
+        <a class="nav-link" routerLink="/products"><span class="MenuSideMainLink"><span class="MainLinkText">PRODUCTS</span></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/barbers">Barbers</a>
+        <a class="nav-link" routerLink="/barbers"><span class="MenuSideMainLink"><span class="MainLinkText">BARBERS</span></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/services">Services</a>
+        <a class="nav-link" routerLink="/services"><span class="MenuSideMainLink"><span class="MainLinkText">SERVICES</span></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/photos">Photos</a>
+        <a class="nav-link" routerLink="/photos"><span class="MenuSideMainLink"><span class="MainLinkText">PHOTOS</span></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/jobs">Jobs</a>
+        <a class="nav-link" routerLink="/jobs"><span class="MenuSideMainLink"><span class="MainLinkText">JOBS</span></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/contact">Contact</a>
+        <a class="nav-link" routerLink="/contact"><span class="MenuSideMainLink"><span class="MainLinkText">CONTACT</span></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="nav-link" routerLink="/login"><span class="MenuSideMainLink"><span class="MainLinkText">LOGIN</span></span></a>
       </li>
     </ul>
   </div>
@@ -47,6 +111,15 @@
 <main style="background-color:darkgrey; margin-left: 200px">
   <router-outlet></router-outlet>
 </main>
-<footer style="clear: both; height: 100px; background-color: antiquewhite">
-  footer
+<footer class="hidden-xs" style="clear: both; height:100px; background-color: white; border-top: 1px solid black">
+
+<span class="copyright">© 2016-2017 Cutthroat Barbershop</span>
+<span class="footer-icons">
+            <a href="http://www.yelp.com/biz/cutthroat-barber-shop-west-valley-city"><i class="material-icons" style="background-color:#c41200"><img src="./assets/images/yelp.png" style="width:30px; height:30px"></i></a>
+            <a href="https://www.instagram.com/cutthroat_barber/?hl=en"><i class="material-icons" style="background-color:brown"><img src="./assets/images/insta.png" style="width:30px; height:30px"></i></a>
+            <a href="https://www.facebook.com/search/513605432131514/local_search?surface=tyah"><i class="material-icons" style="background-color:#3b5998"><img src="./assets/images/fb.png" style="width:30px; height:30px"></i></a>
+</span>
+
+
+
 </footer>
