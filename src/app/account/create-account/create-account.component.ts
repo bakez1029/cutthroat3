@@ -1,6 +1,8 @@
 import { Component, OnInit, Optional } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { Router } from '@angular/router'
+import { AuthService } from '../../auth.service'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-account',
@@ -10,29 +12,54 @@ import { Router } from '@angular/router'
 export class CreateAccountComponent implements OnInit {
   selectedOption: string;
   lastDialogResult: string;
+  firstName: string = "";
+  lastName: string = "";
+  email: string = "";
+  password: string = "";
+  password2: string = "";
 
-  constructor(private dialog: MdDialog, private router: Router) { }
+
+  constructor(private dialog: MdDialog, private router: Router, private authService: AuthService, private location: Location) { }
 
   ngOnInit() {
   }
 
   openDialog() {
-    let dialogRef = this.dialog.open(DialogContent);
 
+    if (!this.email || this.email.length < 5 || !this.password || this.password.length < 5) {
+      console.log('bad registration');
+
+      return;
+    }
+
+    var user = { 
+      email: this.email, 
+      password: this.password, 
+      first: this.firstName, 
+      last: this.lastName 
+    };
+    this.authService.createNewUser(user);
+
+    let dialogRef = this.dialog.open(DialogContent);
     dialogRef.afterClosed().subscribe(result => {
       this.lastDialogResult = result;
-      this.router.navigate(['/home']);
-    })
+      // this.router.navigate(['/home']);
+      // this.location.back();
+    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
 
 
 @Component({
   template: `
-    <p>Thank you, your user has been created</p>
+    <p>Thank you, your user has been registered.</p>
     <p> <button md-button (click)="dialogRef.close()">CLOSE</button> </p>
   `,
 })
 export class DialogContent {
-  constructor(@Optional() public dialogRef: MdDialogRef<DialogContent>) { }
+  constructor( @Optional() public dialogRef: MdDialogRef<DialogContent>) { }
 }

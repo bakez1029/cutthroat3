@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { UploadComponent } from '../upload.component';
 
 @Component({
   selector: 'app-jobs',
@@ -10,6 +11,8 @@ export class JobsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
+  
 
 }
