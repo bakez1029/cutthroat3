@@ -1,6 +1,13 @@
 md-card{
-    background-color:#696969;
+    background-color:#fff;
+    color: #000;
 }
-.page{
-    padding-top:0px;
+md-input-container{
+    color:#000;
+}
+.title-box{
+    padding-bottom:0px;
+}
+md-input-element {
+    color:#000;
 }

@@ -28,7 +28,7 @@ background-color: #fff; border-radius:5px; -webkit-border-radius:5px; display:bl
 .MenuSideMainLink:hover{background-color: #A00000; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 
 .copyright{
-float:left; 
+float:left;
 padding-top: 80px;
 font-size:12px;
 font-weight: bold;	

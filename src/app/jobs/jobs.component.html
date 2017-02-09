@@ -1,2 +1,105 @@
 <div class="page">
-    </div>
+
+   <div class="title-box mx-auto d-block">
+
+<div class="container">
+                <form #jobForm="ngForm" (ngSubmit)="onSubmit(jobForm.value)">
+                    <!-- we will place our fields here -->
+
+                    <!--name-->
+
+                    <br>
+                  
+                       <p class="text-center"> Thank you for your interest<br><br> in joining our team.
+                        <br><br>Please fill out the information below.</p>
+              
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div>
+                        <label for="name">Name</label>
+                        <!--bind name to ngModel, it's required with minimum 5 characters-->
+                        <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel" required minlength="5">
+                        <!--show error only when field is not valid & it's dirty or form submited-->
+                        <small [hidden]="name.valid || name.pristine">
+          <br>
+            Name is required (minimum 5 characters).
+            <br>
+        </small>
+                        <br>
+                    </div>
+
+                    <div>
+                        <label for="phone">Phone Number</label>
+                        <!--bind name to ngModel, it's required with minimum 5 characters-->
+                        <input type="text" name="phone" [(ngModel)]="user.phone" #phone="ngModel" required minlength="10">
+                        <!--show error only when field is not valid & it's dirty or form submited-->
+                        <small [hidden]="phone.valid || phone.pristine">
+          <br>
+            Phone is required (minimum 10 characters).
+            <br>
+        </small>
+                        <br>
+                    </div>
+
+                    <div>
+                        <label for="email">Email</label>
+                        <!--bind name to ngModel, it's required with minimum 5 characters-->
+                        <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" required minlength="6">
+                        <!--show error only when field is not valid & it's dirty or form submited-->
+                        <small [hidden]="email.valid || email.pristine">
+          <br>
+            Email is required.
+            <br>
+        </small>
+                        <br>
+                    </div>
+
+                    <!--adrress group-->
+                    <div ngModelGroup="address">
+                        <!--street-->
+                        <div>
+                            <label>Street</label>
+                            <input type="text" name="street" [(ngModel)]="user.address.street" #street="ngModel" required>
+                            <small [hidden]="street.valid || (street.pristine)" class="text-danger">
+                Street is required.
+            </small>
+                        </div>
+
+                        <!--city-->
+                        <div>
+                            <label>City</label>
+                            <input type="text" name="city" [(ngModel)]="user.address.city">
+                        </div>
+                        <br>
+                        <div>
+                            <label>State    <br><br><br></label>
+                            <select class="form-control" name="state" [(ngModel)]="user.address.state" #state="ngModel" required>
+          <option *ngFor="let s of states" [value]="s">{{ s }}</option>
+      </select>
+                        </div>
+                         <br>
+                    <br>
+                  
+                        <div>
+                            <label>Postal code</label>
+                            <input type="text" name="postcode" [(ngModel)]="user.address.postcode">
+                        </div>
+                        <br>
+                        
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <input type="submit" class="btn btn-default" value="Submit" [disabled]="!jobForm.form.valid" style="float:right">
+                </form>
+                <br>
+                <br>
+                </div>
+</div>
+</div>

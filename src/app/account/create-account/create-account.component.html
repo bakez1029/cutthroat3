@@ -1,7 +1,10 @@
 <div class="page">
+  <div class="title-box">
+    <p class="text-center">New User</p>
+    <div class="container">
 <md-card class="example-card">
   <md-card-header>
-    <md-card-title>New User</md-card-title>
+    
     <md-card-subtitle></md-card-subtitle>
   </md-card-header>
   <md-card-content>
@@ -9,33 +12,33 @@
       <tr>
         <td>
           <md-input-container>
-            <input md-input placeholder="First name" name="first" [(ngModel)]="firstName">
+            <input placeholder="First name" name="first" [(ngModel)]="firstName">
           </md-input-container>
         </td>
         <td>
           <md-input-container>
-            <input md-input placeholder="Last Name" name="last" [(ngModel)]="lastName">
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container>
-            <input md-input placeholder="Email" name="email" [(ngModel)]="email">
+            <input placeholder="Last Name" name="last" [(ngModel)]="lastName">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container>
-            <input md-input placeholder="Password" [(ngModel)]="password" type="password">
+            <p class="text-center"><input placeholder="Email" name="email" [(ngModel)]="email"></p>
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container>
-            <input md-input placeholder="Password Confirm" [(ngModel)]="password2" type="password">
+            <input placeholder="Password" [(ngModel)]="password" type="password">
+          </md-input-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <md-input-container>
+            <input placeholder="Password Confirm" [(ngModel)]="password2" type="password">
           </md-input-container>
         </td>
       </tr>
@@ -46,4 +49,8 @@
     <button md-raised-button color="primary" (click)="openDialog()">Register</button>
   </md-card-actions>
 </md-card>
+<br>
+<br>
+</div>
+</div>
 </div>

@@ -43,8 +43,8 @@ export class CreateAccountComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogContent);
     dialogRef.afterClosed().subscribe(result => {
       this.lastDialogResult = result;
-      // this.router.navigate(['/home']);
-      // this.location.back();
+      //  this.router.navigate(['/home']);
+      //  this.location.back();
     });
   }
 
