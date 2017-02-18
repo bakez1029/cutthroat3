@@ -1,8 +1,10 @@
+<!--DESKTOP VIEW-->
+<div class="hidden-xs-down">
 <header>
   <div style="float:left; width: 200px; background-color: black">
     <img id="logo" src="assets/images/logo.png" height="300" width="200" style="float: left" class="img-thumbnail" style="height:310px">
   </div>
-  <div class="hidden-xs hidden-sm hidden-md" style="margin-left: 200px; height: 300px; overflow: hidden; background-color: #000">
+  <div style="margin-left: 200px; height: 300px; overflow: hidden; background-color: #000">
   <md-grid-list cols="3" rowHeight="140px" gutterSize="1" style="margin-top:10px">
 
       <md-grid-tile>
@@ -79,7 +81,13 @@
 </header>
 <div style="clear: both"></div>
 <aside>
-<div style="float:left; width: 200px; background-color: #000">
+<div style="float:left; width: 200px; background-color: #000; min-height:650px">
+   <div *ngIf="!auth" class="text-center">NOT LOGGED</div>
+     <div *ngIf="auth" style="color: #fff">
+HI USER
+    </div>
+
+
     <ul class="nav navbar-nav">
       <li class="nav-item">
         <a class="nav-link" routerLink="/home"><span class="MenuSideMainLink"><span class="MainLinkText">HOME</span></span></a>
@@ -111,10 +119,51 @@
     </ul>
   </div>
 </aside>
+</div>
+
+<!--START MOBILE-->
+<div class="hidden-sm-up">
+<nav class="navbar navbar-light" style="background-color: #DB2226"></nav>
+
+        <ul class="mx-auto" style="padding-top:10px; height: 370px; background-image: url('/assets/images/newlogo-nav2.png'); background-repeat: no-repeat; background-color: #000; background-position: center; margin-top:0px; margin-bottom:0px; text-align:center">
+
+            <li style="display:inline !important"><a style="padding:3px" hover="color: #fff" routerLink="/home"><b>HOME</b></a><span class="sr-only">(current)</span></li>
+            <li style="display:inline !important"><a style="padding:3px" routerLink="/products"><b>PRODUCTS</b></a></li>
+            <li style="display:inline !important"><a style="padding:3px" routerLink="/barbers"><b>BARBERS</b></a></li>
+            <li style="display:inline !important"><a style="padding:3px" routerLink="/services"><b>SERVICES</b></a></li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <li style="display:inline !important"><a style="padding:3px; padding-left:40px"routerLink="/contact"><b>CONTACT</b></a></li>
+            <li style="display:inline !important"><a style="padding:3px" routerLink="/photos"><b>PHOTOS</b></a></li>
+            <li style="display:inline !important"><a style="padding:3px" routerLink="/jobs"><b>JOBS</b></a></li>
+            <li style="display:inline !important; padding-right:30px"><a style="padding:3px" routerLink="/login"><b>LOGIN</b></a></li>
+        </ul>
+
+
+</div>
+
+
+
+
 <main style="margin-left: 200px">
   <router-outlet></router-outlet>
-</main>
-<footer class="hidden-xs" style="clear: both; height:100px; background-color: white; border-top: 1px solid black">
+  </main>
+
+<footer style="clear: both; height:100px; background-color: white; border-top: 1px solid black">
 
 <span class="copyright">© 2016-2017 Cutthroat Barbershop</span>
 <span class="footer-icons">
@@ -126,4 +175,7 @@
 
 
 </footer>
+
+
+
 

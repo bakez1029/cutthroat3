@@ -1,3 +1,7 @@
+a{
+	color: #DB2226; 
+	text-decoration: none;
+}
 .nav-link{padding:0}
 /*.nav-link:hover{background-color: #A00000; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease;
 -o-transition: all 0.5s ease; transition: all 0.5s ease;}*/
@@ -37,6 +41,7 @@ font-weight: bold;
 float:right;
 padding-top: 60px
 }
+
 
 /* FOOTER ICONS */
 i.material-icons {
@@ -111,3 +116,8 @@ i.material-icons:hover {
 }
 /* END FOOTER ICONS */
 
+@media (max-width: 767px) {
+	main {
+		margin:0px !important;
+	}
+}

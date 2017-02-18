@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire } from 'angularfire2'
+import { AngularFire} from 'angularfire2'
 import { AuthService } from './auth.service'
 
 @Component({
@@ -9,6 +9,8 @@ import { AuthService } from './auth.service'
 })
 export class AppComponent implements OnInit {
   constructor(public af: AngularFire, private authService: AuthService) { }
+ 
+
 
   ngOnInit() {
     // we subscribe here so the users auth will get called as soon as a user loads the website
@@ -20,3 +22,7 @@ export class AppComponent implements OnInit {
     });
   }
 }
+
+
+
+
