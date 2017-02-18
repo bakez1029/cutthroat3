@@ -1,22 +1,15 @@
 <div class="page">
-
   <div class="title-box mx-auto d-block">
-
     <div class="container">
       <form #jobForm="ngForm" (ngSubmit)="onSubmit(jobForm.value)">
         <!-- we will place our fields here -->
-
         <!--name-->
-
         <br>
-
         <p class="text-center"> Thank you for your interest<br><br> in joining our team.
           <br><br>Please fill out the information below.</p>
-
         <br>
         <br>
         <br>
-
         <div>
           <label for="name">Name</label>
           <!--bind name to ngModel, it's required with minimum 5 characters-->
@@ -29,7 +22,6 @@
         </small>
           <br>
         </div>
-
         <div>
           <label for="phone">Phone Number</label>
           <!--bind name to ngModel, it's required with minimum 5 characters-->
@@ -42,7 +34,6 @@
         </small>
           <br>
         </div>
-
         <div>
           <label for="email">Email</label>
           <!--bind name to ngModel, it's required with minimum 5 characters-->
@@ -55,7 +46,6 @@
         </small>
           <br>
         </div>
-
         <!--adrress group-->
         <div ngModelGroup="address">
           <!--street-->
@@ -68,7 +58,6 @@
             </small>
             <br>
           </div>
-
           <!--city-->
           <div>
             <label>City</label>
@@ -83,13 +72,11 @@
           </div>
           <br>
           <br>
-
           <div>
             <label>Postal code</label>
             <input type="text" name="postcode" [(ngModel)]="user.address.postcode">
           </div>
           <br>
-
         </div>
         <br>
         <br>
