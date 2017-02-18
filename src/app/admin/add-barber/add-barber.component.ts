@@ -73,7 +73,7 @@ serverImagePath: string = "images";
 
 
   createBarber() {
-    if (!(this.barberName && this.uploadUrl)) {
+    if (!(this.barberName)) {
       alert("all fields are required");
       return;
     }
