@@ -44,7 +44,7 @@ export class JobsComponent implements OnInit {
 
   onSubmit(form: any) {
     console.log(this.user);
-    
+
     this.forms.push(this.user);
     // this.router.navigate(['/']),
     alert("Your information was submitted.");
