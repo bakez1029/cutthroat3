@@ -65,10 +65,10 @@ export class AddProductComponent implements OnInit {
 
       var iRef = storageRef.child(path);
       iRef.put(selectedFile).then((snapshot) => {
-        var imageRef = af.database.list(`/${this.serverImagePath}/`).push({ path: path, filename: selectedFile.name })
+        //var imageRef = af.database.list(`/${this.serverImagePath}/`).push({ path: path, filename: selectedFile.name })
         this.uploadUrl = snapshot.downloadURL;
         this.imageSrc = this.uploadUrl;
-        this.imageRef = imageRef;
+       // this.imageRef = imageRef;
       });
     }
   }

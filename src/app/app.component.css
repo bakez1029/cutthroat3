@@ -41,6 +41,10 @@ font-weight: bold;
 float:right;
 padding-top: 60px
 }
+.dropdown-menu {
+margin-left:25px;
+min-width: 9rem;
+}
 
 
 /* FOOTER ICONS */

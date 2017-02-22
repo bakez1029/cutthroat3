@@ -1,5 +1,6 @@
 .title-box{
-    width:600px;
+    min-width:300px;
+    max-width:600px;
     height:auto;
     margin-left:120px;
     margin-right:120px;

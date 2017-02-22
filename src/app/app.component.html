@@ -83,9 +83,47 @@
   <aside>
     <div style="float:left; width: 200px; background-color: #000; min-height:650px">
       <div *ngIf="!authed" class="text-center">NOT LOGGED</div>
-      <div *ngIf="authed != null" style="color: #fff">
-        HI USER
+      <div *ngIf="authed != null" style="color: #fff" class="text-center">
+        <br>
+
+        <!--<div class="badge" style="margin-bottom: 70px; color: #98AFC7">&nbsp;{{(user | async)?.name}}</div>
+  
+      <br>
+
+        <div class="dropdown-menu">
+          <a data-target="#" routerLink="/" data-toggle="dropdown" id="dropdownMenuLink" class="dropdown-toggle"><img src="{{ (user | async)?.profilepic }}" style="width: 128px; height: 128px; padding:15px" class="img-circle"></a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/"><i class="fa fa-home fa-fw"></i> Home</a></li>
+            <li><a class="dropdown-item" routerLink="/settings"><i class="fa fa-cogs fa-fw"></i> Settings</a></li>
+            <li><a class="dropdown-item" routerLink="/cart"><i class="fa fa-shopping-basket fa-fw"></i> Cart</a></li>
+            <li *ngIf="authed && uid === me || authed && uid === mike" class="divider"></li>
+            <li *ngIf="authed && uid === me || authed && uid === mike"><a routerLink="/admin"><i class="fa fa-dashboard fa-fw"></i> Admin</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+          </ul>
+        </div>-->
+
+
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="/assets/images/photos/pic7.jpg" style="width: 128px; height: 128px" class="img-thumbnail">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="login">
+            <a class="dropdown-item" routerLink="/"><i class="fa fa-home fa-fw"></i> Home</a>
+            <a class="dropdown-item" routerLink="/settings"><i class="fa fa-cogs fa-fw"></i> Settings</a>
+            <a class="dropdown-item" routerLink="/cart"><i class="fa fa-shopping-basket fa-fw"></i> Cart</a>
+            <div *ngIf="authed != null" class="dropdown-divider"></div>
+            <a class="dropdown-item" *ngIf="authed != null && uid === me" routerLink="/admin"><i class="fa fa-dashboard fa-fw"></i> Admin</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
       </div>
+
 
 
       <ul class="nav navbar-nav">
@@ -175,3 +213,12 @@
 
 
 </footer>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    $(".dropdown-toggle").dropdown('toggle');
+
+  });
+
+</script>

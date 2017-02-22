@@ -26,11 +26,12 @@ body {
 }
 .title-box{
     display:inline-block;
+    width:100%;
     border:1px solid black;
     background-color:#fff;
     padding-bottom:10px;
-    min-width: 1109px;
-    min-height: 711px;
+    /*min-width: 1109px;
+    min-height: 711px;*/
 }
 
 @media (max-width: 767px) {

@@ -1,9 +1,85 @@
-<div class="page">
-      <div class="title-box">
-      <ul>
-    <li *ngFor="let item of barberList | async">
-       {{ item | json }}
-    </li>
-  </ul>
+<div class="page hidden-md-down">
+  <div class="title-box">
+
+
+
+
+    <table class='table'>
+
+      <tbody>
+        <tr *ngFor='let item of barberList | async'>
+          <td rowspan="3" style="border:none">
+            <br>
+            <p class="text-center"><a routerLink="/barber', barber.barberId">{{item.name}}</a></p>
+            <br>
+            <a><img [src]='item.image' class="img-fluid img-thumbnail mx-auto d-block" style="max-width:250px; max-height:250px">
+            </a>
+            <br>
+          </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+    <br>
+
   </div>
-    </div>
+</div>
+
+<div class="page hidden-lg-up hidden-sm-down">
+  <div class="title-box">
+
+
+
+
+    <table class='table'>
+
+      <tbody>
+        <tr *ngFor='let item of barberList | async'>
+          <td rowspan="2" style="border:none">
+            <br>
+            <p class="text-center"><a routerLink="/barber', barber.barberId">{{item.name}}</a></p>
+            <br>
+            <a><img [src]='item.image' class="img-fluid img-thumbnail mx-auto d-block" style="max-width:250px; max-height:250px">
+            </a>
+            <br>
+          </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+    <br>
+
+  </div>
+</div>
+
+
+<div class="page hidden-sm-up">
+  <div class="title-box">
+
+
+
+
+    <table class='table'>
+
+      <tbody>
+        <tr *ngFor='let item of barberList | async'>
+          <td>
+            <br>
+            <p class="text-center"><a routerLink="/barber', barber.barberId">{{item.name}}</a></p>
+            <br>
+            <a><img [src]='item.image' class="img-fluid img-thumbnail mx-auto d-block" style="max-width:175px; max-height:175px">
+            </a>
+            <br>
+          </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    
+  </div>
+</div>
+

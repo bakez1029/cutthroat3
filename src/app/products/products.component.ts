@@ -11,13 +11,12 @@ import * as firebase from 'firebase';
 })
 export class ProductsComponent implements OnInit {
   productList: FirebaseListObservable<any[]>;
-
   constructor(public af: AngularFire) { }
 
   ngOnInit() {
     this.productList = this.af.database.list('/products');
     console.log('filelist', this.productList);
-    
+
   }
 
 }
