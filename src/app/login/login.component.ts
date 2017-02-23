@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2'
 import { AuthService } from '../auth.service'
+import { Router } from '@angular/router'
+
 
 import * as firebase from 'firebase';
 
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   password: string;
   loggedIn: boolean = false;
 
-  constructor(public af: AngularFire, private authService: AuthService) {
+  constructor(public af: AngularFire, private router: Router, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class LoginComponent implements OnInit {
       console.log('xxuser => ', this.uid);
       this.email = "";
       this.password = "";
+       this.router.navigate(['/account']);
     }).catch((error) => {
       console.log('Error', error);
     });

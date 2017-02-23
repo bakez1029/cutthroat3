@@ -5,9 +5,17 @@ md-card{
 md-input-container{
     color:#000;
 }
-.title-box{
-    padding-bottom:0px;
-}
+
 md-input-element {
     color:#000;
+}
+
+.title-box{
+    min-width:300px;
+    max-width:600px;
+    height:auto;
+    margin-left:120px;
+    margin-right:120px;
+    margin-top:20px;
+    padding-bottom:10px;
 }

@@ -1,54 +1,52 @@
 <div class="page">
-  <div class="title-box">
-    <p class="text-center">New User</p>
-    <div class="container">
-<md-card class="example-card">
-  <md-card-header>
-    
-    <md-card-subtitle></md-card-subtitle>
-  </md-card-header>
-  <md-card-content>
+  <div class="title-box mx-auto d-block">
+    <br>
+    <h3 class="text-center">Create Account</h3>
+    <div class="container" style="max-width: 450px; height:auto">
+
+  
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
-          <md-input-container>
-            <input placeholder="First name" name="first" [(ngModel)]="firstName">
-          </md-input-container>
+     
+            <input placeholder="Your Name" name="first" [(ngModel)]="firstName">
+      
         </td>
         <td>
-          <md-input-container>
+          <!--<md-input-container>
             <input placeholder="Last Name" name="last" [(ngModel)]="lastName">
-          </md-input-container>
+          </md-input-container>-->
         </td>
       </tr>
       <tr>
         <td>
-          <md-input-container>
+        
             <p class="text-center"><input placeholder="Email" name="email" [(ngModel)]="email"></p>
-          </md-input-container>
+  
         </td>
       </tr>
       <tr>
         <td>
-          <md-input-container>
+ 
             <input placeholder="Password" [(ngModel)]="password" type="password">
-          </md-input-container>
+
         </td>
       </tr>
       <tr>
         <td>
-          <md-input-container>
+       
             <input placeholder="Password Confirm" [(ngModel)]="password2" type="password">
-          </md-input-container>
+
         </td>
       </tr>
     </table>
-  </md-card-content>
-  <md-card-actions>
-    <button md-raised-button (click)="goBack()">Cancel</button>
-    <button md-raised-button color="primary" (click)="openDialog()">Register</button>
-  </md-card-actions>
-</md-card>
+
+    <!--<button md-raised-button (click)="goBack()">Cancel</button>-->
+    <br>
+    <button md-raised-button color="warn" (click)="openDialog()" style="float:right">Register</button>
+    <br>
+    <br>
+
 <br>
 <br>
 </div>

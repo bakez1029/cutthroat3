@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2'
 import { AuthService } from './auth.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
   loggedIn: boolean = false;
 
 
-  constructor(public af: AngularFire, private authService: AuthService) { }
+  constructor(public af: AngularFire, private router: Router, private authService: AuthService) { }
 
 
 
@@ -38,8 +39,8 @@ export class AppComponent implements OnInit {
     this.authService.logout();
     console.log('logged out');
     this.uid = "";
-    this.loggedIn = false;  
-
+    this.loggedIn = false; 
+    this.router.navigate(['/home']);
   }
 
 }

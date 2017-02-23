@@ -82,6 +82,29 @@
   <div style="clear: both"></div>
   <aside>
     <div style="float:left; width: 200px; background-color: #000; min-height:650px">
+          <div *ngIf="authed == null" style="color: #fff" class="text-center">
+        <br>
+
+        <!--<div class="badge" style="margin-bottom: 70px; color: #98AFC7">&nbsp;{{(user | async)?.name}}</div>-->
+
+
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="/assets/images/profile.svg" style="width: 128px; height: 128px" class="img-thumbnail">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="login">
+            <a class="dropdown-item" routerLink="/register"><i class="fa fa-home fa-fw"></i> New Account</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/login"><i class="fa fa-sign-out fa-fw"></i> Sign In</a>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+
+
       <div *ngIf="authed != null" style="color: #fff" class="text-center">
         <br>
 
@@ -93,9 +116,9 @@
             <img src="/assets/images/photos/pic7.jpg" style="width: 128px; height: 128px" class="img-thumbnail">
           </a>
           <div class="dropdown-menu" aria-labelledby="login">
-            <a class="dropdown-item" routerLink="/"><i class="fa fa-home fa-fw"></i> Home</a>
-            <a class="dropdown-item" routerLink="/settings"><i class="fa fa-cogs fa-fw"></i> Settings</a>
-            <a class="dropdown-item" routerLink="/cart"><i class="fa fa-shopping-basket fa-fw"></i> Cart</a>
+            <a class="dropdown-item" routerLink="/account"><i class="fa fa-home fa-fw"></i> Home</a>
+            <!--<a class="dropdown-item" routerLink="/settings"><i class="fa fa-cogs fa-fw"></i> Settings</a>
+            <a class="dropdown-item" routerLink="/cart"><i class="fa fa-shopping-basket fa-fw"></i> Cart</a>-->
             <div *ngIf="authed != null && admin" class="dropdown-divider"></div>
             <a class="dropdown-item" *ngIf="authed != null && admin" routerLink="/admin"><i class="fa fa-dashboard fa-fw"></i> Admin</a>
             <div class="dropdown-divider"></div>
@@ -132,9 +155,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact"><span class="MenuSideMainLink"><span class="MainLinkText">CONTACT</span></span></a>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" routerLink="/login"><span class="MenuSideMainLink"><span class="MainLinkText">LOGIN</span></span></a>
-        </li>
+        </li>-->
         <!--<li class="nav-item">
           <a class="nav-link" routerLink="/admin"><span class="MenuSideMainLink"><span class="MainLinkText">ADMIN</span></span></a>
         </li>-->

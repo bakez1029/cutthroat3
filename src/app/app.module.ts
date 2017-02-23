@@ -54,6 +54,7 @@ const firebaseAuthConfig = {
     UploadComponent,
     AddProductComponent,
     AddBarberComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +74,7 @@ const firebaseAuthConfig = {
       { path: 'login', component: LoginComponent },
       { path: 'register', component: CreateAccountComponent },
       { path: 'admin', component: AdminComponent },
+      { path: 'account', component: AccountComponent },
       { path: 'admin/products/add', component: AddProductComponent },
       { path: 'admin/barbers/add', component: AddBarberComponent },
     ])

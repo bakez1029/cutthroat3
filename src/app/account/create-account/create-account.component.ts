@@ -43,7 +43,7 @@ export class CreateAccountComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogContent);
     dialogRef.afterClosed().subscribe(result => {
       this.lastDialogResult = result;
-      //  this.router.navigate(['/home']);
+        this.router.navigate(['/home']);
       //  this.location.back();
     });
   }
@@ -57,7 +57,8 @@ export class CreateAccountComponent implements OnInit {
 @Component({
   template: `
     <p>Thank you, your user has been registered.</p>
-    <p> <button md-button (click)="dialogRef.close()">CLOSE</button> </p>
+    <br>
+    <p> <button md-button (click)="dialogRef.close()" style="float: right">CLOSE</button> </p>
   `,
 })
 export class DialogContent {
