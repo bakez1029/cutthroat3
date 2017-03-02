@@ -4,7 +4,7 @@
   <div *ngIf="!loggedIn" class="text-center">
     <input class="text-center" placeholder="email" [(ngModel)]="email" style="width: 300px"><br/>
     <input class="text-center" placeholder="password" [(ngModel)]="password" type="password" style="width: 300px"><br/>
-    <button md-raised-button color="warn" (click)="login()">Login</button>
+    <button md-raised-button color="warn" (click)="login(); keyDownFunction();">Login</button>
     <br>
     <br>
     <p class='text-center'>

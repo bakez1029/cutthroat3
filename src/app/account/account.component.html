@@ -1,3 +1,4 @@
+<!--<h1>{{ (user | async)?.first }}</h1>-->
 <div class="page">
 
     <div class="title-box">
@@ -5,7 +6,213 @@
         <div class="title">User Dashboard</div>
 <br>
 
+   <!--<div class="container" style="float:left; min-width:200px; max-width:500px">
+     
+              <div class="z-depth-1" style="padding: 32px 48px 60px 48px; border: 1px solid #EEE">
+                  <h4>Update Profile Information</h4>
+                
+                <br>
+
+                <!--<div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='text' #newprofilepic />
+                <label for='email'>Profile Picture</label>
+              </div>
+            </div>-->
+<!--
+                <div class='row'>
+                  <div class='input-field col s12'>
+                    <input class='validate' type='text' #newname />
+                    <button (click)="updateName(newname.value)" class="btn btn-warning btn-xs" style="float:right">Update</button>
+                    <label for='name'>Name</label>
+                  </div>
+                </div>-->
+
+                <!--<div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='text' #s_email />
+                <label for='email'>E-mail</label>
+              </div>
+            </div>-->
+
+                <!--<div class='row'>
+                  <div class='input-field col s12'>
+                    <input class='validate' type='text' #newPhone />
+                    <button (click)="updatePhone(newPhone.value)" class="btn btn-warning btn-xs" style="float:right">Update</button>
+                    <label for='phone'>Phone Number</label>
+                  </div>
+                </div>
+
+                <div class='row'>
+                  <div class='input-field col s12'>
+                    <input class='validate' type='text' #newAddress />
+                    <button (click)="updateAddress(newAddress.value)" class="btn btn-warning btn-xs" style="float:right">Update</button>
+                    <label for='address'>Address</label>
+                  </div>
+                </div>
+
+                <div class='row'>
+                  <div class='input-field col s12'>
+                    <input class='validate' type='text' #newCity />
+                    <button (click)="updateCity(newCity.value)" class="btn btn-warning btn-xs" style="float:right">Update</button>
+                    <label for='email'>City</label>
+                  </div>
+                </div>
+
+                <div class='row'>
+                  <div class='input-field col s12'>
+                    <input class='validate' type='text' #newZip/>
+                    <button (click)="updateZip(newZip.value)" class="btn btn-warning btn-xs" style="float:right">Update</button>
+                    <label for='zip'>Zip</label>
+                  </div>
+                </div>
+
+                <div class='row'>
+                  <div class='input-field col s12'>
+                    <input class='validate' type='text' #newState />
+                    <button (click)="updateState(newState.value)" class="btn btn-warning btn-xs" style="float:right">Update</button>
+                    <label for='dob'>State</label>
+                  </div>
 
 
+                  <br>
+                  <br>
+                  <br>-->
+                  
+                  <!--<div class='row'>
+              <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" #s_userpic>
+        <label for='userpic'>Add a Profile Pic</label>
+      </div>
+    </div>-->
+                  <!--</div>
+                -->
+                  <!--<label style='float: right;'>
+								<a class='blue-text' href='#!'><b>Remember me</b></a>
+							</label>-->
+              <!--</div>
+                </div>
+</div>
+                <br />-->
+                <!--
+              <div class='row'>
+                <button (click)="update(newname.value, newphone.value, newprofilepic.value, newAddress.value, newCity.value, newState.value, newZip.value)"
+                  class='col s12 mat-btn mat-btn-large waves-effect light-blue lighten-2'>Update</button>
+              </div>
+            -->
+
+
+       
+
+
+<div class="container mx-auto d-block" style="min-width:200px; max-width:600px">
+  
+              <div class="z-depth-1" style="border: 1px solid #EEE">
+
+                <h4 class="text-center">
+                  Account Settings
+                </h4>
+                <br>
+                <!--<div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='text' #newPassword />
+                <button (click)="updatePassword(newPassword.value)" class="btn btn-warning btn-xs" style="float:right">Update</button>
+                <label for='password'>Password</label>
+              </div>-->
+              <div class="text-center">
+                <button md-raised-button color="warn" (click)="resetPassword()">Change Password</button>
+                </div>
+           
+                <br>
+            <br>
+            </div>
+
+          <br>
+          <br>
+
+
+            <div>
+              <div class="z-depth-1" style="padding: 32px 48px 57px 48px; border: 1px solid #EEE">
+
+                <h4 class="text-center">
+                  Customer Profile Information
+                </h4>
+                <br>
+                <br>
+
+                <div class='row'>
+                  <div class='col s12'>
+                    <b>Name:</b>&nbsp;{{ (user | async)?.first }}
+                  </div>
+                </div>
+
+                <br>
+                <br>
+                <div class='row'>
+                  <div class='col s12'>
+                    <b>Phone:</b>&nbsp;{{ (user | async)?.phone }}
+                  </div>
+                </div>
+
+                <!--<br>
+    <br>
+    <div class='row'>
+      <div class='col s12'>
+        Picture:&nbsp;{{ (user | async)?.profilepic }}
+      </div>
+    </div>-->
+
+
+                <br>
+                <br>
+                <div class='row'>
+                  <div class='col s12'>
+                    <b>Address:</b>&nbsp;{{ (address | async)?.address }}
+                  </div>
+                </div>
+
+
+                <br>
+                <br>
+                <div class='row'>
+                  <div class='col s12'>
+                    <b>City:</b>&nbsp;{{ (address | async)?.city}}
+                  </div>
+                </div>
+
+
+                <br>
+                <br>
+
+                <div class='row'>
+                  <div class='col s12'>
+                    <b>Zip:</b>&nbsp;{{ (address | async)?.zip }}
+                  </div>
+                </div>
+                <br>
+                <br>
+
+                <div class='row'>
+                  <div class='col s12'>
+                    <b>State:</b>&nbsp;{{ (address | async)?.state }}
+                  </div>
+                </div>
+                <br>
+                <br>
+
+              </div>
+              </div>
+
+              <br>
+              <br>
+              <br>
+              <br>
+</div>
   </div>
 </div>
+

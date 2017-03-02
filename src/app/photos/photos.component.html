@@ -1,49 +1,25 @@
-<div class="page">
+<div class="page hidden-md-down">
+  <div class="title-box" style="min-height: 1250px">
 
 
-  <div class="title-box">
-
-    <div class="title">Photos</div>
 
 
-    <div class="text-center" style="padding-bottom:10px">
-      <img class='img-thumbnail-photo' src="/assets/images/photos/pic1.jpg" alt="1" width="280" height="206">
-      <img class="img-thumbnail-photo" src="/assets/images/photos/pic2.jpg" alt="1" width="280" height="206">
-      <img class="img-thumbnail-photo" src="/assets/images/photos/pic3.jpg" alt="1" width="280" height="206">
-    </div>
-    <div class="text-center" style="padding-bottom:10px">
-      <img class='img-thumbnail-photo' src="/assets/images/photos/pic4.jpg" alt="1" width="280" height="206">
-      <img class="img-thumbnail-photo" src="/assets/images/photos/pic5.jpg" alt="1" width="280" height="206">
-      <img class="img-thumbnail-photo" src="/assets/images/photos/pic6.jpg" alt="1" width="280" height="206">
+
+
+
+    <div class="flex-container">
+      <div class="flex-item" *ngFor='let item of photoList | async'>
+        <a><img [src]='item.image' class="img-thumbnail" style="max-width:250px; max-height:250px; min-width:250px">
+        </a>
+      </div>
+
     </div>
 
-    <div class="text-center" style="padding-bottom:10px">
-      <img class='img-thumbnail-photo' src="/assets/images/photos/pic7.jpg" alt="1" width="280" height="206">
-      <img class="img-thumbnail-photo" src="/assets/images/photos/pic8.jpg" alt="1" width="280" height="206">
-      <img class="img-thumbnail-photo" src="/assets/images/photos/pic9.jpg" alt="1" width="280" height="206">
-    </div>
+
+
+
+
     <br>
-    <br>
-    <br>
-    <br>
+
   </div>
-  <br>
-  <br>
-
-
-
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" style="color:#000">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#" style="color:#DB2226">1</a></li>
-    <li class="page-item"><a class="page-link" href="#" style="color:#DB2226">2</a></li>
-    <li class="page-item"><a class="page-link" href="#" style="color:#DB2226">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" style="color:#DB2226">Next</a>
-    </li>
-  </ul>
-  <br>
-  <br>
-
 </div>

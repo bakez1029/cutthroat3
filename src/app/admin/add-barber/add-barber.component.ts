@@ -82,5 +82,6 @@ serverImagePath: string = "images";
     
     var ref = this.barberList.push({ name: this.barberName, image: this.uploadUrl});
     this.imageUnused = false;
+    this.router.navigate(['/barbers']);
   }
 }

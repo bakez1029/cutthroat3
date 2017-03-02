@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire } from 'angularfire2'
+import { AngularFire, AuthProviders } from 'angularfire2'
 import { AuthService } from '../auth.service'
 import { Router } from '@angular/router'
 
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   loggedIn: boolean = false;
+  
 
   constructor(public af: AngularFire, private router: Router, private authService: AuthService) {
   }
@@ -50,8 +51,24 @@ export class LoginComponent implements OnInit {
     this.loggedIn = false;    
   }
 
+  keyDownFunction(event, email: string, password: string) {
+  if(event.keyCode == 13) {
+       this.authService.login(this.email, this.password).then((auth) => {
+      this.uid = auth.uid;
+      console.log('xxuser => ', this.uid);
+      this.email = "";
+      this.password = "";
+       this.router.navigate(['/account']);
+    }).catch((error) => {
+      console.log('Error', error);
+    });
+  }
+}
+
   sendPasswordEmail() {
     this.authService.sendPasswordResetEmail("tbaker000@gmail.com");
   }
+
+
 
 }

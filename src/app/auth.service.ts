@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 @Injectable()
 export class AuthService {
 
-  uid: string = 'not authenticated';
+  uid: string = null;
   authUser: FirebaseAuthState;
 
   constructor(public af: AngularFire) {
@@ -17,6 +17,9 @@ export class AuthService {
         this.authUser = auth;
         console.log('setting uid', this.uid);
         this.uid = auth.uid;
+      }
+      else {
+        this.uid = null;
       }
     });
   }

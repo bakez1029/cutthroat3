@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "barbers":{
+    ".read": true,
+    ".write": true
+    },
+    "forms":{
+    ".read": true,
+    ".write": true
+    },
+    "products":{
+    ".read": true,
+    ".write": true
+    },
+    "users":{
+    ".read": true,
+    ".write": true
+    }
+  }
+}

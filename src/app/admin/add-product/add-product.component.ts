@@ -84,5 +84,6 @@ export class AddProductComponent implements OnInit {
     
     var ref = this.productList.push({ name: this.productName, brand: this.productBrand, price: this.productPrice, image: this.uploadUrl });
     this.imageUnused = false;
+    this.router.navigate(['/products']);
   }
 }

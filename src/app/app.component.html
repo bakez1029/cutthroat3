@@ -11,7 +11,7 @@
 
 
           <div class="PropertyBox">
-            <a class='my-btn' (click)='onClick5()'>
+            <a class='my-btn' (click)='onClick()'>
               <img src="/assets/images/barbs.png" style="width: 50px; height: 50px">
               <p style="font-size:16px">
                 <span class="PropertyTopic">SERVICES</span>
@@ -23,7 +23,7 @@
 
         <md-grid-tile>
           <div class="PropertyBox">
-            <a class='my-btn' (click)='onClick5()'>
+            <a class='my-btn' (click)='onClick2()'>
               <img src="/assets/images/hair2.png" style="width: 50px; height: 50px">
               <p style="font-size:16px">
                 <span class="PropertyTopic">PRODUCTS</span>
@@ -34,7 +34,7 @@
 
         <md-grid-tile>
           <div class="PropertyBox" style="float:left">
-            <a class='my-btn' (click)='onClick5()'>
+            <a class='my-btn' (click)='onClick3()'>
               <img src="/assets/images/jobs2.png" style="width: 50px; height: 50px">
               <p style="font-size:16px">
                 <span class="PropertyTopic">JOBS</span>
@@ -45,18 +45,18 @@
 
         <md-grid-tile>
           <div class="PropertyBox">
-            <a class='my-btn' (click)='onClick5()'>
+            <a class='my-btn' (click)='onClick4()'>
               <img src="/assets/images/artists.png" style="width: 50px; height: 50px">
               <p style="font-size:16px">
                 <span class="PropertyTopic">BARBERS</span>
-                <span class="PropertyText">Meet our barbers and know who is cutting your hair.</span></p>
+                <span class="PropertyText">Meet our barbers and get to know who is cutting your hair.</span></p>
             </a>
           </div>
         </md-grid-tile>
 
         <md-grid-tile>
           <div class="PropertyBox">
-            <a class='my-btn' (click)='onClick5()'>
+            <a class='my-btn'>
               <img src="/assets/images/comm3.png" style="width: 50px; height: 50px">
               <p style="font-size:16px">
                 <span class="PropertyTopic">COMMUNITY</span>
@@ -67,7 +67,7 @@
 
         <md-grid-tile>
           <div class="PropertyBox">
-            <a class='my-btn' (click)='onClick5()'>
+            <a class='my-btn'>
               <img src="/assets/images/social2.png" style="width: 50px; height: 50px">
               <p style="font-size:16px">
                 <span class="PropertyTopic">CONNECT</span>
@@ -82,28 +82,13 @@
   <div style="clear: both"></div>
   <aside>
     <div style="float:left; width: 200px; background-color: #000; min-height:650px">
-          <div *ngIf="authed == null" style="color: #fff" class="text-center">
-        <br>
-
-        <!--<div class="badge" style="margin-bottom: 70px; color: #98AFC7">&nbsp;{{(user | async)?.name}}</div>-->
-
-
-        <div class="dropdown">
-          <a class="dropdown-toggle" id="login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="/assets/images/profile.svg" style="width: 128px; height: 128px" class="img-thumbnail">
-          </a>
-          <div class="dropdown-menu" aria-labelledby="login">
-            <a class="dropdown-item" routerLink="/register"><i class="fa fa-home fa-fw"></i> New Account</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" routerLink="/login"><i class="fa fa-sign-out fa-fw"></i> Sign In</a>
+          <div *ngIf="authed == null" style="color: #fff; border-bottom:1px solid white" class="text-center" >
+        <div style="margin-bottom:5px; margin-top:5px">
+            <a routerLink="/login">Sign In</a>&nbsp;&nbsp;&nbsp;
+            <a routerLink="/register">New Account</a>
+       
           </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-      </div>
-
+       </div>
 
       <div *ngIf="authed != null" style="color: #fff" class="text-center">
         <br>
@@ -116,24 +101,21 @@
             <img src="/assets/images/photos/pic7.jpg" style="width: 128px; height: 128px" class="img-thumbnail">
           </a>
           <div class="dropdown-menu" aria-labelledby="login">
-            <a class="dropdown-item" routerLink="/account"><i class="fa fa-home fa-fw"></i> Home</a>
+            <a class="dropdown-item" routerLink="/account"><i class="fa fa-dashboard fa-fw" aria-hidden="true"></i> Profile</a>
             <!--<a class="dropdown-item" routerLink="/settings"><i class="fa fa-cogs fa-fw"></i> Settings</a>
             <a class="dropdown-item" routerLink="/cart"><i class="fa fa-shopping-basket fa-fw"></i> Cart</a>-->
             <div *ngIf="authed != null && admin" class="dropdown-divider"></div>
-            <a class="dropdown-item" *ngIf="authed != null && admin" routerLink="/admin"><i class="fa fa-dashboard fa-fw"></i> Admin</a>
+            <a class="dropdown-item" *ngIf="authed != null && admin" routerLink="/admin"><i class="fa fa-server fa-fw" aria-hidden="true"></i> Admin</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            <a class="dropdown-item" (click)="logout()" style="color:#DB2226"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
           </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
+     
       </div>
 
 
 
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" style="margin-top:5px">
         <li class="nav-item">
           <a class="nav-link" routerLink="/home"><span class="MenuSideMainLink"><span class="MainLinkText">HOME</span></span></a>
         </li>

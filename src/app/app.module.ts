@@ -12,6 +12,7 @@ import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
 import { PhotosComponent } from './photos/photos.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductsDetailComponent } from './products/products-detail.component';
 import { BarbersComponent } from './barbers/barbers.component';
 import { ServicesComponent } from './services/services.component';
 import { AdminComponent } from './admin/admin.component';
@@ -23,6 +24,9 @@ import { CreateAccountComponent, DialogContent } from './account/create-account/
 import { UploadComponent } from './upload.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { AddBarberComponent } from './admin/add-barber/add-barber.component';
+import { AddPhotoComponent } from './admin/add-photo/add-photo.component';
+import { AddServiceComponent } from './admin/add-service/add-service.component';
+import { AddPostComponent } from './admin/add-post/add-post.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyDGFYKBqQX8cHJAIbn0WuqFGNqctpYZMHc",
@@ -42,6 +46,7 @@ const firebaseAuthConfig = {
     HomeComponent,
     PhotosComponent,
     ProductsComponent,
+    ProductsDetailComponent,
     BarbersComponent,
     ServicesComponent,
     AdminComponent,
@@ -49,12 +54,15 @@ const firebaseAuthConfig = {
     ContactComponent,
     LoginComponent,
     AccountComponent,
-    CreateAccountComponent, 
+    CreateAccountComponent,
     DialogContent,
     UploadComponent,
     AddProductComponent,
     AddBarberComponent,
-    AccountComponent
+    AccountComponent,
+    AddPhotoComponent,
+    AddServiceComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +74,7 @@ const firebaseAuthConfig = {
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
+      { path: 'product/:id',component: ProductsDetailComponent },
       { path: 'barbers', component: BarbersComponent },
       { path: 'services', component: ServicesComponent },
       { path: 'photos', component: PhotosComponent },
@@ -77,6 +86,9 @@ const firebaseAuthConfig = {
       { path: 'account', component: AccountComponent },
       { path: 'admin/products/add', component: AddProductComponent },
       { path: 'admin/barbers/add', component: AddBarberComponent },
+      { path: 'admin/photo/add', component: AddPhotoComponent },
+      { path: 'admin/services/add', component: AddServiceComponent },
+      { path: 'admin/posts/add', component: AddPostComponent }
     ])
   ],
   entryComponents: [DialogContent],

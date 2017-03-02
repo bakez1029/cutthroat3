@@ -43,6 +43,24 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+
+   onClick(): void {
+    this.router.navigate(['/services']);
+
+  }
+    onClick2(): void {
+        this.router.navigate(['/products']);
+
+    }
+    onClick3(): void {
+        this.router.navigate(['/jobs']);
+    }
+
+    onClick4(): void {
+        this.router.navigate(['/barbers']);
+    }
+ 
+
 }
 
 

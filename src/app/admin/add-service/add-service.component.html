@@ -1,0 +1,25 @@
+<div class="page">
+<div class="title-box">
+<p class="text-center">
+
+<br>
+<br>
+<input class="text-center" placeholder="Name" type="text" style="width:300px" [(ngModel)]="serviceName"><br/>
+<input class="text-center" placeholder="Price" style="width:300px" [(ngModel)]="servicePrice">
+<br>
+<br>
+<label for="comment">Description:</label>
+<br>
+<textarea class="text-center" style="width:300px; height:200px" rows="5" id="comment" [(ngModel)]="serviceDesc"></textarea>
+<br>
+<br>
+<br>
+<button md-raised-button color="warn" (click)="createProduct()">Add Service</button>
+</p>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/> 
+</div>
+</div>
