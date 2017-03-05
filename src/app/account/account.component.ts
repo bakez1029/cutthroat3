@@ -20,6 +20,12 @@ export class AccountComponent implements OnInit {
 
     console.log('user', this.user, this.authService.authUser);
     
+    
   }
+  sendPasswordEmail() {
+    // this.authService.sendPasswordResetEmail(this.authService.login);
+  }
+
+
 
 }
