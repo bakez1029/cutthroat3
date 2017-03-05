@@ -1,0 +1,39 @@
+@media (max-width: 767px) {
+
+
+  table, thead, tbody, th, td, tr { 
+		display: block;
+        width: 100%;
+        
+   
+
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+        	/*border: 1px solid #696969;*/
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+		
+	td { 
+		/* Behave  like a "row" */
+	  
+        position: relative;
+
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 25%; 
+		padding-right: 10px; 
+        white-space: nowrap;
+	
+   
+	}
+}

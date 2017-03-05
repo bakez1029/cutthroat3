@@ -1,42 +1,71 @@
-  <div class="page">
-<div class="title-box">
+<div class="page hidden-xs-down">
+  <div class="title-box">
 
 
 
 
 
-<table class='table'>
-					<thead>
-						<tr>
-							<th>Brand</th>
-							<th>Product</th>
-							<th>Image</th>              
-							<th>Price</th>
-							<th class="text-center" *ngIf="admin">Tools</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor='let item of productList | async' >
-							<td>{{ item.brand }}</td>
-							<td><a routerLink ="/products', products.productid">{{item.name}}</a></td>
-							<td><img [src]='item.image' style="width:50px; height:50px"></td>
-							<td>${{ item.price }}</td>
-							<td class="text-center" *ngIf="admin" style="max-width:100px"><button md-raised-button color="primary" (click)="createProduct()">Edit</button>
-							<button md-raised-button color="warn" (click)="removeProd()">Remove</button>
-							</td>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Product</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th class="text-center" *ngIf="admin">Tools</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let item of productList | async'>
+          <td>{{ item.brand }}</td>
+          <td><a routerLink="/products', products.productid">{{item.name}}</a></td>
+          <td><img [src]='item.image' style="width:50px; height:50px"></td>
+          <td>${{ item.price }}</td>
+          <td class="text-center" *ngIf="admin" style="max-width:100px"><button md-raised-button color="primary" (click)="createProduct()" style="margin-bottom:5px">Edit</button>
+            <button md-raised-button color="warn" (click)="removeProd()">Remove</button>
+          </td>
 
-						</tr>
-					</tbody>
-				</table>
-<br><br>
-	
-<!--
-  <ul>
-    <li *ngFor="let item of productList | async">
-       {{ item | json }}
-    </li>
-  </ul>-->
+        </tr>
+      </tbody>
+    </table>
 
 
   </div>
-    </div>
+</div>
+
+<!--MOBILE-->
+
+<div class="page hidden-lg-up">
+  <div class="title-box" style="border:none">
+
+
+
+
+
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Product</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th class="text-center" *ngIf="admin">Tools</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let item of productList | async' style="border-bottom: 15px solid #696969">
+          <td style="background-color:#f6f6f6; border-bottom: 1px solid #d3d3d3">{{ item.brand }}</td>
+          <td><a routerLink="/products', products.productid">{{item.name}}</a></td>
+          <td><img [src]='item.image' style="width:50px; height:50px"></td>
+          <td>${{ item.price }}</td>
+          <td *ngIf="admin" style="max-width:100px"><button md-raised-button color="primary" (click)="createProduct()" style="margin-bottom:5px">Edit</button>
+            <button md-raised-button color="warn" (click)="removeProd()">Remove</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>

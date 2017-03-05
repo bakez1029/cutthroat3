@@ -15,6 +15,14 @@
     "users":{
     ".read": true,
     ".write": true
+    },
+    "photo":{
+    ".read": true,
+    ".write": true
+    },
+    "services":{
+    ".read": true,
+    ".write": true
     }
   }
 }

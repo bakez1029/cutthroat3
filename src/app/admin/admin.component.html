@@ -1,17 +1,28 @@
 <div class="page">
-<div class="title-box mx-auto d-block">
-  <h4 class="text-center">What would you like to do?</h4>
-  <p class="text-center">
-  <a routerLink="/admin/products/add" style="color:#000">Add New Product</a>&nbsp;&nbsp;&nbsp;<a routerLink="/admin/services/add" style="color:#000">Add New Service</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  </p>
-  <p class="text-center">
-    <a routerLink="/admin/barbers/add" style="color:#000">Add New Barber</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="/admin/photo/add" style="color:#000">Add New Picture</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  </p>
-<p class="text-center">
-    <a routerLink="/admin/posts/add" style="color:#000">Add New Post</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </p>
+  <div class="title-box mx-auto d-block">
+    <h4 class="text-center">What would you like to do?</h4>
+    <p class="text-center">
+      <a routerLink="/admin/products/add" style="color:#000">Add New Product</a>&nbsp;&nbsp;&nbsp;<a routerLink="/admin/services/add"
+        style="color:#000">Add New Service</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    <p class="text-center">
+      <a routerLink="/admin/barbers/add" style="color:#000">Add New Barber</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="/admin/photo/add"
+        style="color:#000">Add New Picture</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    <p class="text-center">
+      <a routerLink="/admin/posts/add" style="color:#000">Add New Post</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
 
 
- </div>
+  </div>
+
+  <br>
+
+  <div class="title-box mx-auto d-block">
+    <h4 class="text-center">Recent Applications</h4>
+
+    <b>Name : </b>&nbsp;{{ (forms | async)?.name }}
+
+  </div>
 
 </div>

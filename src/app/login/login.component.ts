@@ -51,19 +51,6 @@ export class LoginComponent implements OnInit {
     this.loggedIn = false;    
   }
 
-  keyDownFunction(event, email: string, password: string) {
-  if(event.keyCode == 13) {
-       this.authService.login(this.email, this.password).then((auth) => {
-      this.uid = auth.uid;
-      console.log('xxuser => ', this.uid);
-      this.email = "";
-      this.password = "";
-       this.router.navigate(['/account']);
-    }).catch((error) => {
-      console.log('Error', error);
-    });
-  }
-}
 
   sendPasswordEmail() {
     this.authService.sendPasswordResetEmail("tbaker000@gmail.com");

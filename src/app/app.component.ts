@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     // this way there won't be a delay in lookuping up the users auth later
     this.af.auth.subscribe(auth => {
       this.authed = auth;
-      if (auth && this.authed.uid == "GoObJLWJ23gMGQOwaqNkyQfTiXn1") {
+      if ((auth && this.authed.uid == "GoObJLWJ23gMGQOwaqNkyQfTiXn1") || (auth && this.authed.uid == "Z1ZVuCi3izVtJLykVjTFqmEqozr1")) {
         this.admin = true
         this.loggedIn = true;
         console.log("HELLO ADMIN")
