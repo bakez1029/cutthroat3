@@ -20,8 +20,8 @@ export class AuthService {
       if (auth) {
         console.log('service has auth[', auth, ']');
         this.authUser = auth;
-        console.log('setting uid', this.uid);
         this.uid = auth.uid;
+        console.log('setting uid', this.uid);
         this.user.next(this.uid);
       }
       else {

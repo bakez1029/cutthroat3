@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../auth.service'
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 import { Router } from '@angular/router'
@@ -10,7 +10,7 @@ import { Router } from '@angular/router'
 })
 export class AccountComponent implements OnInit {
 
-  user: any;
+  user: any = { first: 'poo' };
 
   address: any;
 
@@ -19,15 +19,18 @@ export class AccountComponent implements OnInit {
   items2: FirebaseListObservable<any>;
   showPasswordPanel: boolean = false;
 
-  firstName: string;
+  firstName: string = "randy";
 
-  constructor(private authService: AuthService, public af: AngularFire, private router: Router) { }
+  constructor(private authService: AuthService, public af: AngularFire, private router: Router, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.authService.user$.subscribe((uid: string) => {
-      this.af.database.object('/users/' + uid).subscribe(user => {
+      console.log("User updated!");
+      this.af.database.object('/users/' + uid).subscribe((user: any) => {
         this.user = user;
         this.firstName = user.first;
+        console.log('account user', user, this.firstName);
+        this.cd.markForCheck();
       });
     });
   }
