@@ -2,12 +2,17 @@ import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseAuthState } from 'angularfire2'
 
 import * as firebase from 'firebase';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
 
   uid: string = null;
   authUser: FirebaseAuthState;
+
+  private user = new Subject();
+  user$ = this.user.asObservable();
+
 
   constructor(public af: AngularFire) {
 
@@ -17,6 +22,7 @@ export class AuthService {
         this.authUser = auth;
         console.log('setting uid', this.uid);
         this.uid = auth.uid;
+        this.user.next(this.uid);
       }
       else {
         this.uid = null;
