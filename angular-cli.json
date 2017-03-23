@@ -17,14 +17,12 @@
     "mobile": false,
     "styles": [
       "../node_modules/bootstrap/dist/css/bootstrap.css",
-      "../node_modules/materialize-css/dist/css/materialize.css",
       "styles.css"
     ],
     "scripts": [
       "../node_modules/jquery/dist/jquery.js",
       "../node_modules/tether/dist/js/tether.js",
-      "../node_modules/bootstrap/dist/js/bootstrap.js",
-      "../node_modules/materialize-css/dist/js/materialize.js"
+      "../node_modules/bootstrap/dist/js/bootstrap.js"
     ],
     "environmentSource": "environments/environment.ts",
     "environments": {
