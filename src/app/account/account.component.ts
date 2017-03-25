@@ -10,7 +10,7 @@ import { Router } from '@angular/router'
 })
 export class AccountComponent implements OnInit {
 
-  user: any = { first: 'poo' };
+  user: any;
 
   address: any;
 
@@ -19,20 +19,30 @@ export class AccountComponent implements OnInit {
   items2: FirebaseListObservable<any>;
   showPasswordPanel: boolean = false;
 
-  firstName: string = "randy";
+  firstName: string = "";
 
   constructor(private authService: AuthService, public af: AngularFire, private router: Router, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
+
+    // subscribe to any changes that may happen while on this page
     this.authService.user$.subscribe((uid: string) => {
-      console.log("User updated!");
+      this.getUser(uid);
+    });
+
+    // if user is already logged in, get their information
+    if (this.authService.uid) {
+      this.getUser(this.authService.uid);
+    }
+  }
+
+  getUser(uid: string) {
       this.af.database.object('/users/' + uid).subscribe((user: any) => {
         this.user = user;
         this.firstName = user.first;
         console.log('account user', user, this.firstName);
         this.cd.markForCheck();
       });
-    });
   }
 
   sendPasswordEmail() {
