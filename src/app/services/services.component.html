@@ -19,7 +19,7 @@
           <td><b>{{item.name}}</b></td>
           <td>{{ item.desc }}</td>
           <td>${{ item.price }}</td>
-          <td class="text-center" *ngIf="admin" style="max-width:100px"><button md-raised-button color="primary" (click)="createService()" style="margin-bottom:5px">Edit</button>
+          <td class="text-center" *ngIf="admin" style="max-width:100px"><button md-raised-button color="accent" (click)="createService()" style="margin-bottom:5px">Edit</button>
             <button md-raised-button color="warn" (click)="removeService()">Remove</button>
           </td>
 

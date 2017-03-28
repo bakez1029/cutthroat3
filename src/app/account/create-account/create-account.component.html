@@ -2,53 +2,59 @@
   <div class="title-box mx-auto d-block">
     <br>
     <h3 class="text-center">Create Account</h3>
+    <br>
     <div class="container" style="max-width: 450px; height:auto">
 
-  
-    <table class="example-full-width" cellspacing="0">
-      <tr>
-        <td>
-     
-            <input placeholder="Your Name" name="first" [(ngModel)]="firstName">
-      
-        </td>
-        <td>
-          <!--<md-input-container>
-            <input placeholder="Last Name" name="last" [(ngModel)]="lastName">
-          </md-input-container>-->
-        </td>
-      </tr>
-      <tr>
-        <td>
-        
-            <p class="text-center"><input placeholder="Email" name="email" [(ngModel)]="email"></p>
-  
-        </td>
-      </tr>
-      <tr>
-        <td>
- 
-            <input placeholder="Password" [(ngModel)]="password" type="password">
 
-        </td>
-      </tr>
-      <tr>
-        <td>
-       
-            <input placeholder="Password Confirm" [(ngModel)]="password2" type="password">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="First Name" name="first" [(ngModel)]="firstName" style="width:210px">
+            </md-input-container>
 
-        </td>
-      </tr>
-    </table>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Last Name" name="last" [(ngModel)]="lastName" style="width:200px">
+            </md-input-container>
+          </td>
+        </tr>
 
-    <!--<button md-raised-button (click)="goBack()">Cancel</button>-->
-    <br>
-    <button md-raised-button color="warn" (click)="openDialog()" style="float:right">Register</button>
-    <br>
-    <br>
+        <tr>
+          <td>
+              <md-input-container floatPlaceholder="always">
+                <input class="text-center" mdInput placeholder="Email" name="email" [(ngModel)]="email" style="width:420px">
+              </md-input-container>
+         
 
-<br>
-<br>
-</div>
-</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <md-input-container floatPlaceholder="always">
+              <input class="text-center" mdInput placeholder="Password" type="password" [(ngModel)]="password" style="width:420px">
+            </md-input-container>
+
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+
+            <md-input-container floatPlaceholder="always">
+              <input class="text-center" mdInput placeholder="Password Confirm" type="password" [(ngModel)]="password2" style="width:420px">
+            </md-input-container>
+          </td>
+        </tr>
+      </table>
+
+      <!--<button md-raised-button (click)="goBack()">Cancel</button>-->
+      <br>
+      <button md-raised-button color="warn" (click)="openDialog()" style="float:right">Register</button>
+      <br>
+      <br>
+
+      <br>
+      <br>
+    </div>
+  </div>
 </div>

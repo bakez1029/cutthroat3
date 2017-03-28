@@ -1,21 +1,24 @@
 <div class="page">
-<div class="title-box">
-<p class="text-center">
+  <div class="title-box">
+    <p class="text-center">
 
-<br>
-<br>
-<input class="text-center" placeholder="Name" type="text" style="width:300px" [(ngModel)]="photoName"><br/>
-<br/><br/> Photo Image Preview
-<br/>
-<img [src]="imageSrc" alt="coming soon" width="300" height="300"><br/>
-<br>
-<input style="padding-left:85px" id="file" name="file" type="file" (change)="onChange($event)"><br/><br/>
-<button md-raised-button color="warn" (click)="createPhoto()">Add Photo</button>
-</p>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/> 
-</div>
+      <br>
+      <br>
+      <md-input-container floatPlaceholder="always">
+        <input class="text-center" mdInput placeholder="Name" type="text" [(ngModel)]="photoName" style="width: 300px">
+      </md-input-container>
+      <br/>
+      <br/><br/> Photo Image Preview
+      <br/>
+      <img [src]="imageSrc" alt="coming soon" width="300" height="300"><br/>
+      <br>
+      <input style="padding-left:85px" id="file" name="file" type="file" (change)="onChange($event)"><br/><br/>
+      <button md-raised-button color="warn" (click)="createPhoto()">Add Photo</button>
+    </p>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>
 </div>

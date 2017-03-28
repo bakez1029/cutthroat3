@@ -3,7 +3,7 @@
 
   <div class="title-box">
 
-    <div class="title">User Dashboard</div>
+
     <br>
 
 
@@ -15,89 +15,158 @@
           Account Settings
         </h4>
         <br>
-        <!--<div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='text' #newPassword />
-                <button (click)="updatePassword(newPassword.value)" class="btn btn-warning btn-xs" style="float:right">Update</button>
-                <label for='password'>Password</label>
-              </div>-->
-        <div class="text-center" style="margin-bottom: 20px">
+
+        <div class="text-center" style="margin-bottom: 36px">
           <button md-raised-button color="warn" (click)="onChangePassword()">Change Password</button>
           <div *ngIf="showPasswordPanel">
             <br>
-            <input class="text-center" placeholder="New Password" [(ngModel)]="email" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;
-            <input class="text-center" placeholder="Confirm Password" [(ngModel)]="email" style="width: 300px">
-
+            <md-input-container>
+              <input class="text-center" mdInput placeholder="New Password" value="" style="width: 300px">
+            </md-input-container>
+            <md-input-container>
+              <input class="text-center" mdInput placeholder="Confirm Password" value="" style="width: 300px">
+            </md-input-container>
+            <br>
+            <br>
+            <button md-raised-button color="warn" (click)="onChange()" style="float:right">Save</button>
           </div>
         </div>
       </div>
 
       <br>
       <br>
-{{firstName}}
 
-      <div>
-        <div class="z-depth-1" style="padding: 32px 48px 57px 48px; border: 1px solid #EEE">
 
+    </div>
+
+
+
+    <div class="container mx-auto d-block" style="min-width:200px; min-width:600px;">
+
+      <div class="z-depth-2" style="border: 1px solid #EEE">
+
+        <div *ngIf="showDisabledFields">
+
+
+
+          <button md-raised-button color="accent" (click)="onEdit()" style="float:right; margin-top: 5px; margin-right:5px">Edit</button>
+
+
+
+
+          <br>
+          <br>
           <h4 class="text-center">
-            Customer Profile Information
+            Personal Information
           </h4>
           <br>
           <br>
 
-          <!--<div class='row'>
-            <div class='col s12'>
-              <b>Name:</b>&nbsp;{{ (user | async)?.first }}&nbsp;{{ (user | async)?.last }}
-            </div>
+
+
+          <div class="text-center">
+
+
+            <md-input-container>
+              <input mdInput placeholder="First Name" value="{{firstName}}" disabled>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput placeholder="Last Name" value="{{lastName}}" disabled>
+            </md-input-container>
+            <br>
+            <md-input-container>
+              <input mdInput placeholder="Email" value="{{email}}" disabled>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput placeholder="Phone" value="{{phone}}" disabled>
+            </md-input-container>
+            <br>
+            <md-input-container>
+              <input mdInput placeholder="Address Line 1" value="{{street}}" style="width:400px" disabled>
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Address Line 2" value="{{street2}}" style="width:400px" disabled>
+            </md-input-container>
+            <br>
+            <md-input-container>
+              <input mdInput placeholder="City" value="{{city}}" disabled>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput placeholder="State" value="{{state}}" style="width:90px" disabled>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput placeholder="Zip Code" value="{{postcode}}" style="width:100px" disabled>
+            </md-input-container>
+
+            <br>
+            <br>
           </div>
-
-          <br>
-          <div class='row'>
-            <div class='col s12'>
-              <b>Email:</b>&nbsp;{{ (user | async)?.email }}
-            </div>
-          </div>
-
-          <br>
-          <div class='row'>
-            <div class='col s12'>
-              <b>Phone:</b>&nbsp;{{ (user | async)?.phone }}
-            </div>
-          </div>
-
-          <br>
-          <div class='row'>
-            <div class='col s12'>
-              <b>Address:</b>&nbsp;{{ (user | async)?.address.street }} {{ (user | async)?.address.city }},&nbsp;{{ (user
-              | async)?.address.state}},&nbsp;{{ (user | async)?.address.postcode }}
-
-
-
-            </div>
-          </div>-->
-        
-  <ul>
-    <li *ngFor="let item of items | async">
-      {{item.text}}!!
-      <input type="text" #updatetext [value]="item.text" />
-      <button md-raised-button color="warn" (click)="updateItem(item.$key, updatetext.value)">Update</button>
-      <button md-raised-button color="accent" (click)="deleteItem(item.$key)">Delete</button>
-    </li>
-  </ul>
-  <br>
-  <br>
-  <br>
-  <br>
-  <input type="text" #newitem />
-  <button md-raised-button color="warn" (click)="addItem(newitem.value)">Add</button>
-  <button md-raised-button color="accent" (click)="deleteEverything()">Delete All</button>
         </div>
-      </div>
 
-      <br>
-      <br>
-      <br>
-      <br>
+
+
+        <div *ngIf="showEnabledFields">
+          <br>
+          <br>
+          <h4 class="text-center">
+            Change Information
+          </h4>
+          <br>
+          <br>
+
+
+          <div class="text-center">
+
+
+            <md-input-container>
+              <input mdInput placeholder="First Name" value="{{firstName}}">
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput placeholder="Last Name" value="{{lastName}}">
+            </md-input-container>
+            <br>
+            <md-input-container>
+              <input mdInput placeholder="Email" value="{{email}}">
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput placeholder="Phone" value="{{phone}}">
+            </md-input-container>
+            <br>
+            <md-input-container>
+              <input mdInput placeholder="Address Line 1" value="{{street}}" style="width:400px">
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Address Line 2" value="{{street2}}" style="width:400px">
+            </md-input-container>
+            <br>
+            <md-input-container>
+              <input mdInput placeholder="City" value="{{city}}">
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput placeholder="State" value="{{state}}" style="width:90px">
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput placeholder="Zip Code" value="{{postcode}}" style="width:100px">
+            </md-input-container>
+            <br>
+            <br>
+            <button md-raised-button color="default" (click)="onSave()" style="float:right; margin-top: 10px; margin-right:5px">Save</button>
+
+          </div>
+        </div>
+
+      </div>
     </div>
+
   </div>
 </div>

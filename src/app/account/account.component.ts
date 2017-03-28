@@ -19,7 +19,20 @@ export class AccountComponent implements OnInit {
   items2: FirebaseListObservable<any>;
   showPasswordPanel: boolean = false;
 
+  showEnabledFields: boolean = false;
+
+  showDisabledFields: boolean = true;
+
   firstName: string = "";
+  lastName: string = "";
+  email: string = "";
+  phone: string = "";
+  street: string = "";
+
+  street2: string = "";
+  city: string = "";
+  state: string = "";
+  postcode: string = "";
 
   constructor(private authService: AuthService, public af: AngularFire, private router: Router, private cd: ChangeDetectorRef) { }
 
@@ -37,12 +50,24 @@ export class AccountComponent implements OnInit {
   }
 
   getUser(uid: string) {
-      this.af.database.object('/users/' + uid).subscribe((user: any) => {
-        this.user = user;
-        this.firstName = user.first;
-        console.log('account user', user, this.firstName);
-        this.cd.markForCheck();
-      });
+    this.af.database.object('/users/' + uid).subscribe((user: any) => {
+      this.user = user;
+      this.firstName = user.first;
+      this.lastName = user.last;
+      this.email = user.email;
+      this.phone = user.phone;
+      console.log('account user', user, this.firstName);
+      this.cd.markForCheck();
+    });
+    this.af.database.object('/users/' + uid + '/address/').subscribe((address: any) => {
+      this.address = address;
+      this.street = address.street;
+      this.street2 = address.street2;
+      this.city = address.city;
+      this.state = address.state;
+      this.postcode = address.postcode;
+      this.cd.markForCheck();
+    });
   }
 
   sendPasswordEmail() {
@@ -52,6 +77,19 @@ export class AccountComponent implements OnInit {
 
   onChangePassword() {
     this.showPasswordPanel = true;
+  }
+  onChange() {
+    this.showPasswordPanel = false;
+  }
+
+  onEdit() {
+    this.showEnabledFields = true;
+    this.showDisabledFields = false;
+  }
+
+  onSave() {
+    this.showEnabledFields = false;
+    this.showDisabledFields = true;
   }
 
 

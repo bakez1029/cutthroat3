@@ -21,10 +21,10 @@
 
   <div class="title-box mx-auto d-block">
     <h4 class="text-center">Recent Applications</h4>
-
+    <br>
     <!--<b>Name : </b>&nbsp;{{ (forms | async)?.name }}-->
     <ul>
-      <li *ngFor="let item of forms | async">
+      <li *ngFor="let item of forms | async" style="margin-bottom: 50px">
         <p class="text-center"> <b>Name: {{ item.name }}</b></p>
         <p class="text-center"> <b>Email: {{ item.email }}</b></p>
         <p class="text-center"> <b>Phone: {{ item.phone }}</b></p>
@@ -33,10 +33,11 @@
         <br>
         {{ item.address.city }},&nbsp;{{ item.address.state}},&nbsp;{{ item.address.postcode }}</b></p>
       </li>
-    </ul>
+  </ul>
 
 
-  
+
+
 
   </div>
 

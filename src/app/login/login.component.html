@@ -2,8 +2,15 @@
 <div class="title-box mx-auto d-block">
   <br>
   <div *ngIf="!loggedIn" class="text-center">
-    <input class="text-center" placeholder="email" [(ngModel)]="email" style="width: 300px"><br/>
-    <input class="text-center" placeholder="password" [(ngModel)]="password" type="password" style="width: 300px"><br/>
+      <md-input-container floatPlaceholder="always">
+              <input class="text-center" mdInput placeholder="Email" [(ngModel)]="email" style="width: 300px">
+            </md-input-container>
+
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input class="text-center" mdInput placeholder="Password" [(ngModel)]="password" type="password" style="width: 300px">
+            </md-input-container>
+            <br>
     <button md-raised-button color="warn" (click)="login()">Login</button>
     <br>
     <br>

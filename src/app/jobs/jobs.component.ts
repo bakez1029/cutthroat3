@@ -3,6 +3,7 @@ import { UploadComponent } from '../upload.component';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { User } from './user.interface';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -17,7 +18,7 @@ export class JobsComponent implements OnInit {
   submitted: boolean = false;
   forms: FirebaseListObservable<any>;
 
-  constructor(public af: AngularFire) {
+  constructor(public af: AngularFire, private router: Router) {
 
     this.forms = af.database.list('/forms');
 
@@ -46,7 +47,7 @@ export class JobsComponent implements OnInit {
     console.log(this.user);
 
     this.forms.push(this.user);
-    // this.router.navigate(['/']),
+     this.router.navigate(['/']),
     alert("Your information was submitted.");
 
   }
