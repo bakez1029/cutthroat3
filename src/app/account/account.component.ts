@@ -10,11 +10,12 @@ import { Router } from '@angular/router'
 })
 export class AccountComponent implements OnInit {
 
+  ref: FirebaseListObservable<any>;;
   user: any;
 
   address: any;
 
-  items: FirebaseListObservable<any>;
+  users: FirebaseListObservable<any>;
 
   items2: FirebaseListObservable<any>;
   showPasswordPanel: boolean = false;
@@ -28,13 +29,15 @@ export class AccountComponent implements OnInit {
   email: string = "";
   phone: string = "";
   street: string = "";
-
   street2: string = "";
   city: string = "";
   state: string = "";
   postcode: string = "";
 
-  constructor(private authService: AuthService, public af: AngularFire, private router: Router, private cd: ChangeDetectorRef) { }
+  constructor(private authService: AuthService, public af: AngularFire, private router: Router, private cd: ChangeDetectorRef) {
+
+    this.items2 = this.ref
+  }
 
   ngOnInit() {
 
@@ -67,7 +70,13 @@ export class AccountComponent implements OnInit {
       this.state = address.state;
       this.postcode = address.postcode;
       this.cd.markForCheck();
+
+      this.items2 = this.af.database.list('/users/' + uid)
+      console.log(this.items2, " - THIS ITEMS2")
+
     });
+
+
   }
 
   sendPasswordEmail() {
@@ -92,18 +101,14 @@ export class AccountComponent implements OnInit {
     this.showDisabledFields = true;
   }
 
-
   addItem(newName: string) {
-    this.items.push({ text: newName });
+    this.items2.push({ street2: newName });
   }
-  updateItem(key: string, newText: string) {
-    this.items.update(key, { text: newText });
+  updateItem(key: string, newText: string, newText2: string, newText3: string, newText4: string, newText5: string) {
+    this.items2.update(key, { street2: newText, street: newText2, city: newText3, state: newText4, postcode: newText5 });
   }
   deleteItem(key: string) {
-    this.items.remove(key);
-  }
-  deleteEverything() {
-    this.items.remove();
+    this.items2.remove(key);
   }
 
 
