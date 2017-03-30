@@ -26,6 +26,7 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { AddBarberComponent } from './admin/add-barber/add-barber.component';
 import { AddPhotoComponent } from './admin/add-photo/add-photo.component';
 import { AddServiceComponent } from './admin/add-service/add-service.component';
+import { EditProductComponent } from './admin/edit-product/edit-product.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyDGFYKBqQX8cHJAIbn0WuqFGNqctpYZMHc",
@@ -60,7 +61,8 @@ const firebaseAuthConfig = {
     AddBarberComponent,
     AccountComponent,
     AddPhotoComponent,
-    AddServiceComponent
+    AddServiceComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,9 @@ const firebaseAuthConfig = {
       { path: 'admin/products/add', component: AddProductComponent },
       { path: 'admin/barbers/add', component: AddBarberComponent },
       { path: 'admin/photo/add', component: AddPhotoComponent },
-      { path: 'admin/services/add', component: AddServiceComponent }
+      { path: 'admin/services/add', component: AddServiceComponent },
+      { path: 'admin/products/edit', component: EditProductComponent },
+      
     ])
   ],
   entryComponents: [DialogContent],

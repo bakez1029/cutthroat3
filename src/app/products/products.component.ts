@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../auth.service'
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router'
 
 import * as firebase from 'firebase';
 
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit {
   uid: string;
   admin: boolean;
   loggedIn: boolean = false;
-  constructor(public af: AngularFire, private authService: AuthService) { }
+  constructor(public af: AngularFire, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.productList = this.af.database.list('/products');
@@ -46,6 +47,10 @@ export class ProductsComponent implements OnInit {
     console.log('Product Removed');
       this.productList[1].$key.remove();
     
+  }
+
+  editProd() {
+    this.router.navigate(['/admin/products/edit']);
   }
 
 }

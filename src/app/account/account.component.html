@@ -1,7 +1,6 @@
-<!--<h1>{{ (user | async)?.first }}</h1>-->
 <div class="page">
 
-  <div class="title-box">
+  <div class="title-box" style="min-height: 711px">
 
 
     <br>
@@ -9,26 +8,26 @@
 
     <div class="container mx-auto d-block" style="min-width:200px; max-width:600px">
 
-      <div class="z-depth-1" style="border: 1px solid #EEE">
+      <div class="container mx-auto d-block" style="box-shadow: 5px 5px 5px #888888; border: 1px solid #888888">
 
         <h4 class="text-center">
           Account Settings
         </h4>
         <br>
 
-        <div class="text-center" style="margin-bottom: 36px">
+        <div class="text-center mx-auto d-block" style="margin-bottom: 36px">
           <button md-raised-button color="warn" (click)="onChangePassword()">Change Password</button>
           <div *ngIf="showPasswordPanel">
             <br>
             <md-input-container floatPlaceholder="always">
-              <input class="text-center" mdInput placeholder="New Password" value="" style="width: 300px">
+              <input class="text-center" type="password" mdInput placeholder="New Password" #newPassword style="width: 300px">
             </md-input-container>
             <md-input-container floatPlaceholder="always">
-              <input class="text-center" mdInput placeholder="Confirm Password" value="" style="width: 300px">
+              <input class="text-center" type="password" mdInput placeholder="Confirm Password" #newPassword2 style="width: 300px">
             </md-input-container>
             <br>
             <br>
-            <button md-raised-button color="warn" (click)="onChange()" style="float:right">Save</button>
+            <button md-raised-button color="warn" (click)="onChange(); updatePassword(user.$key, newPassword.value, newPassword2.value)" style="float:right">Save</button>
           </div>
         </div>
       </div>
@@ -43,7 +42,7 @@
 
     <div class="container mx-auto d-block" style="min-width:200px; min-width:600px;">
 
-      <div class="z-depth-2" style="border: 1px solid #EEE">
+      <div class="container mx-auto d-block" style="box-shadow: 5px 5px 5px #888888; border: 1px solid #888888">
 
         <div *ngIf="showDisabledFields">
 
@@ -64,7 +63,7 @@
 
 
 
-          <div class="text-center">
+          <div class="text-center mx-auto d-block">
 
 
             <md-input-container floatPlaceholder="always">
@@ -124,19 +123,19 @@
 
 
             <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="First Name" value="{{firstName}}">
+              <input mdInput placeholder="First Name" #first value="">
             </md-input-container>
 
             <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Last Name" value="{{lastName}}">
+              <input mdInput placeholder="Last Name" #last value="">
             </md-input-container>
             <br>
             <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Email" value="{{email}}">
+              <input mdInput placeholder="Email" #email value="">
             </md-input-container>
 
             <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Phone" value="{{phone}}">
+              <input mdInput placeholder="Phone" #phone value="">
             </md-input-container>
             <br>
             <md-input-container floatPlaceholder="always">
@@ -160,7 +159,7 @@
             </md-input-container>
             <br>
             <br>
-            <button md-raised-button color="default" (click)="onSave(); updateItem(address.$key, street2.value, street.value, city.value, state.value, postcode.value)" style="float:right; margin-top: 10px; margin-right:5px">Save</button>
+            <button md-raised-button color="default" (click)="onSave(); updateItem2(address.$key, street2.value, street.value, city.value, state.value, postcode.value); updateItem(user.$key, first.value, last.value, email.value, phone.value)" style="float:right; margin-top: 10px; margin-right:5px">Save</button>
 
           </div>
         </div>

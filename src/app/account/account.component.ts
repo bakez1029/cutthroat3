@@ -13,9 +13,9 @@ export class AccountComponent implements OnInit {
   ref: FirebaseListObservable<any>;;
   user: any;
 
+  uid1: any;
   address: any;
-
-  users: FirebaseListObservable<any>;
+  items: FirebaseListObservable<any>;
 
   items2: FirebaseListObservable<any>;
   showPasswordPanel: boolean = false;
@@ -23,6 +23,8 @@ export class AccountComponent implements OnInit {
   showEnabledFields: boolean = false;
 
   showDisabledFields: boolean = true;
+
+  password: any;
 
   firstName: string = "";
   lastName: string = "";
@@ -40,16 +42,20 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit() {
+  
+
 
     // subscribe to any changes that may happen while on this page
     this.authService.user$.subscribe((uid: string) => {
       this.getUser(uid);
+    
     });
 
     // if user is already logged in, get their information
     if (this.authService.uid) {
       this.getUser(this.authService.uid);
     }
+
   }
 
   getUser(uid: string) {
@@ -61,6 +67,8 @@ export class AccountComponent implements OnInit {
       this.phone = user.phone;
       console.log('account user', user, this.firstName);
       this.cd.markForCheck();
+
+      this.items = this.af.database.list('/users/')
     });
     this.af.database.object('/users/' + uid + '/address/').subscribe((address: any) => {
       this.address = address;
@@ -72,17 +80,20 @@ export class AccountComponent implements OnInit {
       this.cd.markForCheck();
 
       this.items2 = this.af.database.list('/users/' + uid)
-      console.log(this.items2, " - THIS ITEMS2")
+
+
 
     });
 
 
   }
 
-  sendPasswordEmail() {
-    this.authService.sendPasswordResetEmail(this.authService.getCurrentUser().email);
-    alert('A E-mail has been sent to change your password.');
-  }
+updatePassword(newPassword: string) {
+var user = this.authService.getCurrentUser() 
+user.updatePassword(newPassword)
+}
+
+
 
   onChangePassword() {
     this.showPasswordPanel = true;
@@ -104,10 +115,58 @@ export class AccountComponent implements OnInit {
   addItem(newName: string) {
     this.items2.push({ street2: newName });
   }
-  updateItem(key: string, newText: string, newText2: string, newText3: string, newText4: string, newText5: string) {
-    this.items2.update(key, { street2: newText, street: newText2, city: newText3, state: newText4, postcode: newText5 });
+  updateItem2(key: string, newText: string, newText2: string, newText3: string, newText4: string, newText5: string) {
+    if (newText != "") {
+      this.items2.update(key, { street2: newText})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText2 != "") {
+      this.items2.update(key, { street: newText2})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText3 != "") {
+      this.items2.update(key, { city: newText3})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText4 != "") {
+      this.items2.update(key, { state: newText4})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText5 != "") {
+      this.items2.update(key, { postcode: newText5})
+    } else {
+      console.log("No changes have been submitted.")
+    }
   }
-  deleteItem(key: string) {
+
+  updateItem(key: string, newText: string, newText2: string, newText3: string, newText4: string) {
+   if (newText != "") {
+      this.items.update(key, { first: newText})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText2 != "") {
+      this.items.update(key, { last: newText2})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText3 != "") {
+      this.items.update(key, { email: newText3})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText4 != "") {
+      this.items.update(key, { phone: newText4})
+    } else {
+      console.log("No changes have been submitted.")
+    
+    }
+
+  } deleteItem(key: string) {
     this.items2.remove(key);
   }
 
