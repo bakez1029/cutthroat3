@@ -10,10 +10,11 @@ import { Router } from '@angular/router'
 })
 export class AccountComponent implements OnInit {
 
+  ref: FirebaseListObservable<any>;;
   user: any;
 
+  uid1: any;
   address: any;
-
   items: FirebaseListObservable<any>;
 
   items2: FirebaseListObservable<any>;
@@ -23,30 +24,38 @@ export class AccountComponent implements OnInit {
 
   showDisabledFields: boolean = true;
 
+  password: any;
+
   firstName: string = "";
   lastName: string = "";
   email: string = "";
   phone: string = "";
   street: string = "";
-
   street2: string = "";
   city: string = "";
   state: string = "";
   postcode: string = "";
 
-  constructor(private authService: AuthService, public af: AngularFire, private router: Router, private cd: ChangeDetectorRef) { }
+  constructor(private authService: AuthService, public af: AngularFire, private router: Router, private cd: ChangeDetectorRef) {
+
+    this.items2 = this.ref
+  }
 
   ngOnInit() {
+  
+
 
     // subscribe to any changes that may happen while on this page
     this.authService.user$.subscribe((uid: string) => {
       this.getUser(uid);
+    
     });
 
     // if user is already logged in, get their information
     if (this.authService.uid) {
       this.getUser(this.authService.uid);
     }
+
   }
 
   getUser(uid: string) {
@@ -58,6 +67,8 @@ export class AccountComponent implements OnInit {
       this.phone = user.phone;
       console.log('account user', user, this.firstName);
       this.cd.markForCheck();
+
+      this.items = this.af.database.list('/users/')
     });
     this.af.database.object('/users/' + uid + '/address/').subscribe((address: any) => {
       this.address = address;
@@ -67,13 +78,22 @@ export class AccountComponent implements OnInit {
       this.state = address.state;
       this.postcode = address.postcode;
       this.cd.markForCheck();
+
+      this.items2 = this.af.database.list('/users/' + uid)
+
+
+
     });
+
+
   }
 
-  sendPasswordEmail() {
-    this.authService.sendPasswordResetEmail(this.authService.getCurrentUser().email);
-    alert('A E-mail has been sent to change your password.');
-  }
+updatePassword(newPassword: string) {
+var user = this.authService.getCurrentUser() 
+user.updatePassword(newPassword)
+}
+
+
 
   onChangePassword() {
     this.showPasswordPanel = true;
@@ -92,18 +112,62 @@ export class AccountComponent implements OnInit {
     this.showDisabledFields = true;
   }
 
-
   addItem(newName: string) {
-    this.items.push({ text: newName });
+    this.items2.push({ street2: newName });
   }
-  updateItem(key: string, newText: string) {
-    this.items.update(key, { text: newText });
+  updateItem2(key: string, newText: string, newText2: string, newText3: string, newText4: string, newText5: string) {
+    if (newText != "") {
+      this.items2.update(key, { street2: newText})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText2 != "") {
+      this.items2.update(key, { street: newText2})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText3 != "") {
+      this.items2.update(key, { city: newText3})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText4 != "") {
+      this.items2.update(key, { state: newText4})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText5 != "") {
+      this.items2.update(key, { postcode: newText5})
+    } else {
+      console.log("No changes have been submitted.")
+    }
   }
-  deleteItem(key: string) {
-    this.items.remove(key);
-  }
-  deleteEverything() {
-    this.items.remove();
+
+  updateItem(key: string, newText: string, newText2: string, newText3: string, newText4: string) {
+   if (newText != "") {
+      this.items.update(key, { first: newText})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText2 != "") {
+      this.items.update(key, { last: newText2})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText3 != "") {
+      this.items.update(key, { email: newText3})
+    } else {
+      console.log("No changes have been submitted.")
+    }
+    if (newText4 != "") {
+      this.items.update(key, { phone: newText4})
+    } else {
+      console.log("No changes have been submitted.")
+    
+    }
+
+  } deleteItem(key: string) {
+    this.items2.remove(key);
   }
 
 

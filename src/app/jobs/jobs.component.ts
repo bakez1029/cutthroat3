@@ -3,7 +3,8 @@ import { UploadComponent } from '../upload.component';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { User } from './user.interface';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import {MdDialog} from '@angular/material';
 
 
 @Component({
@@ -18,11 +19,13 @@ export class JobsComponent implements OnInit {
   submitted: boolean = false;
   forms: FirebaseListObservable<any>;
 
-  constructor(public af: AngularFire, private router: Router) {
+  constructor(public af: AngularFire, private router: Router, public dialog: MdDialog) {
 
     this.forms = af.database.list('/forms');
 
+
   }
+
 
   public user: User
 

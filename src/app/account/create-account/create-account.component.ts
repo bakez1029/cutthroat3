@@ -56,9 +56,10 @@ export class CreateAccountComponent implements OnInit {
 
 @Component({
   template: `
-    <p>Thank you, your user has been registered.</p>
-    <br>
-    <p> <button md-button (click)="dialogRef.close()" style="float: right">CLOSE</button> </p>
+
+  <br>
+    <p class="text-center" style="color: #000">Thank you, <br><br> your new account has been created.</p>
+  
   `,
 })
 export class DialogContent {
