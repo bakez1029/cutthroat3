@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import { Observable } from 'rxjs';
@@ -28,8 +28,18 @@ export class AddProductComponent implements OnInit {
   productBrand: string;
   productPrice: string;
   productList: FirebaseListObservable<any[]>;
+  editPage: boolean = false;
 
-  constructor(public af: AngularFire, public router: Router) { }
+  constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute) { 
+    if (this.route.snapshot.url.length == 4 && this.route.snapshot.url[2].path == 'edit') {
+      this.editPage = true;
+      // go get product info for product id (this.route.snapshot.params['id'])
+
+    }
+
+    console.log(this.editPage, this.route.snapshot.url, this.route.snapshot.params, this.route.snapshot.params['id']);
+    
+  }
 
   ngOnInit() {
     this.productList = this.af.database.list('/products');

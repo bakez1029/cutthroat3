@@ -85,6 +85,7 @@ const firebaseAuthConfig = {
       { path: 'admin', component: AdminComponent },
       { path: 'account', component: AccountComponent },
       { path: 'admin/products/add', component: AddProductComponent },
+      { path: 'admin/products/edit/:id', component: AddProductComponent },
       { path: 'admin/barbers/add', component: AddBarberComponent },
       { path: 'admin/photo/add', component: AddPhotoComponent },
       { path: 'admin/services/add', component: AddServiceComponent },
