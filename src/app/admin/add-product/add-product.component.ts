@@ -30,15 +30,20 @@ export class AddProductComponent implements OnInit {
   productList: FirebaseListObservable<any[]>;
   editPage: boolean = false;
 
-  constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute) { 
+  constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute) {
     if (this.route.snapshot.url.length == 4 && this.route.snapshot.url[2].path == 'edit') {
       this.editPage = true;
       // go get product info for product id (this.route.snapshot.params['id'])
+      this.af.database.object('/products/' + this.route.snapshot.params['id']).subscribe((product: any) => {
+        console.log(product);
+        
+      });
+
 
     }
 
     console.log(this.editPage, this.route.snapshot.url, this.route.snapshot.params, this.route.snapshot.params['id']);
-    
+
   }
 
   ngOnInit() {
@@ -78,7 +83,7 @@ export class AddProductComponent implements OnInit {
         //var imageRef = af.database.list(`/${this.serverImagePath}/`).push({ path: path, filename: selectedFile.name })
         this.uploadUrl = snapshot.downloadURL;
         this.imageSrc = this.uploadUrl;
-       // this.imageRef = imageRef;
+        // this.imageRef = imageRef;
       });
     }
   }
@@ -91,7 +96,7 @@ export class AddProductComponent implements OnInit {
     }
 
     console.log('product', this.productName, this.productBrand, this.productPrice);
-    
+
     var ref = this.productList.push({ name: this.productName, brand: this.productBrand, price: this.productPrice, image: this.uploadUrl });
     this.imageUnused = false;
     this.router.navigate(['/products']);
