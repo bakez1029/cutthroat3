@@ -17,6 +17,9 @@ export class ProductsComponent implements OnInit {
   uid: string;
   admin: boolean;
   loggedIn: boolean = false;
+
+  prod: any;
+
   constructor(public af: AngularFire, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -41,12 +44,6 @@ export class ProductsComponent implements OnInit {
     this.loggedIn = this.authService.uid != null;
     this.admin = this.authService.uid == "GoObJLWJ23gMGQOwaqNkyQfTiXn1";
 
-  }
-
-    removeProd() {
-    console.log('Product Removed');
-      this.productList[1].$key.remove();
-    
   }
 
   editProd() {

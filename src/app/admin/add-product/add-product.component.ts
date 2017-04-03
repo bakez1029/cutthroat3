@@ -24,26 +24,41 @@ export class AddProductComponent implements OnInit {
   imageRef: any;
   imageSrc: string = "assets/images/logo.png";
   imageUnused: boolean = true;
+  product: string;
   productName: string;
   productBrand: string;
   productPrice: string;
   productList: FirebaseListObservable<any[]>;
   editPage: boolean = false;
+  addPage: boolean = true;
+
+  myRef: any;
+
+
 
   constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute) {
     if (this.route.snapshot.url.length == 4 && this.route.snapshot.url[2].path == 'edit') {
       this.editPage = true;
+      if (this.editPage = true) {
+        this.addPage = false
+
+      }
       // go get product info for product id (this.route.snapshot.params['id'])
       this.af.database.object('/products/' + this.route.snapshot.params['id']).subscribe((product: any) => {
-        console.log(product);
-        
+        console.log(product, "LOOK HERE");
+        this.product = product
+        this.productName = product.name;
+        this.productBrand = product.brand;
+        this.productPrice = product.price;
+        this.imageSrc = product.image;
+
       });
 
 
     }
 
     console.log(this.editPage, this.route.snapshot.url, this.route.snapshot.params, this.route.snapshot.params['id']);
-
+    this.myRef = this.af.database.object('/products/' + this.route.snapshot.params['id'])
   }
 
   ngOnInit() {
@@ -88,7 +103,18 @@ export class AddProductComponent implements OnInit {
     }
   }
 
-
+  updateProduct(name: string, brand: string, price: string, image: string) {
+    if (this.uploadUrl == "") {
+      console.log("Picture has not changed.")
+      this.myRef.update({ name: this.productName, brand: this.productBrand, price: this.productPrice });
+      alert('Product Updated!');
+      this.router.navigate(['/products']);
+    } else {
+      this.myRef.update({ name: this.productName, brand: this.productBrand, price: this.productPrice, image: this.uploadUrl });
+      alert('Product Updated!');
+      this.router.navigate(['/products']);
+    }
+  }
   createProduct() {
     if (!(this.productName && this.productBrand && this.productPrice && this.uploadUrl)) {
       alert("all fields are required");
@@ -101,4 +127,10 @@ export class AddProductComponent implements OnInit {
     this.imageUnused = false;
     this.router.navigate(['/products']);
   }
+  removeProd(key: string) {
+    this.af.database.object('/products/' + this.route.snapshot.params['id']).remove()
+    alert('Product Deleted!');
+    this.router.navigate(['/products']);
+  }
+
 }
