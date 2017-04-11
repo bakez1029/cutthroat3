@@ -22,7 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CreateAccountComponent, DialogContent } from './account/create-account/create-account.component';
 import { UploadComponent } from './upload.component';
-import { AddProductComponent } from './admin/add-product/add-product.component';
+import { AddProductComponent, DialogContent2 } from './admin/add-product/add-product.component';
 import { AddBarberComponent } from './admin/add-barber/add-barber.component';
 import { AddPhotoComponent } from './admin/add-photo/add-photo.component';
 import { AddServiceComponent } from './admin/add-service/add-service.component';
@@ -56,6 +56,7 @@ const firebaseAuthConfig = {
     AccountComponent,
     CreateAccountComponent,
     DialogContent,
+    DialogContent2,
     UploadComponent,
     AddProductComponent,
     AddBarberComponent,
@@ -87,13 +88,15 @@ const firebaseAuthConfig = {
       { path: 'admin/products/add', component: AddProductComponent },
       { path: 'admin/products/edit/:id', component: AddProductComponent },
       { path: 'admin/barbers/add', component: AddBarberComponent },
+      { path: 'admin/barbers/edit/:id', component: AddBarberComponent },
       { path: 'admin/photo/add', component: AddPhotoComponent },
       { path: 'admin/services/add', component: AddServiceComponent },
+      { path: 'admin/services/edit/:id', component: AddServiceComponent },
       { path: 'admin/products/edit', component: EditProductComponent },
       
     ])
   ],
-  entryComponents: [DialogContent],
+  entryComponents: [DialogContent, DialogContent2],
   providers: [AuthService],
   bootstrap: [AppComponent]
 })

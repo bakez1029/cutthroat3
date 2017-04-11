@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import { Observable } from 'rxjs';
@@ -19,16 +19,31 @@ interface Image {
   styleUrls: ['./add-barber.component.css']
 })
 export class AddBarberComponent implements OnInit {
-serverImagePath: string = "images";
+  serverImagePath: string = "images";
   uploadUrl: string = "";
   imageRef: any;
   imageSrc: string = "assets/images/barbers/jonny.jpg";
   imageUnused: boolean = true;
   barberName: string;
+  editPage: boolean = false;
   barberList: FirebaseListObservable<any[]>;
+  myRef: any;
+  constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute, ) {
+    if (this.route.snapshot.url.length == 4 && this.route.snapshot.url[2].path == 'edit') {
+      this.editPage = true;
 
-  constructor(public af: AngularFire, public router: Router) { }
+      // go get product info for product id (this.route.snapshot.params['id'])
+      this.af.database.object('/barbers/' + this.route.snapshot.params['id']).subscribe((barber: any) => {
+        console.log(barber, "LOOK HERE");
+        this.barberName = barber.name
+        this.imageSrc = barber.image;
 
+      });
+
+      this.myRef = this.af.database.object('/barbers/' + this.route.snapshot.params['id'])
+
+    }
+  }
   ngOnInit() {
     this.barberList = this.af.database.list('/barbers');
     this.barberList.forEach(element => {
@@ -72,6 +87,19 @@ serverImagePath: string = "images";
   }
 
 
+  updateBarber(name: string, image: string) {
+    if (this.uploadUrl == "") {
+      console.log("Picture has not changed.")
+      this.myRef.update({ name: this.barberName });
+      alert('Your changes have been saved!');
+      this.router.navigate(['/barbers']);
+    } else {
+      this.myRef.update({ name: this.barberName, image: this.uploadUrl });
+      alert('Your changes have been saved!');
+      this.router.navigate(['/barbers']);
+    }
+  }
+
   createBarber() {
     if (!(this.barberName)) {
       alert("all fields are required");
@@ -79,8 +107,8 @@ serverImagePath: string = "images";
     }
 
     console.log('barber', this.barberName);
-    
-    var ref = this.barberList.push({ name: this.barberName, image: this.uploadUrl});
+
+    var ref = this.barberList.push({ name: this.barberName, image: this.uploadUrl });
     this.imageUnused = false;
     this.router.navigate(['/barbers']);
   }

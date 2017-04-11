@@ -3,10 +3,19 @@
 
     <div class="flex-container">
       <div class="flex-item" *ngFor='let item of photoList | async'>
-        <a><img [src]='item.image' class="img-thumbnail" style="max-width:250px; max-height:250px; min-width:250px">
-        </a>
+
+        <div *ngIf="admin">
+          <a (click)="removePhoto(item.$key)"><i style="color:#000; float:right" class="fa fa-remove fa-lg"></i></a>
+          <a><img [src]='item.image' class="img-thumbnail" style="max-width:250px; max-height:250px; min-width:250px">
+          </a>
+        </div>
+        <div *ngIf="!admin">
+          <a><img [src]='item.image' class="img-thumbnail" style="max-width:250px; max-height:250px; min-width:250px">
+          </a>
+
+        </div>
+
       </div>
     </div>
-    <br>
   </div>
 </div>

@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Optional } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-
+import { MdDialog, MdDialogRef } from '@angular/material';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 import * as firebase from 'firebase';
 
@@ -31,12 +32,14 @@ export class AddProductComponent implements OnInit {
   productList: FirebaseListObservable<any[]>;
   editPage: boolean = false;
   addPage: boolean = true;
-
+  lastDialogResult: string;
   myRef: any;
+  selectedOption: string;
 
 
 
-  constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute) {
+
+  constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute, private dialog: MdDialog, private location: Location) {
     if (this.route.snapshot.url.length == 4 && this.route.snapshot.url[2].path == 'edit') {
       this.editPage = true;
       if (this.editPage = true) {
@@ -127,10 +130,61 @@ export class AddProductComponent implements OnInit {
     this.imageUnused = false;
     this.router.navigate(['/products']);
   }
-  removeProd(key: string) {
-    this.af.database.object('/products/' + this.route.snapshot.params['id']).remove()
-    alert('Product Deleted!');
-    this.router.navigate(['/products']);
+
+
+  openDialog() {
+
+    let dialogRef = this.dialog.open(DialogContent2, {
+      height: '500px',
+      width: '500px',
+    });
+  
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.lastDialogResult = result;
+      if (result == 'yes') {
+        this.af.database.object('/products/' + this.route.snapshot.params['id']).remove()
+        alert('Product Deleted!');
+        this.router.navigate(['/products']);
+    }
+      if (result == 'no') {
+        console.log("Product Not Deleted")
+        this.router.navigate(['/products']);
+      }
+
+    });
   }
+  }
+
+
+
+@Component({
+  template: `
+
+  <md-dialog-content>
+  <p class="text-center" style="color: #000">Are you sure you want to do this?</p>
+  </md-dialog-content>
+  <md-dialog-actions>
+
+    <button md-raised-button color="primary" style="margin-right:20px; margin-left:80px" (click)="dialogRef.close('yes')">Yes</button><button md-raised-button color="warn" (click)="dialogRef.close('no')">No</button>
+
+  </md-dialog-actions>
+
+  
+  
+  `,
+})
+export class DialogContent2 {
+  constructor( @Optional() public af: AngularFire, public router: Router, public route: ActivatedRoute, private dialog: MdDialog, private location: Location, public dialogRef: MdDialogRef<DialogContent2>) { }
+selectedOption: string;
+    yesButton() {
+    this.selectedOption = "yes";
+    console.log("YES BUTTON WAS PUSHED")
+  }
+  noButton() {
+    this.selectedOption = "no";
+    console.log("NO BUTTON WAS PUSHED")
+  }
+
 
 }

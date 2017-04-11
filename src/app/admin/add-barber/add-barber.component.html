@@ -13,9 +13,14 @@
       <br/>
       <img [src]="imageSrc" alt="coming soon" width="300" height="300"><br/>
       <br>
-      <input style="padding-left:85px" id="file" name="file" type="file" (change)="onChange($event)"><br/><br/>
+      <input style="padding-left:85px" id="file" name="file" type="file" (change)="onChange($event)"><br/><br/></p>
+      <div *ngIf="editPage" class="text-center">
+      <button md-raised-button color="primary" (click)="updateBarber(barberName.value, uploadUrl.value)">Save Changes</button>
+      </div>
+       <div *ngIf="addPage" class="text-center">
       <button md-raised-button color="warn" (click)="createBarber()">Add Barber</button>
-    </p>
+      </div>
+    
     <br/>
     <br/>
     <br/>

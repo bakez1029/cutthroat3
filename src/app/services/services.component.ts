@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../auth.service'
 import { Observable } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import * as firebase from 'firebase';
 
@@ -16,7 +17,7 @@ export class ServicesComponent implements OnInit {
   uid: string;
   admin: boolean;
   loggedIn: boolean = false;
-  constructor(public af: AngularFire, private authService: AuthService) { }
+  constructor(public af: AngularFire, private authService: AuthService, private router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.serviceList = this.af.database.list('/services');
@@ -29,10 +30,7 @@ export class ServicesComponent implements OnInit {
 
   }
 
-    removeProd() {
-    console.log('Product Removed');
-      this.serviceList[1].$key.remove();
-    
+ editService() {
+    this.router.navigate(['/admin/services/edit']);
   }
-
 }
