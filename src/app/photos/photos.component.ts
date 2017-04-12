@@ -16,10 +16,8 @@ export class PhotosComponent implements OnInit {
   authed: any;
   admin: boolean;
   loggedIn: boolean = false;
-
   key: string;
   myRef: any;
-
   photoName: string;
 
 
@@ -27,15 +25,6 @@ export class PhotosComponent implements OnInit {
   constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    //let myRef = this.af.database.list('/barbers')
-    
-    // myRef.subscribe((barber) => {
-    //   this.barber = barber;
-    
-    //   console.log(barber, this.barber[0].$key)
-    // });
-
 
     this.af.auth.subscribe(auth => {
       this.authed = auth;

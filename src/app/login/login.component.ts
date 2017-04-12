@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service'
 import { Router } from '@angular/router'
 
 
+
 import * as firebase from 'firebase';
 
 
@@ -17,13 +18,13 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   loggedIn: boolean = false;
-  
+
 
   constructor(public af: AngularFire, private router: Router, private authService: AuthService) {
   }
 
   ngOnInit() {
-    
+
     this.af.auth.subscribe(auth => {
       if (auth) {
         this.uid = auth.uid;
@@ -32,23 +33,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
-    this.authService.login(this.email, this.password).then((auth) => {
-      this.uid = auth.uid;
-      console.log('xxuser => ', this.uid);
-      this.email = "";
-      this.password = "";
-       this.router.navigate(['/account']);
-    }).catch((error) => {
-      console.log('Error', error);
-    });
-  }
+  login(email: string, password: string) {
+    // console.log(email, password);
+    this.af.auth.login({ email: email, password: password, provider: AuthProviders.Password });
+    this.router.navigate(['/account']);
 
+
+
+  }
   logout() {
     this.authService.logout();
     console.log('logged out');
     this.uid = "";
-    this.loggedIn = false;    
+    this.loggedIn = false;
   }
 
 
@@ -56,6 +53,14 @@ export class LoginComponent implements OnInit {
     this.authService.sendPasswordResetEmail("tbaker000@gmail.com");
   }
 
-
+  keyDownFunction(event, email: string, password: string) {
+    if (event.keyCode == 13) {
+      this.af.auth.login({ email: email, password: password, provider: AuthProviders.Password });
+      this.router.navigate(['/account']);
+      // rest of your code
+    }
+  }
 
 }
+
+

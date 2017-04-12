@@ -25,8 +25,9 @@ import { UploadComponent } from './upload.component';
 import { AddProductComponent, DialogContent2 } from './admin/add-product/add-product.component';
 import { AddBarberComponent } from './admin/add-barber/add-barber.component';
 import { AddPhotoComponent } from './admin/add-photo/add-photo.component';
-import { AddServiceComponent } from './admin/add-service/add-service.component';
+import { AddServiceComponent, DialogContent3 } from './admin/add-service/add-service.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyDGFYKBqQX8cHJAIbn0WuqFGNqctpYZMHc",
@@ -57,13 +58,15 @@ const firebaseAuthConfig = {
     CreateAccountComponent,
     DialogContent,
     DialogContent2,
+    DialogContent3,
     UploadComponent,
     AddProductComponent,
     AddBarberComponent,
     AccountComponent,
     AddPhotoComponent,
     AddServiceComponent,
-    EditProductComponent
+    EditProductComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -93,10 +96,11 @@ const firebaseAuthConfig = {
       { path: 'admin/services/add', component: AddServiceComponent },
       { path: 'admin/services/edit/:id', component: AddServiceComponent },
       { path: 'admin/products/edit', component: EditProductComponent },
+      { path: 'checkout', component: CheckoutComponent },
       
     ])
   ],
-  entryComponents: [DialogContent, DialogContent2],
+  entryComponents: [DialogContent, DialogContent2, DialogContent3],
   providers: [AuthService],
   bootstrap: [AppComponent]
 })

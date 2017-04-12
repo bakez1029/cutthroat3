@@ -34,13 +34,14 @@ export class AddProductComponent implements OnInit {
   addPage: boolean = true;
   lastDialogResult: string;
   myRef: any;
-  selectedOption: string;
+  selectedOption: string;re
 
 
 
 
   constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute, private dialog: MdDialog, private location: Location) {
     if (this.route.snapshot.url.length == 4 && this.route.snapshot.url[2].path == 'edit') {
+
       this.editPage = true;
       if (this.editPage = true) {
         this.addPage = false

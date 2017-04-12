@@ -93,7 +93,7 @@ export class AddServiceComponent implements OnInit {
 
    openDialog() {
 
-    let dialogRef = this.dialog.open(DialogContent2, {
+    let dialogRef = this.dialog.open(DialogContent3, {
       height: '500px',
       width: '500px',
     });
@@ -102,13 +102,13 @@ export class AddServiceComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.lastDialogResult = result;
       if (result == 'yes') {
-        this.af.database.object('/products/' + this.route.snapshot.params['id']).remove()
-        alert('Product Deleted!');
-        this.router.navigate(['/products']);
+        this.af.database.object('/services/' + this.route.snapshot.params['id']).remove()
+        alert('Service Deleted!');
+        this.router.navigate(['/services']);
     }
       if (result == 'no') {
-        console.log("Product Not Deleted")
-        this.router.navigate(['/products']);
+        console.log("Nothing was deleted.")
+        this.router.navigate(['/services']);
       }
 
     });
@@ -133,8 +133,8 @@ export class AddServiceComponent implements OnInit {
   
   `,
 })
-export class DialogContent2 {
-  constructor( @Optional() public af: AngularFire, public router: Router, public route: ActivatedRoute, private dialog: MdDialog, private location: Location, public dialogRef: MdDialogRef<DialogContent2>) { }
+export class DialogContent3 {
+  constructor( @Optional() public af: AngularFire, public router: Router, public route: ActivatedRoute, private dialog: MdDialog, private location: Location, public dialogRef: MdDialogRef<DialogContent3>) { }
 selectedOption: string;
     yesButton() {
     this.selectedOption = "yes";

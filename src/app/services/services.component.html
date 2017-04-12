@@ -19,7 +19,7 @@
           <td><b>{{item.name}}</b></td>
           <td>{{ item.desc }}</td>
           <td>${{ item.price }}</td>
-          <td class="text-center" *ngIf="admin"><button md-raised-button color="accent" (click)="editService()">Edit</button><td>
+          <td class="text-center" *ngIf="admin"><button md-raised-button color="accent" [routerLink]="['/admin/services/edit', item.$key]">Edit</button><td>
 
         </tr>
       </tbody>

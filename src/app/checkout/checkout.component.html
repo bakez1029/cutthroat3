@@ -1,0 +1,139 @@
+<div class="page">
+
+  <div class="title-box" style="min-height: 711px">
+
+    <br>
+    <br>
+
+    <div class="container mx-auto d-block" style="min-width:200px; min-width:600px;">
+
+      <div class="container mx-auto d-block" style="box-shadow: 5px 5px 5px #888888; border: 1px solid #888888">
+
+
+
+        <div *ngIf="showDisabledFields">
+
+
+
+          <button md-raised-button color="accent" (click)="onEdit()" style="float:right; margin-top: 5px; margin-right:5px">Edit</button>
+
+
+
+
+          <br>
+          <br>
+          <h4 class="text-center">
+            Billing Information
+          </h4>
+          <br>
+          <br>
+
+
+
+          <div class="text-center mx-auto d-block">
+
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="First Name" value="{{firstName}}" disabled>
+            </md-input-container>
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Last Name" value="{{lastName}}" disabled>
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Email" value="{{email}}" disabled>
+            </md-input-container>
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Phone" value="{{phone}}" disabled>
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Address Line 1" value="{{street}}" style="width:400px" disabled>
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Address Line 2" value="{{street2}}" style="width:400px" disabled>
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="City" value="{{city}}" disabled>
+            </md-input-container>
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="State" value="{{state}}" style="width:90px" disabled>
+            </md-input-container>
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Zip Code" value="{{postcode}}" style="width:100px" disabled>
+            </md-input-container>
+
+            <br>
+            <br>
+          </div>
+        </div>
+
+
+
+        <div *ngIf="showEnabledFields">
+          <br>
+          <br>
+          <h4 class="text-center">
+            Change Information
+          </h4>
+          <br>
+          <br>
+
+
+          <div class="text-center">
+
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="First Name" #first value="">
+            </md-input-container>
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Last Name" #last value="">
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Email" #email value="">
+            </md-input-container>
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Phone" #phone value="">
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Address Line 1" #street value="" style="width:400px">
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Address Line 2" #street2 value="" style="width:400px">
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="City" #city value="">
+            </md-input-container>
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="State" #state value="" style="width:90px">
+            </md-input-container>
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Zip Code" #postcode value="" style="width:100px">
+            </md-input-container>
+            <br>
+            <br>
+            <button md-raised-button color="default" (click)="onSave(); updateItem2(address.$key, street2.value, street.value, city.value, state.value, postcode.value); updateItem(user.$key, first.value, last.value, email.value, phone.value)"
+              style="float:right; margin-top: 10px; margin-right:5px">Save</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

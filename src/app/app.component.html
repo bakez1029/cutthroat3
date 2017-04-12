@@ -82,20 +82,15 @@
   <div style="clear: both"></div>
   <aside>
     <div style="float:left; width: 200px; background-color: #000; min-height:650px">
-          <div *ngIf="authed == null" style="color: #fff; border-bottom:1px solid white" class="text-center" >
+      <div *ngIf="authed == null" style="color: #fff; border-bottom:1px solid white" class="text-center">
         <div style="margin-bottom:5px; margin-top:5px">
-            <a routerLink="/login">Sign In</a>&nbsp;&nbsp;&nbsp;
-            <a routerLink="/register">New Account</a>
-       
-          </div>
-       </div>
+          <a routerLink="/login">Sign In</a>&nbsp;&nbsp;&nbsp;
+          <a routerLink="/register">New Account</a>
 
-      <div *ngIf="authed != null" style="color: #fff" class="text-center">
-        <br>
+        </div>
+      </div>
 
-        <!--<div class="badge" style="margin-bottom: 70px; color: #98AFC7">&nbsp;{{(user | async)?.name}}</div>-->
-
-
+      <div *ngIf="authed != null" style="color: #000; margin-right: 5px; margin-top:20px" class="text-center">
         <div class="dropdown">
           <a class="dropdown-toggle" id="login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="/assets/images/newprof4.png" style="width: 128px; height: 128px" class="img-thumbnail">
@@ -110,7 +105,7 @@
             <a class="dropdown-item" (click)="logout()" style="color:#000"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
           </div>
         </div>
-     
+
       </div>
 
 
@@ -144,8 +139,24 @@
           <a class="nav-link" routerLink="/admin"><span class="MenuSideMainLink"><span class="MainLinkText">ADMIN</span></span></a>
         </li>-->
       </ul>
+
+      <p *ngIf="authed != null && !admin" class="text-center" style="color:#fff; border: 1px solid #fff; margin-top:5px"> Cart Items | <a routerLink='/checkout'>Checkout</a></p>
+      <div *ngIf="authed != null">
+        <div *ngFor='let item of mine | async' style="border: 1px solid #000; background-color: #fff; margin-bottom:5px; margin-right:5px; margin-left:5px">
+          <a (click)="removeItem(item.$key)"><i style="color:#000; float:right; margin-top:3px; padding-right:3px" class="fa fa-remove"></i></a>
+          <p class="text-center">{{item.brand}}</p>
+          <p class="text-center">{{item.name}}</p>
+          <img [src]='item.image' style="width:50px; height:50px">
+          <p class="text-center">${{ item.price }}</p>
+        </div>
+      </div>
+
     </div>
   </aside>
+
+
+
+
 </div>
 
 <!--START MOBILE-->

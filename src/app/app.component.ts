@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   uid: string;
   admin: boolean;
   loggedIn: boolean = false;
+  mine: any;
+  user: any;
 
 
   constructor(public af: AngularFire, private router: Router, private authService: AuthService) { }
@@ -34,32 +36,66 @@ export class AppComponent implements OnInit {
       }
 
     });
+
+    // subscribe to any changes that may happen while on this page
+    this.authService.user$.subscribe((uid: string) => {
+      this.getUser(uid);
+
+    });
+
+    // if user is already logged in, get their information
+    if (this.authService.uid) {
+      this.getUser(this.authService.uid);
+    }
+
+
+
+
+    console.log(this.mine, "Right Here")
+
   }
   logout() {
     this.authService.logout();
     console.log('logged out');
     this.uid = "";
-    this.loggedIn = false; 
+    this.loggedIn = false;
     this.router.navigate(['/home']);
   }
 
+  getUser(uid: string) {
+    this.af.database.object('/users/' + uid).subscribe((user: any) => {
+      this.user = user;
+      this.mine = this.af.database.list('/users/' + uid + '/cart')
 
-   onClick(): void {
+
+
+
+    });
+  }
+
+  onClick(): void {
     this.router.navigate(['/services']);
 
   }
-    onClick2(): void {
-        this.router.navigate(['/products']);
+  onClick2(): void {
+    this.router.navigate(['/products']);
 
-    }
-    onClick3(): void {
-        this.router.navigate(['/jobs']);
-    }
+  }
+  onClick3(): void {
+    this.router.navigate(['/jobs']);
+  }
 
-    onClick4(): void {
-        this.router.navigate(['/barbers']);
-    }
- 
+  onClick4(): void {
+    this.router.navigate(['/barbers']);
+  }
+
+
+  removeItem(key: string) {
+    console.log('key', key);
+    this.mine.remove(key);
+
+  }
+
 
 }
 

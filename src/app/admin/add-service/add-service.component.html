@@ -20,8 +20,14 @@
       <br>
       <br>
       <br>
+      <div *ngIf="editPage" class="text-center">
+      <button md-raised-button color="warn" (click)="openDialog()">Delete Service</button>
+      <button md-raised-button color="primary" (click)="updateService(serviceName.value, servicePrice.value, serviceDesc.value)">Save Changes</button>
+      </div>
+      <div *ngIf="addPage" class="text-center">
       <button md-raised-button color="warn" (click)="createService()">Add Service</button>
-    </p>
+      </div>
+  
     <br/>
     <br/>
     <br/>

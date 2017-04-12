@@ -30,7 +30,4 @@ export class ServicesComponent implements OnInit {
 
   }
 
- editService() {
-    this.router.navigate(['/admin/services/edit']);
-  }
 }

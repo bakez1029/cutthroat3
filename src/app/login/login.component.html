@@ -1,29 +1,34 @@
 <div class="page">
-<div class="title-box mx-auto d-block vcenter">
-  <br>
-  <div *ngIf="!loggedIn" class="text-center">
-      <md-input-container floatPlaceholder="always">
-              <input class="text-center" mdInput placeholder="Email" [(ngModel)]="email" style="width: 300px">
-            </md-input-container>
+  <div class="title-box mx-auto d-block vcenter">
+    <br>
+    <div *ngIf="!loggedIn" class="text-center">
+       <form (keydown)="keyDownFunction($event, l_email.value, l_password.value)">
 
-            <br>
-            <md-input-container floatPlaceholder="always">
-              <input class="text-center" mdInput placeholder="Password" [(ngModel)]="password" type="password" style="width: 300px">
-            </md-input-container>
-            <br>
-    <button md-raised-button color="warn" (click)="login()">Login</button>
-    <br>
-    <br>
-    <p class='text-center'>
-      <a routerLink="/register" style="color:#000">Create Account</a>&nbsp;&nbsp;
-      <!--<p style="border-left:medium #000 solid; height:25px"></p>-->
-      <a routerLink="/forgot" style="color:#000">Forgot Password</a>
-    </p>
-  </div>
-  <div *ngIf="loggedIn" class="text-center">
-    user's uid = {{uid}}<br/>
-    <br>
-    <button md-raised-button color="accent" (click)="logout()">Logout</button>
-  </div>
+      <md-input-container floatPlaceholder="always">
+        <input class="text-center" mdInput placeholder="Email" type="email" #l_email style="width: 300px">
+      </md-input-container>
+
+      <br>
+      <md-input-container floatPlaceholder="always">
+        <input class="text-center" mdInput placeholder="Password" type="password" #l_password type="password" style="width: 300px">
+      </md-input-container>
+
+
+      <br>
+      <button md-raised-button color="warn" (click)="login(l_email.value, l_password.value)">Login</button>
+  </form>
+      <br>
+      <br>
+      <p class='text-center'>
+        <a routerLink="/register" style="color:#000">Create Account</a>&nbsp;&nbsp;
+        <!--<p style="border-left:medium #000 solid; height:25px"></p>-->
+        <a routerLink="/forgot" style="color:#000">Forgot Password</a>
+      </p>
+    </div>
+    <div *ngIf="loggedIn" class="text-center">
+      user's uid = {{uid}}<br/>
+      <br>
+      <button md-raised-button color="accent" (click)="logout()">Logout</button>
+    </div>
   </div>
 </div>
