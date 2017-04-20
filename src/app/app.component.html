@@ -83,26 +83,26 @@
   <aside>
     <div style="float:left; width: 200px; background-color: #000; min-height:650px">
       <div *ngIf="authed == null" style="color: #fff; border-bottom:1px solid white" class="text-center">
-        <div style="margin-bottom:5px; margin-top:5px">
+        <!--<div style="margin-bottom:5px; margin-top:5px">
           <a routerLink="/login">Sign In</a>&nbsp;&nbsp;&nbsp;
           <a routerLink="/register">New Account</a>
 
-        </div>
+        </div>-->
       </div>
 
       <div *ngIf="authed != null" style="color: #000; margin-right: 5px; margin-top:20px" class="text-center">
         <div class="dropdown">
-          <a class="dropdown-toggle" id="login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="/assets/images/newprof4.png" style="width: 128px; height: 128px" class="img-thumbnail">
+          <a class="dropdown-toggle" id="login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #000 !important">
+            <img src="assets/images/icon3.png" style="width: 128px; height: 128px; background-color: #000 !important" class="img-thumbnail">
           </a>
           <div class="dropdown-menu" aria-labelledby="login">
-            <a class="dropdown-item" routerLink="/account" style="color:#000"><i class="fa fa-dashboard fa-fw" aria-hidden="true"></i> Profile</a>
+            <a class="dropdown-item" routerLink="/account" style="color:#000 !important; text-decoration:none"><i class="fa fa-dashboard fa-fw" aria-hidden="true"></i> Profile</a>
             <!--<a class="dropdown-item" routerLink="/settings"><i class="fa fa-cogs fa-fw"></i> Settings</a>
             <a class="dropdown-item" routerLink="/cart"><i class="fa fa-shopping-basket fa-fw"></i> Cart</a>-->
             <div *ngIf="authed != null && admin" class="dropdown-divider"></div>
-            <a class="dropdown-item" *ngIf="authed != null && admin" routerLink="/admin" style="color:#000"><i class="fa fa-server fa-fw" aria-hidden="true"></i> Admin</a>
+            <a class="dropdown-item" *ngIf="authed != null && admin" routerLink="/admin" style="color:#000 !important"><i class="fa fa-server fa-fw" aria-hidden="true"></i> Admin</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="logout()" style="color:#000"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            <a class="dropdown-item" (click)="logout()" style="color:#000 !important"><i class="fa fa-sign-out fa-fw"></i> Sign Out</a>
           </div>
         </div>
 
@@ -132,9 +132,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact"><span class="MenuSideMainLink"><span class="MainLinkText">CONTACT</span></span></a>
         </li>
-        <!--<li class="nav-item">
-          <a class="nav-link" routerLink="/login"><span class="MenuSideMainLink"><span class="MainLinkText">LOGIN</span></span></a>
-        </li>-->
+        <li *ngIf="authed == null" class="nav-item">
+          <a class="nav-link" routerLink="/login"><span class="MenuSideMainLink"><span class="MainLinkText">SIGN IN</span></span></a>
+        </li>
+        <li *ngIf="authed != null" class="nav-item">
+          <a class="nav-link" routerLink="/login"><span class="MenuSideMainLink"><span class="MainLinkText">SIGN OUT</span></span></a>
+        </li>
         <!--<li class="nav-item">
           <a class="nav-link" routerLink="/admin"><span class="MenuSideMainLink"><span class="MainLinkText">ADMIN</span></span></a>
         </li>-->
@@ -142,11 +145,11 @@
 
       <p *ngIf="authed != null && !admin" class="text-center" style="color:#fff; border: 1px solid #fff; margin-top:5px"> Cart Items | <a routerLink='/checkout'>Checkout</a></p>
       <div *ngIf="authed != null">
-        <div *ngFor='let item of mine | async' style="border: 1px solid #000; background-color: #fff; margin-bottom:5px; margin-right:5px; margin-left:5px">
+        <div *ngFor='let item of mine | async' class="mx auto d-block" style="border: 1px solid #000; background-color: #fff; margin-bottom:5px; margin-right:5px; margin-left:5px">
           <a (click)="removeItem(item.$key)"><i style="color:#000; float:right; margin-top:3px; padding-right:3px" class="fa fa-remove"></i></a>
           <p class="text-center">{{item.brand}}</p>
           <p class="text-center">{{item.name}}</p>
-          <img [src]='item.image' style="width:50px; height:50px">
+          <img [src]='item.image' class="mx-auto d-block" style="width:50px; height:50px">
           <p class="text-center">${{ item.price }}</p>
         </div>
       </div>
@@ -161,9 +164,31 @@
 
 <!--START MOBILE-->
 <div class="hidden-sm-up">
-  <nav class="navbar navbar-light" style="background-color: #DB2226"></nav>
 
-  <ul class="mx-auto" style="padding-top:10px; height: 370px; background-image: url('/assets/images/newlogo-nav2.png'); background-repeat: no-repeat; background-color: #000; background-position: center; margin-top:0px; margin-bottom:0px; text-align:center">
+  <nav class="navbar navbar-light" style="background-color: #DB2226; height:45px">
+
+    <div *ngIf="authed != null" style="color: #000; margin-right: 5px; float:right">
+      <div class="dropdown">
+        <a class="dropdown-toggle" id="login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #DB2226 !important">
+          <img src="assets/images/icon3.png" style="width: 30px; height: 30px; background-color: #000 !important" class="img-thumbnail">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="login">
+          <a class="dropdown-item" routerLink="/account" style="color:#000 !important; text-decoration:none"><i class="fa fa-dashboard fa-fw" aria-hidden="true"></i> Profile</a>
+          <!--<a class="dropdown-item" routerLink="/settings"><i class="fa fa-cogs fa-fw"></i> Settings</a>
+            <a class="dropdown-item" routerLink="/cart"><i class="fa fa-shopping-basket fa-fw"></i> Cart</a>-->
+          <div *ngIf="authed != null && admin" class="dropdown-divider"></div>
+          <a class="dropdown-item" *ngIf="authed != null && admin" routerLink="/admin" style="color:#000 !important"><i class="fa fa-server fa-fw" aria-hidden="true"></i> Admin</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()" style="color:#000 !important"><i class="fa fa-sign-out fa-fw"></i> Sign Out</a>
+        </div>
+      </div>
+
+    </div>
+
+
+  </nav>
+
+  <ul style="background-image: url('/assets/images/newlogo-nav2.png'); background-repeat: no-repeat; background-color: #000; background-position: center; margin-top:0px; margin-bottom:0px; text-align: center">
 
     <li style="display:inline !important"><a style="padding:3px" hover="color: #fff" routerLink="/home"><b>HOME</b></a><span class="sr-only">(current)</span></li>
     <li style="display:inline !important"><a style="padding:3px" routerLink="/products"><b>PRODUCTS</b></a></li>
@@ -182,14 +207,12 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <li style="display:inline !important"><a style="padding:3px; padding-left:40px" routerLink="/contact"><b>CONTACT</b></a></li>
+    <li style="display:inline !important"><a style="padding:3px;" routerLink="/contact"><b>CONTACT</b></a></li>
     <li style="display:inline !important"><a style="padding:3px" routerLink="/photos"><b>PHOTOS</b></a></li>
     <li style="display:inline !important"><a style="padding:3px" routerLink="/jobs"><b>JOBS</b></a></li>
-    <li style="display:inline !important; padding-right:30px"><a style="padding:3px" routerLink="/login"><b>LOGIN</b></a></li>
+    <li style="display:inline !important; padding-right:30px"><a style="padding:3px" routerLink="/login"><b>SIGN IN</b></a></li>
   </ul>
+
 
 
 </div>

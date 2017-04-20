@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 export class CreateAccountComponent implements OnInit {
   selectedOption: string;
   lastDialogResult: string;
+
   firstName: string = "";
   lastName: string = "";
   email: string = "";
@@ -24,33 +25,35 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog() {
+  openDialog(firstName: string, lastName: string, email: string, password: string) {
 
     if (!this.email || this.email.length < 5 || !this.password || this.password.length < 5) {
-      console.log('bad registration');
-
-      return;
+        this.authService.createNewUser({ first: firstName, last: lastName, email: email, password: password });
+    
     }
-
-    var user = { 
-      email: this.email, 
-      password: this.password, 
-      first: this.firstName, 
-      last: this.lastName 
-    };
-    this.authService.createNewUser(user);
 
     let dialogRef = this.dialog.open(DialogContent);
     dialogRef.afterClosed().subscribe(result => {
       this.lastDialogResult = result;
-        this.router.navigate(['/home']);
-      //  this.location.back();
+      this.router.navigate(['/account']);
+
     });
   }
 
   goBack() {
     this.location.back();
   }
+
+  keyDownFunction(event, firstName: string, lastName: string, email: string, password: string) {
+    if (event.keyCode == 13) {
+      if (!this.email || this.email.length < 5 || !this.password || this.password.length < 5) {
+        this.authService.createNewUser({ first: firstName, last: lastName, email: email, password: password });
+        this.router.navigate(['/account']);
+      }
+
+    }
+  }
+
 }
 
 

@@ -37,14 +37,14 @@
 
 <!--MOBILE-->
 
-<div class="page hidden-lg-up">
+<div class="page hidden-sm-up">
   <div class="title-box" style="border:none">
 
 
 
 
 
-    <table class='table'>
+    <table class='table-responsive'>
       <thead>
         <tr>
           <th>Brand</th>
@@ -56,11 +56,11 @@
       </thead>
       <tbody>
         <tr *ngFor='let item of productList | async' style="border-bottom: 15px solid #696969">
-          <td style="background-color:#f6f6f6; border-bottom: 1px solid #d3d3d3">{{ item.brand }}</td>
-          <td><a routerLink="/products', products.productid">{{item.name}}</a></td>
-          <td><img [src]='item.image' style="width:50px; height:50px"></td>
-          <td>${{ item.price }}</td>
-          <td *ngIf="admin" style="max-width:100px"><button md-raised-button color="primary" (click)="editProd()" style="margin-bottom:5px">Edit</button>
+          <td class="text-center" style="background-color:#f6f6f6; border-bottom: 1px solid #d3d3d3">{{ item.brand }}</td>
+          <td class="text-center"><a routerLink="/products', products.productid">{{item.name}}</a></td>
+          <td><img class="mx-auto d-block" [src]='item.image' style="width:50px; height:50px"></td>
+          <td class="text-center">${{ item.price }}</td>
+          <td class="text-center" *ngIf="admin" style="max-width:100px"><button md-raised-button color="primary" (click)="editProd()" style="margin-bottom:5px">Edit</button>
           </td>
 
         </tr>

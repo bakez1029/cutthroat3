@@ -5,16 +5,17 @@
     <br>
     <div class="container" style="max-width: 450px; height:auto">
 
-
+<form (keydown)="keyDownFunction($event, firstName.value, lastName.value, email.value, password.value)">
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
+             
             <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="First Name" name="first" [(ngModel)]="firstName" style="width:210px">
+              <input mdInput placeholder="First Name" name="first" #firstName style="width:210px">
             </md-input-container>
 
             <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Last Name" name="last" [(ngModel)]="lastName" style="width:200px">
+              <input mdInput placeholder="Last Name" name="last" #lastName style="width:200px">
             </md-input-container>
           </td>
         </tr>
@@ -22,7 +23,7 @@
         <tr>
           <td>
               <md-input-container floatPlaceholder="always">
-                <input class="text-center" mdInput placeholder="Email" name="email" [(ngModel)]="email" style="width:420px">
+                <input class="text-center" mdInput placeholder="Email" name="email" #email style="width:420px">
               </md-input-container>
          
 
@@ -31,7 +32,7 @@
         <tr>
           <td>
             <md-input-container floatPlaceholder="always">
-              <input class="text-center" mdInput placeholder="Password" type="password" [(ngModel)]="password" style="width:420px">
+              <input class="text-center" mdInput placeholder="Password" type="password" #password style="width:420px">
             </md-input-container>
 
 
@@ -41,7 +42,7 @@
           <td>
 
             <md-input-container floatPlaceholder="always">
-              <input class="text-center" mdInput placeholder="Password Confirm" type="password" [(ngModel)]="password2" style="width:420px">
+              <input class="text-center" mdInput placeholder="Password Confirm" type="password" style="width:420px">
             </md-input-container>
           </td>
         </tr>
@@ -49,12 +50,13 @@
 
       <!--<button md-raised-button (click)="goBack()">Cancel</button>-->
       <br>
-      <button md-raised-button color="warn" (click)="openDialog()" style="float:right">Register</button>
+      <button md-raised-button color="warn" (click)="openDialog(firstName.value, lastName.value, email.value, password.value)" style="float:right">Register</button>
       <br>
       <br>
 
       <br>
       <br>
+      </form>
     </div>
   </div>
 </div>

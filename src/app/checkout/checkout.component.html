@@ -1,13 +1,13 @@
 <div class="page">
 
-  <div class="title-box" style="min-height: 711px">
+  <div class="title-box" style="min-height: 1211px">
 
     <br>
     <br>
 
     <div class="container mx-auto d-block" style="min-width:200px; min-width:600px;">
 
-      <div class="container mx-auto d-block" style="box-shadow: 5px 5px 5px #888888; border: 1px solid #888888">
+      <div class="container mx-auto d-block">
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-          <button md-raised-button color="accent" (click)="onEdit()" style="float:right; margin-top: 5px; margin-right:5px">Edit</button>
+          <button md-raised-button color="accent" (click)="onEdit()" style="float:right; margin-top: 5px; margin-right:5px">Change</button>
 
 
 
@@ -23,7 +23,7 @@
           <br>
           <br>
           <h4 class="text-center">
-            Billing Information
+            Shipping Information
           </h4>
           <br>
           <br>
@@ -41,14 +41,14 @@
               <input mdInput placeholder="Last Name" value="{{lastName}}" disabled>
             </md-input-container>
             <br>
-            <md-input-container floatPlaceholder="always">
+            <!--<md-input-container floatPlaceholder="always">
               <input mdInput placeholder="Email" value="{{email}}" disabled>
             </md-input-container>
 
             <md-input-container floatPlaceholder="always">
               <input mdInput placeholder="Phone" value="{{phone}}" disabled>
             </md-input-container>
-            <br>
+            <br>-->
             <md-input-container floatPlaceholder="always">
               <input mdInput placeholder="Address Line 1" value="{{street}}" style="width:400px" disabled>
             </md-input-container>
@@ -128,6 +128,47 @@
             <br>
             <button md-raised-button color="default" (click)="onSave(); updateItem2(address.$key, street2.value, street.value, city.value, state.value, postcode.value); updateItem(user.$key, first.value, last.value, email.value, phone.value)"
               style="float:right; margin-top: 10px; margin-right:5px">Save</button>
+
+          </div>
+        </div>
+
+
+
+        <br>
+        <br>
+
+        <div>
+
+
+          <h4 class="text-center">
+            Payment Method
+          </h4>
+          <br>
+          <br>
+
+
+
+          <div class="text-center mx-auto d-block">
+
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Card Number" value="" style="width:400px">
+            </md-input-container>
+            <br>
+            <md-input-container floatPlaceholder="always">
+              <input mdInput placeholder="Name on Card" value="" style="width:400px">
+            </md-input-container>
+            <br>
+            <md-select placeholder="MO">
+              <md-option *ngFor="let month of months" [value]="months.value">
+                {{ month.viewValue }}
+              </md-option>
+            </md-select>
+            <md-select placeholder="YR">
+              <md-option *ngFor="let year of years" [value]="year.value">
+                {{ year.viewValue }}
+              </md-option>
+            </md-select>
+            <button md-raised-button color="accent" style="float:right; margin-top: 5px; margin-right:5px">Checkout</button>
 
           </div>
         </div>

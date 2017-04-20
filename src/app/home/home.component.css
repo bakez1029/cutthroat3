@@ -1,9 +1,68 @@
-.ContentSideSections{padding-left:0px; padding-right:0px; padding-top:0px; background-color:#696969}
-.dispBlock{display:block !important;}
-.blackWhite{color:#fff;text-shadow: 2px 2px #000; font-size: 22px;}
-.defaultText{font-size:18px; color:#000}
-.overHidden{ overflow:hidden;}
-body{background-color:#000 !important;}
+.ContentSideSections {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  background-color: #696969
+}
 
-p {font-family: 'Passion One', cursive;
+.dispBlock {
+  display: block !important;
+}
+
+.blackWhite {
+  color: #fff;
+  text-shadow: 2px 2px #000;
+  font-size: 22px;
+}
+
+.defaultText {
+  font-size: 18px;
+  color: #000
+}
+
+.overHidden {
+  overflow: hidden;
+}
+
+body {
+  background-color: #000 !important;
+}
+
+p {
+  font-family: 'Passion One', cursive;
+}
+
+.page-mob {
+  width: 100%;
+  min-height: 250px;
+  max-height: 500px;
+  background-color: #696969;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  color: #000;
+
+}
+
+.page-ipad {
+  width: 100%;
+  min-height: 650px;
+  background-color: #696969;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  color: #000;
+
+}
+.page-sm {
+  width: 100%;
+  height:auto;
+  min-height: 650px;
+  background-color: #696969;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  color: #000;
+
 }

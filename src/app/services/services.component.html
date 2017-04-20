@@ -1,10 +1,8 @@
-<div class="page">
+<div class="page hidden-xs-down">
 
   <div class="title-box">
 
     <div class="title">Cuts & Services</div>
-
-
 
     <table class='table'>
       <thead>
@@ -24,15 +22,37 @@
         </tr>
       </tbody>
     </table>
-    <br><br>
-
-
-
-
-
-
-
 
   </div>
 
 </div>
+
+<div class="page hidden-sm-up">
+
+  <div class="title-box">
+
+    <div class="title">Cuts & Services</div>
+
+    <table class='table-responsive'>
+      <thead>
+        <tr>
+          <!--<th class="text-center"><h4>Cuts & Services</h4></th>-->
+          <!--<th class="text-center" *ngIf="admin">Tools</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let item of serviceList | async'>
+
+          <td><b>{{item.name}}</b></td>
+          <td>{{ item.desc }}</td>
+          <td>${{ item.price }}</td>
+          <td class="text-center" *ngIf="admin"><button md-raised-button color="accent" [routerLink]="['/admin/services/edit', item.$key]">Edit</button><td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
