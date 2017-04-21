@@ -1,7 +1,8 @@
-<div class="page">
-  <div class="title-box mx-auto d-block">
+<div class="hidden-xs-down page">
+  <div class="title-box-admin mx-auto d-block">
 
     <h4 class="text-center">What would you like to do?</h4>
+    <br>
     <p class="text-center">
       <a routerLink="/admin/products/add" style="color:#000">Add New Product</a>&nbsp;&nbsp;&nbsp;<a routerLink="/admin/services/add"
         style="color:#000">Add New Service</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -10,35 +11,26 @@
       <a routerLink="/admin/barbers/add" style="color:#000">Add New Barber</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="/admin/photo/add"
         style="color:#000">Add New Picture</a>&nbsp;&nbsp;&nbsp;&nbsp;
     </p>
-    <p class="text-center">
-      <a routerLink="/admin/posts/add" style="color:#000">Add New Post</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </p>
-
-
   </div>
+</div>
 
-  <br>
 
-  <div class="title-box mx-auto d-block">
-    <h4 class="text-center">Recent Applications</h4>
-    <br>
-    <!--<b>Name : </b>&nbsp;{{ (forms | async)?.name }}-->
-    <ul>
-      <li *ngFor="let item of forms | async" style="margin-bottom: 50px">
-        <p class="text-center"> <b>Name: {{ item.name }}</b></p>
-        <p class="text-center"> <b>Email: {{ item.email }}</b></p>
-        <p class="text-center"> <b>Phone: {{ item.phone }}</b></p>
-        <p class="text-center"> <b>Address: {{ item.address.street}},
+<div class="hidden-sm-up page-mob">
+  <div class="page-mob">
+    <div class="title-box-admin-mob mx-auto d-block">
+
+      <h4 class="text-center">What would you like to do?</h4>
+      <br>
+      <p class="text-center">
+        &nbsp;<a routerLink="/admin/products/add" style="color:#000">Add New Product</a>
         <br>
+        <a routerLink="/admin/services/add" style="color:#000">Add New Service</a>
         <br>
-        {{ item.address.city }},&nbsp;{{ item.address.state}},&nbsp;{{ item.address.postcode }}</b></p>
-      </li>
-  </ul>
-
-
-
-
-
+        <a routerLink="/admin/barbers/add" style="color:#000">Add New Barber</a>&nbsp;
+        <br>
+        &nbsp;&nbsp;<a routerLink="/admin/photo/add" style="color:#000">Add New Picture</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      </p>
+    </div>
   </div>
 
 </div>

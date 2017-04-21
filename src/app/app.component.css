@@ -3,13 +3,17 @@ a {
   text-decoration: none !important;
   cursor: pointer !important;
   background-color: none !important;
+  font-family: 'Passion One', cursive;
 }
 
 
 a:active {
   color: #DB2226 !important;
   text-decoration: none !important;
-  background-color: white;
+}
+
+.dropdown-menu a:active {
+  background-color: white
 }
 
 .nav-link {
@@ -123,7 +127,7 @@ a:active {
   font-size: 16px;
   margin: 0px 0px 0px 30px;
   display: block;
-  font-family: 'Franklin Gothic Medium' !important
+  font-family: 'Passion One';
 }
 
 .MainLinkText a {
