@@ -28,6 +28,7 @@ import { AddPhotoComponent } from './admin/add-photo/add-photo.component';
 import { AddServiceComponent, DialogContent3 } from './admin/add-service/add-service.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ForgotComponent } from './account/forgot/forgot.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyDGFYKBqQX8cHJAIbn0WuqFGNqctpYZMHc",
@@ -66,7 +67,8 @@ const firebaseAuthConfig = {
     AddPhotoComponent,
     AddServiceComponent,
     EditProductComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +88,7 @@ const firebaseAuthConfig = {
       { path: 'contact', component: ContactComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: CreateAccountComponent },
+      { path: 'forgot', component: ForgotComponent },
       { path: 'admin', component: AdminComponent },
       { path: 'account', component: AccountComponent },
       { path: 'admin/products/add', component: AddProductComponent },

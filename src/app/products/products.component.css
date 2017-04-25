@@ -1,4 +1,4 @@
-@media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
+@media (max-width: 767px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
 
 
   table, thead, tbody, th, td, tr { 

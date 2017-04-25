@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
   password: string;
   loggedIn: boolean = false;
 
+  error: any;
+
 
   constructor(public af: AngularFire, private router: Router, private authService: AuthService) {
   }
@@ -34,10 +36,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(email: string, password: string) {
-    // console.log(email, password);
-    this.af.auth.login({ email: email, password: password, provider: AuthProviders.Password });
-    this.router.navigate(['/account']);
+    if (this.error) {
+      alert("There was an error. Please try again")
+    } else {
+      this.af.auth.login({ email: email, password: password, provider: AuthProviders.Password });
+      this.router.navigate(['/account']);
 
+    }
 
 
   }

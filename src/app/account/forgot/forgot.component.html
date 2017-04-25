@@ -1,0 +1,52 @@
+<div class="hidden-xs-down page">
+  <div class="title-box-log mx-auto d-block vcenter">
+    <div class="text-center">
+      <form (keydown)="keyDownFunction($event, l_email1.value)">
+        <br>
+        <br>
+
+        <md-input-container floatPlaceholder="always">
+          <input class="text-center" mdInput placeholder="Email" type="email" #l_email1 style="width: 300px">
+        </md-input-container>
+
+        <br>
+
+        <button md-raised-button color="accent" (click)="sendPasswordEmail(l_email1.value)">Send Reset</button>
+      </form>
+      
+      <p class='text-center'>
+        <a routerLink="/home" style="color:#000">Home</a>&nbsp;&nbsp;
+        <!--<p style="border-left:medium #000 solid; height:25px"></p>-->
+        <a routerLink="/login" style="color:#000">Go Back</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="hidden-sm-up page-mob">
+
+  <div class="title-box-mob mx-auto d-block vcenter">
+
+    <form (keydown)="keyDownFunction($event, l_email.value)">
+
+      <br>
+      <br>
+      <div class="text-center">
+        <md-input-container floatPlaceholder="always">
+          <input class="text-center" mdInput placeholder="Email" type="email" #l_email style="width: 200px">
+        </md-input-container>
+
+        <button md-raised-button color="accent" (click)="sendPasswordEmail(l_email.value)">Send Reset</button>
+        <br>
+        <br>
+        <p class='text-center'>
+          <a routerLink="/home" style="color:#000">Home</a>&nbsp;&nbsp;
+          <!--<p style="border-left:medium #000 solid; height:25px"></p>-->
+          <a routerLink="/login" style="color:#000">Go Back</a>
+        </p>
+      </div>
+    </form>
+
+  </div>
+</div>

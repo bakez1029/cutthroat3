@@ -73,8 +73,8 @@ export class AddServiceComponent implements OnInit {
     console.log('services', this.serviceList);
   }
 
- updateService(name: string, brand: string, price: string, image: string) {
-      this.myRef.update({ name: this.serviceName, brand: this.serviceDesc, price: this.servicePrice });
+ updateService(name: string, desc: string, price: string, image: string) {
+      this.myRef.update({ name: this.serviceName, desc: this.serviceDesc, price: this.servicePrice });
       alert('Service Updated!');
       this.router.navigate(['/services']);
     }
