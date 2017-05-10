@@ -7,171 +7,254 @@
 
     <div class="container mx-auto d-block" style="min-width:200px; min-width:600px;">
 
-      <div class="container mx-auto d-block">
+      <div class="container mx-auto d-block" style="border: 1px solid black; padding:20px; min-height:450px">
 
 
 
-        <div *ngIf="showDisabledFields">
-
-
-
-          <button md-raised-button color="accent" (click)="onEdit()" style="float:right; margin-top: 5px; margin-right:5px">Change</button>
-
-
-
-
-          <br>
-          <br>
+        <div style="margin-bottom:40px">
           <h4 class="text-center">
-            Shipping Information
+            Order Summary
           </h4>
           <br>
           <br>
+          <table class='table'>
+            <tbody>
+              <tr *ngFor='let item of mine | async' class="mx auto d-block" style="border: 1px solid #000; background-color: #fff; margin-bottom:5px; margin-right:5px; margin-left:5px">
+                <a (click)="removeItem(item.$key)"><i style="color:#000; float:right; margin-top:3px; padding-right:3px" class="fa fa-remove"></i></a>
+                <td style="width:250px">{{ item.brand }}</td>
+                <td style="width:250px">{{item.name}}</td>
+                <!--<td><img [src]='item.image' style="width:50px; height:50px"></td>-->
+                <td>${{ item.price }}</td>
+
+
+              </tr>
+            </tbody>
+          </table>
+
+
+          <p style="float:right">Item(s) SubTotal - ${{subTotal.toFixed(2)}}
+            <br> Shipping & Handling - ${{shipping}}
+            <br> Tax - ${{tax.toFixed(2)}}
+            <br> Total - ${{grandTotal.toFixed(2)}}</p>
+          <br>
+          <br>
+          <br>
+          <br>
 
 
 
-          <div class="text-center mx-auto d-block">
-
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="First Name" value="{{firstName}}" disabled>
-            </md-input-container>
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Last Name" value="{{lastName}}" disabled>
-            </md-input-container>
-            <br>
-            <!--<md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Email" value="{{email}}" disabled>
-            </md-input-container>
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Phone" value="{{phone}}" disabled>
-            </md-input-container>
-            <br>-->
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Address Line 1" value="{{street}}" style="width:400px" disabled>
-            </md-input-container>
-            <br>
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Address Line 2" value="{{street2}}" style="width:400px" disabled>
-            </md-input-container>
-            <br>
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="City" value="{{city}}" disabled>
-            </md-input-container>
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="State" value="{{state}}" style="width:90px" disabled>
-            </md-input-container>
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Zip Code" value="{{postcode}}" style="width:100px" disabled>
-            </md-input-container>
-
-            <br>
-            <br>
-          </div>
         </div>
 
 
-
-        <div *ngIf="showEnabledFields">
-          <br>
-          <br>
-          <h4 class="text-center">
-            Change Information
-          </h4>
-          <br>
-          <br>
+        <!--<div class="row">
+          <div class="col" *ngIf="showDisabledFields">
 
 
-          <div class="text-center">
-
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="First Name" #first value="">
-            </md-input-container>
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Last Name" #last value="">
-            </md-input-container>
-            <br>
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Email" #email value="">
-            </md-input-container>
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Phone" #phone value="">
-            </md-input-container>
-            <br>
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Address Line 1" #street value="" style="width:400px">
-            </md-input-container>
-            <br>
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Address Line 2" #street2 value="" style="width:400px">
-            </md-input-container>
-            <br>
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="City" #city value="">
-            </md-input-container>
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="State" #state value="" style="width:90px">
-            </md-input-container>
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Zip Code" #postcode value="" style="width:100px">
-            </md-input-container>
+            <h4 class="text-center">
+              Shipping Information
+            </h4>
             <br>
             <br>
-            <button md-raised-button color="default" (click)="onSave(); updateItem2(address.$key, street2.value, street.value, city.value, state.value, postcode.value); updateItem(user.$key, first.value, last.value, email.value, phone.value)"
-              style="float:right; margin-top: 10px; margin-right:5px">Save</button>
 
+
+
+            <div class="text-center mx-auto d-block">
+
+
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="First Name" value="{{firstName}}" disabled>
+              </md-input-container>
+
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Last Name" value="{{lastName}}" disabled>
+              </md-input-container>
+              <br>
+         
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Address Line 1" value="{{street}}" style="width:400px" disabled>
+              </md-input-container>
+              <br>
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Address Line 2" value="{{street2}}" style="width:400px" disabled>
+              </md-input-container>
+              <br>
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="City" value="{{city}}" disabled>
+              </md-input-container>
+
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="State" value="{{state}}" style="width:90px" disabled>
+              </md-input-container>
+
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Zip Code" value="{{postcode}}" style="width:100px" disabled>
+              </md-input-container>
+
+              <br>
+              <br>
+              <button md-raised-button color="accent" (click)="onEdit()" style="float:right; margin-top: 5px; margin-right:5px">Change</button>
+            </div>
           </div>
-        </div>
 
 
 
-        <br>
-        <br>
+          <div *ngIf="showEnabledFields">
 
-        <div>
-
-
-          <h4 class="text-center">
-            Payment Method
-          </h4>
-          <br>
-          <br>
-
-
-
-          <div class="text-center mx-auto d-block">
-
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Card Number" value="" style="width:400px">
-            </md-input-container>
+            <h4 class="text-center">
+              Change Information
+            </h4>
             <br>
-            <md-input-container floatPlaceholder="always">
-              <input mdInput placeholder="Name on Card" value="" style="width:400px">
-            </md-input-container>
             <br>
-            <md-select placeholder="MO">
-              <md-option *ngFor="let month of months" [value]="months.value">
-                {{ month.viewValue }}
-              </md-option>
-            </md-select>
-            <md-select placeholder="YR">
-              <md-option *ngFor="let year of years" [value]="year.value">
-                {{ year.viewValue }}
-              </md-option>
-            </md-select>
-            <button md-raised-button color="accent" style="float:right; margin-top: 5px; margin-right:5px">Checkout</button>
 
+
+            <div class="text-center">
+
+
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="First Name" #first value="">
+              </md-input-container>
+
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Last Name" #last value="">
+              </md-input-container>
+              <br>
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Email" #email value="">
+              </md-input-container>
+
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Phone" #phone value="">
+              </md-input-container>
+              <br>
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Address Line 1" #street value="" style="width:400px">
+              </md-input-container>
+              <br>
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Address Line 2" #street2 value="" style="width:400px">
+              </md-input-container>
+              <br>
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="City" #city value="">
+              </md-input-container>
+
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="State" #state value="" style="width:90px">
+              </md-input-container>
+
+              <md-input-container floatPlaceholder="always">
+                <input mdInput placeholder="Zip Code" #postcode value="" style="width:100px">
+              </md-input-container>
+              <br>
+              <br>
+              <button md-raised-button color="default" (click)="onSave(); updateItem2(address.$key, street2.value, street.value, city.value, state.value, postcode.value); updateItem(user.$key, first.value, last.value, email.value, phone.value)"
+                style="float:right; margin-top: 10px; margin-right:5px">Save</button>
+
+            </div>
           </div>
-        </div>
+
+
+
+          <br>
+          <br>
+
+          <div class="col">
+
+
+            <h4 class="text-center">
+              Payment Method
+            </h4>
+            <br>
+     -->
+
+            <!--<form role="form" (submit)="getCardData(number.value, month.value, year.value, cvc.value)" action="post" id="payment-form">
+              <div class="form-group text-center mx-auto d-block">
+
+                <md-input-container floatPlaceholder="always">
+                  <input #number type="text" class="form-control" id="cardNumber" required autofocus data-stripe="number" mdInput placeholder="Card Number"
+                   style="width:400px">
+                </md-input-container>
+                <br>
+                <md-input-container floatPlaceholder="always">
+                  <input mdInput placeholder="Name on Card"  style="width:400px" required>
+                </md-input-container>
+                <br>
+                <md-select placeholder="MO">
+                  <md-option *ngFor="let month of months" [value]="months.value" id="expMonth"
+                    data-stripe="exp_month" required>
+                    {{ month.viewValue }}
+                  </md-option>
+                </md-select>
+                <md-select placeholder="YR">
+                  <md-option *ngFor="let year of years" [value]="year.value" name="expYear"
+                    data-stripe="exp_year" required>
+                    {{ year.viewValue }}
+                  </md-option>
+                </md-select>
+                <md-input-container floatPlaceholder="always">
+                  <input mdInput placeholder="CVC" style="width:40px" #cvc type="text" id="cvCode" data-stripe="cvc"
+                    required>
+                </md-input-container>
+                <br>
+                <button md-raised-button color="warn" type="submit" style="float:right; margin-top: 5px">Purchase</button>
+              </div>
+            </form>-->
+
+            <div style="border: 1px solid black; float:right; margin-right:30px">
+        <!--<div class="mx-auto d-block">
+          <div class="panel panel-default">
+            <div class="panel-body">-->
+              <!--<form role="form" action="post" id="payment-form" (submit)="getCardData(number.value, month.value, year.value,cvc.value)">
+                <div class="payment-errors"></div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Cardholder Name</label>
+                      <input class="form-control input-lg" id="name" data-stripe="name" type="text" placeholder="Jimmy Dean" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Card Number</label>
+                      <input class="form-control input-lg" id="number" type="tel" size="20" data-stripe="number" value="" placeholder="4242 4242 4242 4242" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 col-sm-3 col-xs-4">
+                    <div class="form-group">
+                      <label>Exp Mo</label>
+                      <input class="form-control input-lg" id="exp_month" type="tel" size="2" data-stripe="exp-month" value="" placeholder="01" required>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-4">
+                    <div class="form-group">
+                      <label>Exp Year</label>
+                      <input class="form-control input-lg" id="exp_year" type="tel" size="6" data-stripe="exp-year" value="" placeholder="2020" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-3 col-xs-4">
+                    <div class="form-group pull-right">
+                      <label>CVC</label>
+                      <input class="form-control input-lg" id="cvc" type="tel" size="4" data-stripe="cvc" value="" placeholder="555" required>
+                    </div>
+                  </div>-->
+                <!--</div>-->
+         
+                    <button class="btn btn-lg btn-block btn-success submit" type="submit" (click)="openCheckout()">Continue</button>
+               
+              <!--</form>-->
+            <!--</div>
+          </div>
+
+          
+        </div>-->
+      </div>
+
+
+
 
       </div>
     </div>

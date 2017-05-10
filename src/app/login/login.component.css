@@ -1,32 +1,5 @@
-.title-box-log {
-  width: 500px;
-  height: auto;
-  padding: 20px;
-  min-height: 250px;
-  border: 1px solid black;
-  background-color: #fff;
-  display: inline-block;
-}
-
-.title-box-mob {
-  width: 100%;
-  height: auto;
-  padding: 20px;
-  min-height: 250px;
-  border: 1px solid black;
-  background-color: #fff;
-  display: inline-block;
-}
-
-.page-mob {
-  width: 100%;
-  min-height: 250px;
-  max-height: 500px;
-  background-color: #696969;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  color: #000;
-
+.title-box{
+    padding: 20px;
+    background-color: #696969;
+    border: none;
 }

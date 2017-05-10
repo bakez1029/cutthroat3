@@ -1,21 +1,25 @@
-<div class="hidden-xs-down page">
-  <div class="title-box-log mx-auto d-block vcenter">
+<div class="page">
+  <div class="title-box">
     <br>
-    <div *ngIf="!loggedIn" class="text-center">
-      <form (keydown)="keyDownFunction($event, l_email.value, l_password.value)">
+    <div *ngIf="!loggedIn" class="text-center mx-auto d-block vcenter" style="border: 1px solid black; min-width: 250px; max-width:500px; background-color: #fff">
+
+      <span class="error" *ngIf="error" style="color:#DB2226">{{error}}<br></span>
+      <br>
+      <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
 
         <md-input-container floatPlaceholder="always">
-          <input class="text-center" mdInput placeholder="Email" type="email" #l_email style="width: 300px">
+          <input class="text-center" mdInput placeholder="Email" type="text" (ngModel)="email" name="email" class="txt" required>
         </md-input-container>
 
         <br>
         <md-input-container floatPlaceholder="always">
-          <input class="text-center" mdInput placeholder="Password" type="password" #l_password type="password" style="width: 300px">
+          <input class="text-center" mdInput placeholder="Password" type="password" (ngModel)="password" name="password" class="txt" required>
         </md-input-container>
 
 
         <br>
-        <button md-raised-button color="warn" (click)="login(l_email.value, l_password.value)">Sign In</button>
+        <button type="submit" md-raised-button color="warn" [disabled]="!formData.valid">Sign In</button>
       </form>
 
       <p class='text-center'>
@@ -25,45 +29,11 @@
       </p>
     </div>
     <div *ngIf="loggedIn" class="text-center">
-      <!--user's uid = {{uid}}<br/>
-      <br>-->
+      <img src="assets/images/icon3.png" style="width: 128px; height: 128px; background-color: #000 !important" class="img-thumbnail">
+      <br>
+      <br>
       <button md-raised-button color="accent" (click)="logout()">Sign Out</button>
     </div>
   </div>
 </div>
 
-<div class="hidden-sm-up page-mob">
-
-  <div class="title-box-mob mx-auto d-block vcenter">
-    <br>
-    <div *ngIf="!loggedIn" class="text-center">
-      <form (keydown)="keyDownFunction($event, l_email.value, l_password.value)">
-
-        <md-input-container floatPlaceholder="always">
-          <input class="text-center" mdInput placeholder="Email" type="email" #l_email style="width: 200px">
-        </md-input-container>
-
-        <br>
-        <md-input-container floatPlaceholder="always">
-          <input class="text-center" mdInput placeholder="Password" type="password" #l_password type="password" style="width: 200px">
-        </md-input-container>
-
-
-        <br>
-        <button md-raised-button color="warn" (click)="login(l_email.value, l_password.value)">Sign In</button>
-      </form>
-
-      <p class='text-center'>
-        <a routerLink="/register" style="color:#000">Create Account</a>&nbsp;&nbsp;
-        <!--<p style="border-left:medium #000 solid; height:25px"></p>-->
-        <a routerLink="/forgot" style="color:#000">Forgot Password</a>
-      </p>
-    </div>
-    <div *ngIf="loggedIn" class="text-center">
-      <!--user's uid = {{uid}}<br/>
-      <br>-->
-      <button md-raised-button color="accent" (click)="logout()">Sign Out</button>
-    </div>
-  </div>
-
-</div>

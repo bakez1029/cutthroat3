@@ -11,6 +11,8 @@ interface Image {
   filename: string;
   downloadURL?: string;
   $key?: string;
+
+
 }
 
 @Component({
@@ -28,9 +30,16 @@ export class AddBarberComponent implements OnInit {
   editPage: boolean = false;
   barberList: FirebaseListObservable<any[]>;
   myRef: any;
+
+  addPage: boolean = true;
   constructor(public af: AngularFire, public router: Router, public route: ActivatedRoute, ) {
     if (this.route.snapshot.url.length == 4 && this.route.snapshot.url[2].path == 'edit') {
+
       this.editPage = true;
+      if (this.editPage = true) {
+        this.addPage = false
+
+      }
 
       // go get product info for product id (this.route.snapshot.params['id'])
       this.af.database.object('/barbers/' + this.route.snapshot.params['id']).subscribe((barber: any) => {

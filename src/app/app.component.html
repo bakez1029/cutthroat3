@@ -82,7 +82,7 @@
   <div style="clear: both"></div>
   <aside>
     <div style="float:left; width: 200px; background-color: #000; min-height:650px">
-      <div *ngIf="authed == null" style="color: #fff; border-bottom:1px solid white" class="text-center">
+      <div *ngIf="authed == null" style="color: #fff" class="text-center">
         <!--<div style="margin-bottom:5px; margin-top:5px">
           <a routerLink="/login">Sign In</a>&nbsp;&nbsp;&nbsp;
           <a routerLink="/register">New Account</a>
@@ -129,9 +129,6 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/jobs"><span class="MenuSideMainLink"><span class="MainLinkText">JOBS</span></span></a>
         </li>
-        <!--<li class="nav-item">
-          <a class="nav-link" routerLink="/contact"><span class="MenuSideMainLink"><span class="MainLinkText">CONTACT</span></span></a>
-        </li>-->
         <li *ngIf="authed == null" class="nav-item">
           <a class="nav-link" routerLink="/login"><span class="MenuSideMainLink"><span class="MainLinkText">SIGN IN</span></span></a>
         </li>

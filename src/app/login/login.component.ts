@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, AuthProviders } from 'angularfire2'
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2'
 import { AuthService } from '../auth.service'
 import { Router } from '@angular/router'
-
-
-
 import * as firebase from 'firebase';
 
 
@@ -13,12 +10,12 @@ import * as firebase from 'firebase';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   uid: string;
   email: string;
   password: string;
   loggedIn: boolean = false;
-
   error: any;
 
 
@@ -34,18 +31,39 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
-  login(email: string, password: string) {
-    if (this.error) {
-      alert("There was an error. Please try again")
-    } else {
-      this.af.auth.login({ email: email, password: password, provider: AuthProviders.Password });
-      this.router.navigate(['/account']);
-
+    onSubmit(formData) {
+    if(formData.valid) {
+      this.af.auth.login({
+        email: formData.value.email,
+        password: formData.value.password,
+        provider: AuthProviders.Password,
+    
+      }).then(
+        (success) => {
+        console.log(success);
+        this.router.navigate(['/account']);
+      }).catch(
+        (err) => {
+        console.log(err);
+        this.error = err;
+      })
     }
-
-
   }
+    
+// loginGoogle() {
+//   this.af.auth.login({
+//     provider: AuthProviders.Google,
+//     method: AuthMethods.Popup,
+//   }).then(
+//     (success) => {
+//       this.router.navigate(['/account']);
+//     }).catch(
+//       (err) => {
+//         this.error = err;
+//       })
+// }
+
+  
   logout() {
     this.authService.logout();
     console.log('logged out');
@@ -56,14 +74,6 @@ export class LoginComponent implements OnInit {
 
   sendPasswordEmail() {
     this.authService.sendPasswordResetEmail("tbaker000@gmail.com");
-  }
-
-  keyDownFunction(event, email: string, password: string) {
-    if (event.keyCode == 13) {
-      this.af.auth.login({ email: email, password: password, provider: AuthProviders.Password });
-      this.router.navigate(['/account']);
-      // rest of your code
-    }
   }
 
 }
