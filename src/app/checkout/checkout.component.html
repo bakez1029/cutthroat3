@@ -5,9 +5,9 @@
     <br>
     <br>
 
-    <div class="container mx-auto d-block" style="min-width:200px; min-width:600px;">
+    <div class="container mx-auto d-block" style="min-width:200px; width: auto; max-width:850px">
 
-      <div class="container mx-auto d-block" style="border: 1px solid black; padding:20px; min-height:450px">
+      <div class="container mx-auto d-block" style="padding:20px; min-height:450px">
 
 
 
@@ -17,7 +17,7 @@
           </h4>
           <br>
           <br>
-          <table class='table'>
+          <table class='table responsive'>
             <tbody>
               <tr *ngFor='let item of mine | async' class="mx auto d-block" style="border: 1px solid #000; background-color: #fff; margin-bottom:5px; margin-right:5px; margin-left:5px">
                 <a (click)="removeItem(item.$key)"><i style="color:#000; float:right; margin-top:3px; padding-right:3px" class="fa fa-remove"></i></a>
@@ -31,22 +31,36 @@
             </tbody>
           </table>
 
+          <div class="row">
+            <div class="col-md-6" style="padding:20px">
+              <p>Item(s) SubTotal - ${{subTotal.toFixed(2)}}
+                <br> Shipping & Handling - ${{shipping}}
+                <br> Tax - ${{tax.toFixed(2)}}
+                <br> Total - ${{grandTotal.toFixed(2)}}</p>
+            </div>
+            <div class="col-md-6" style="float:right; padding:20px">
+              <form action="/charge" method="post" id="payment-form" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+                <div class="form-row">
+                  <md-input-container floatPlaceholder="always" class="mx-auto d-block">
+                    <input mdInput placeholder="Card Holder's Name" style="width:auto; min-width:320px" type="text" (ngModel)="name" name="name" class="txt" required>
+                  </md-input-container>
+                  <label for="card-element">
 
-          <p style="float:right">Item(s) SubTotal - ${{subTotal.toFixed(2)}}
-            <br> Shipping & Handling - ${{shipping}}
-            <br> Tax - ${{tax.toFixed(2)}}
-            <br> Total - ${{grandTotal.toFixed(2)}}</p>
-          <br>
-          <br>
-          <br>
-          <br>
+    </label>
+                  <div id="card-element">
+                    <!-- a Stripe Element will be inserted here. -->
+                  </div>
 
+                  <!-- Used to display form errors -->
+                  <div id="card-errors"></div>
+                </div>
+                <br>
+                <button style="max-width:320px; width:auto; cursor:pointer; float:right" [disabled]="!formData.valid" class="btn btn-lg btn-block btn-success" type="submit">Pay Now</button>
+              </form>
+            </div>
+          </div>
 
-
-        </div>
-
-
-        <!--<div class="row">
+          <!--<div class="row">
           <div class="col" *ngIf="showDisabledFields">
 
 
@@ -167,7 +181,7 @@
             <br>
      -->
 
-            <!--<form role="form" (submit)="getCardData(number.value, month.value, year.value, cvc.value)" action="post" id="payment-form">
+          <!--<form role="form" (submit)="getCardData(number.value, month.value, year.value, cvc.value)" action="post" id="payment-form">
               <div class="form-group text-center mx-auto d-block">
 
                 <md-input-container floatPlaceholder="always">
@@ -200,11 +214,11 @@
               </div>
             </form>-->
 
-            <div style="border: 1px solid black; float:right; margin-right:30px">
-        <!--<div class="mx-auto d-block">
+          <div style="float:right; margin-right:30px; width:300px">
+            <!--<div class="mx-auto d-block">
           <div class="panel panel-default">
             <div class="panel-body">-->
-              <!--<form role="form" action="post" id="payment-form" (submit)="getCardData(number.value, month.value, year.value,cvc.value)">
+            <!--<form role="form" action="post" id="payment-form" (submit)="getCardData(number.value, month.value, year.value,cvc.value)">
                 <div class="payment-errors"></div>
                 <div class="row">
                   <div class="col-md-12">
@@ -241,23 +255,23 @@
                       <input class="form-control input-lg" id="cvc" type="tel" size="4" data-stripe="cvc" value="" placeholder="555" required>
                     </div>
                   </div>-->
-                <!--</div>-->
-         
-                    <button class="btn btn-lg btn-block btn-success submit" type="submit" (click)="openCheckout()">Continue</button>
-               
-              <!--</form>-->
+            <!--</div>-->
+
+            <!--<button class="btn btn-lg btn-block btn-success submit" type="submit" (click)="openCheckout()">Continue</button>-->
+
+            <!--</form>-->
             <!--</div>
           </div>
 
           
         </div>-->
-      </div>
 
 
 
+
+
+          </div>
+        </div>
 
       </div>
     </div>
-
-  </div>
-</div>

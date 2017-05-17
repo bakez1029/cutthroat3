@@ -140,7 +140,7 @@
         </li>-->
       </ul>
 
-      <p *ngIf="authed != null && !admin" class="text-center" style="color:#fff; border: 1px solid #fff; margin-top:5px"> Cart Items | <a routerLink='/checkout'>Checkout</a></p>
+      <p *ngIf="authed != null && hasCart" class="text-center" style="color:#fff; border: 1px solid #fff; margin-top:5px"> Cart Items | <a routerLink='/checkout'>Checkout</a></p>
       <div *ngIf="authed != null">
         <div *ngFor='let item of mine | async' class="mx auto d-block" style="border: 1px solid #000; background-color: #fff; margin-bottom:5px; margin-right:5px; margin-left:5px">
           <a (click)="removeItem(item.$key)"><i style="color:#000; float:right; margin-top:3px; padding-right:3px" class="fa fa-remove"></i></a>

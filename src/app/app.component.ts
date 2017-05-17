@@ -16,12 +16,14 @@ export class AppComponent implements OnInit {
   mine: any;
   user: any;
 
+  hasCart: boolean = false;
 
   constructor(public af: AngularFire, private router: Router, private authService: AuthService) { }
 
 
 
   ngOnInit() {
+    console.log(this.hasCart)
     // we subscribe here so the users auth will get called as soon as a user loads the website
     // this way there won't be a delay in lookuping up the users auth later
     this.af.auth.subscribe(auth => {
@@ -65,11 +67,15 @@ export class AppComponent implements OnInit {
   getUser(uid: string) {
     this.af.database.object('/users/' + uid).subscribe((user: any) => {
       this.user = user;
-      this.mine = this.af.database.list('/users/' + uid + '/cart')
-
-
-
-
+      this.mine = this.af.database.list('/users/' + uid + '/cart');
+      this.mine.subscribe(cart => {
+      if (cart.length != 0){
+      this.hasCart = true;
+      } else {
+        this.hasCart = false;
+      }
+   console.log(this.hasCart)
+      });
     });
   }
 

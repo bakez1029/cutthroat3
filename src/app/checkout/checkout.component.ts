@@ -16,6 +16,12 @@ export class CheckoutComponent implements OnInit {
 
   globalListener: any;
 
+  name: string;
+  length: any;
+  cartItems: any;
+  allCartItems: any;
+
+
   months = [
     { value: '1-0', viewValue: '1' },
     { value: '2-1', viewValue: '2' },
@@ -94,12 +100,88 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private authService: AuthService, public af: AngularFire, private router: Router, private cd: ChangeDetectorRef, private renderer: Renderer) {
 
+
     const stripe = Stripe('pk_test_g28TckkfT61O55rHUCgH7aDO');
 
     this.items2 = this.ref
   }
 
   ngOnInit() {
+
+
+    // Create a Stripe client
+    var stripe = Stripe('pk_test_g28TckkfT61O55rHUCgH7aDO');
+
+    // Create an instance of Elements
+    var elements = stripe.elements();
+
+    // Custom styling can be passed to options when creating an Element.
+    // (Note that this demo uses a wider set of styles than the guide below.)
+    var style = {
+      base: {
+        color: '#32325d',
+        lineHeight: '24px',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+          color: '#aab7c4'
+        }
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+      }
+    };
+
+    // Create an instance of the card Element
+    var card = elements.create('card', { style: style });
+
+    // Add an instance of the card Element into the `card-element` <div>
+    card.mount('#card-element');
+
+    // Handle real-time validation errors from the card Element.
+    card.addEventListener('change', function (event) {
+      var displayError = document.getElementById('card-errors');
+      if (event.error) {
+        displayError.textContent = event.error.message;
+      } else {
+        displayError.textContent = '';
+      }
+    });
+
+    // Handle form submission
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      stripe.createToken(card).then(function (result) {
+        if (result.error) {
+          // Inform the user if there was an error
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+        } else {
+          // Send the token to your server
+          stripeTokenHandler(result.token);
+        }
+      });
+    });
+
+    function stripeTokenHandler(token) {
+      // Insert the token ID into the form so it gets submitted to the server
+      var form = document.getElementById('payment-form');
+      var hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'stripeToken');
+      hiddenInput.setAttribute('value', token.id);
+      form.appendChild(hiddenInput);
+
+
+
+
+
+
+    }
 
 
 
@@ -120,7 +202,7 @@ export class CheckoutComponent implements OnInit {
     this.af.database.object('/users/' + uid).subscribe((user: any) => {
       this.mine = this.af.database.list('/users/' + uid + '/cart')
       this.computeCart();
-      this.order = this.af.database.list('/users/' + uid + '/orders')
+      this.order = this.af.database.list('/orders')
       this.user = user;
       this.firstName = user.first;
       this.lastName = user.last;
@@ -132,12 +214,12 @@ export class CheckoutComponent implements OnInit {
       this.items = this.af.database.list('/users/')
     });
     this.af.database.object('/users/' + uid + '/address/').subscribe((address: any) => {
-      this.address = address;
       this.street = address.street;
       this.street2 = address.street2;
       this.city = address.city;
       this.state = address.state;
       this.postcode = address.postcode;
+      this.user.address = address.street + " " + address.street2 + " " + address.city + " " + address.state + " " + address.postcode;
       this.cd.markForCheck();
 
       this.items2 = this.af.database.list('/users/' + uid)
@@ -244,8 +326,13 @@ export class CheckoutComponent implements OnInit {
 
     this.mine.subscribe(cart => {
       for (let item of cart) {
-        console.log(item.price, "CART");
         subtotal += parseInt(item.price)
+        // this.cartItems = [{ brand: item.brand, name: item.name, price: item.price }];
+        console.log(this.cartItems, "ITEMS ??")
+
+
+
+
 
       }
       console.log(subtotal);
@@ -253,37 +340,67 @@ export class CheckoutComponent implements OnInit {
       this.shipping = this.shipRate;
       this.tax = subtotal * this.taxRate;
       this.grandTotal = subtotal + this.shipping + this.tax;
-console.log(this.grandTotal, "grandtotal")
+      console.log(this.grandTotal, "grandtotal")
     });
 
 
   }
 
-  openCheckout() {
-    var handler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_g28TckkfT61O55rHUCgH7aDO',
-      locale: 'auto',
-      token: function (token: any) {
-        // You can access the token ID with `token.id`.
-        // Get the token ID to your server-side code for use.
-      }
-    });
+  // openCheckout() {
+  //   var handler = (<any>window).StripeCheckout.configure({
+  //     key: 'pk_test_g28TckkfT61O55rHUCgH7aDO',
+  //     locale: 'auto',
+  //     token: function (token: any) {
+  //       // You can access the token ID with `token.id`.
+  //       // Get the token ID to your server-side code for use.
+  //     }
+  //   });
 
-    handler.open({
-      name: 'Cutthroat Barbershop',
-      description: 'Checkout',
-      amount: this.grandTotal
-    });
+  //   handler.open({
+  //     name: 'Cutthroat Barbershop',
+  //     description: 'Checkout',
+  //     amount: this.grandTotal
+  //   });
 
-    this.globalListener = this.renderer.listenGlobal('window', 'popstate', () => {
-      handler.close();
-    });
-  }
+  //   this.globalListener = this.renderer.listenGlobal('window', 'popstate', () => {
+  //     handler.close()
 
-  ngOnDestroy() {
-    this.globalListener();
-  }
+  //   });
+
+  // }
+
+  // ngOnDestroy() {
+  //   this.globalListener();
+  // }
+
+  onSubmit(formData) {
+    if (formData.valid) {
+      // name = formData.value.name,
+      alert("Your transaction was successful. A payment confirmation has been sent to your E-mail.");
+  
 }
+      this.mine.subscribe(cart => {
+        
+        for (let item of cart) {
+          
+          this.cartItems = [{ brand: item.brand, name: item.name, price: item.price }];
+          console.log(this.cartItems, "ITEMS ??")
+        }
+      });
+      this.order.push({ orderNumber: "1", transactionId: "2345521", userId: this.authService.uid, subTotal: this.subTotal, Total: this.grandTotal, cartItems: this.cartItems, address: this.user.address });
+      this.mine.remove();
+      setTimeout((router: Router) => {
+        this.router.navigate(['/home']);
+      }, 1000);  //5s
+
+    }
+
+
+  }
+
+
+
+
 
 
 
