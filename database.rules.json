@@ -23,6 +23,10 @@
     "services":{
     ".read": true,
     ".write": true
+    },
+    "orders":{
+    ".read": true,
+    ".write": true
     }
   }
 }

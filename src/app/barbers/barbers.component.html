@@ -3,15 +3,17 @@
 
     <div class="flex-container">
       <div class="flex-item" *ngFor='let item of barberList | async'>
-
         <div *ngIf="admin">
-          <p class="text-center"><a routerLink="/barber', barber.barberId">{{item.name}}</a><a (click)="removeBarb(item.$key)"><i style="color:#000; float:right" class="fa fa-remove fa-2x"></i></a></p>
+          <p class="text-center"><a routerLink="/barber', barber.barberId">{{item.name}}</a><a (click)="removeBarb(item.$key)"><i style="color:#000; float:right; margin-bottom:5px" class="fa fa-remove fa-2x"></i></a>
+          <a href="item.instaLink" style="color:#000">{{item.insta}}</a></p>
           <a><img [src]='item.image' class="img-thumbnail" style="max-width:250px; max-height:250px; min-width:250px; min-height:250px"></a>
-            </div>
-      
-        <div *ngIf="!admin">
-          <p class="text-center"><a routerLink="/barber', barber.barberId">{{item.name}}</a></p>
+        </div>
 
+        <div *ngIf="!admin">
+
+          <p class="text-center"><a routerLink="/barber', barber.barberId">{{item.name}}</a>
+          <br>
+          <a href="{{item.instaLink}}" style="color:#000">{{item.insta}}</a></p>
           <a><img [src]='item.image' class="img-thumbnail" style="max-width:250px; max-height:250px; min-width:250px; min-height:250px">
           </a>
         </div>

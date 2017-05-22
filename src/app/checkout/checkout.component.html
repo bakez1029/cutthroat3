@@ -1,17 +1,17 @@
 <div class="page">
 
-  <div class="title-box" style="min-height: 1211px">
+  <div class="title-box" style="min-height: 1411px">
 
     <br>
     <br>
 
-    <div class="container mx-auto d-block" style="min-width:200px; width: auto; max-width:850px">
+    <div class="container mx-auto d-block" style="min-width:200px; width: auto; max-width:950px">
 
-      <div class="container mx-auto d-block" style="padding:20px; min-height:450px">
+      <div class="col-lg-12 mx-auto d-block" style="padding:10px; width: auto; min-height:450px">
 
 
 
-        <div style="margin-bottom:40px">
+        <div style="margin-bottom:40px; border: 1px solid black; padding:10px">
           <h4 class="text-center">
             Order Summary
           </h4>
@@ -32,246 +32,168 @@
           </table>
 
           <div class="row">
-            <div class="col-md-6" style="padding:20px">
-              <p>Item(s) SubTotal - ${{subTotal.toFixed(2)}}
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6" style="float:right; padding:20px">
+              <p style="float:right">Item(s) SubTotal - ${{subTotal.toFixed(2)}}
                 <br> Shipping & Handling - ${{shipping}}
                 <br> Tax - ${{tax.toFixed(2)}}
                 <br> Total - ${{grandTotal.toFixed(2)}}</p>
             </div>
-            <div class="col-md-6" style="float:right; padding:20px">
-              <form action="/charge" method="post" id="payment-form" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-                <div class="form-row">
-                  <md-input-container floatPlaceholder="always" class="mx-auto d-block">
-                    <input mdInput placeholder="Card Holder's Name" style="width:auto; min-width:320px" type="text" (ngModel)="name" name="name" class="txt" required>
+
+            <div class="row">
+              <div class="col-md-6">
+
+
+                <h4 class="text-center">
+                  Shipping Information
+                </h4>
+                <br>
+                <br>
+
+
+
+                <div class="text-center mx-auto d-block">
+
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="First Name" style="width: auto; max-width:200px">
                   </md-input-container>
-                  <label for="card-element">
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Last Name" style="width: auto; max-width:200px">
+                  </md-input-container>
+                  <br>
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Email" style="width: auto; max-width:200px">
+                  </md-input-container>
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Phone" style="width: auto; max-width:200px">
+                  </md-input-container>
+                  <br>
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Address Line 1" style="width: auto; max-width:400px">
+                  </md-input-container>
+                  <br>
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Address Line 2" style="width: auto; max-width:400px">
+                  </md-input-container>
+                  <br>
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="City" style="width: auto">
+                  </md-input-container>
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="State" style="width: auto; max-width:90px">
+                  </md-input-container>
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Zip Code" style="width: auto; max-width:100px">
+                  </md-input-container>
+
+                  <br>
+                  <br>
+                  <md-checkbox>Same as Billing Address</md-checkbox>
+                </div>
+              </div>
+
+
+
+
+
+
+              <div class="col-md-6">
+
+
+                <h4 class="text-center">
+                  Billing Information
+                </h4>
+                <br>
+                <br>
+
+
+
+                <div class="text-center mx-auto d-block">
+
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="First Name">
+                  </md-input-container>
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Last Name">
+                  </md-input-container>
+                  <br>
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Email">
+                  </md-input-container>
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Phone">
+                  </md-input-container>
+                  <br>
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Address Line 1">
+                  </md-input-container>
+                  <br>
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Address Line 2">
+                  </md-input-container>
+                  <br>
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="City">
+                  </md-input-container>
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="State" style="width:90px">
+                  </md-input-container>
+
+                  <md-input-container floatPlaceholder="always">
+                    <input mdInput placeholder="Zip Code" style="width:100px">
+                  </md-input-container>
+
+                  <br>
+                  <br>
+
+                </div>
+              </div>
+
+
+
+
+              <div class="mx-auto d-block" style="margin-top:60px">
+                <h4 class="text-center">
+                  Payment Method
+                </h4>
+                <br>
+
+                <form action="/charge" method="post" id="payment-form" #formData='ngForm'>
+                  <div class="form-row">
+                    <md-input-container floatPlaceholder="always" class="mx-auto d-block">
+                      <input mdInput placeholder="Card Holder's Name" style="width:auto; max-width:320px" type="text" (ngModel)="name" name="name"
+                        class="txt" required>
+                    </md-input-container>
+
+                    <label for="card-element">
 
     </label>
-                  <div id="card-element">
-                    <!-- a Stripe Element will be inserted here. -->
+                    <div id="card-element">
+                      <!-- a Stripe Element will be inserted here. -->
+                    </div>
+
+                    <!-- Used to display form errors -->
+                    <div id="card-errors"></div>
                   </div>
-
-                  <!-- Used to display form errors -->
-                  <div id="card-errors"></div>
-                </div>
-                <br>
-                <button style="max-width:320px; width:auto; cursor:pointer; float:right" [disabled]="!formData.valid" class="btn btn-lg btn-block btn-success" type="submit">Pay Now</button>
-              </form>
-            </div>
-          </div>
-
-          <!--<div class="row">
-          <div class="col" *ngIf="showDisabledFields">
-
-
-            <h4 class="text-center">
-              Shipping Information
-            </h4>
-            <br>
-            <br>
-
-
-
-            <div class="text-center mx-auto d-block">
-
-
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="First Name" value="{{firstName}}" disabled>
-              </md-input-container>
-
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Last Name" value="{{lastName}}" disabled>
-              </md-input-container>
-              <br>
-         
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Address Line 1" value="{{street}}" style="width:400px" disabled>
-              </md-input-container>
-              <br>
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Address Line 2" value="{{street2}}" style="width:400px" disabled>
-              </md-input-container>
-              <br>
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="City" value="{{city}}" disabled>
-              </md-input-container>
-
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="State" value="{{state}}" style="width:90px" disabled>
-              </md-input-container>
-
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Zip Code" value="{{postcode}}" style="width:100px" disabled>
-              </md-input-container>
-
-              <br>
-              <br>
-              <button md-raised-button color="accent" (click)="onEdit()" style="float:right; margin-top: 5px; margin-right:5px">Change</button>
-            </div>
-          </div>
-
-
-
-          <div *ngIf="showEnabledFields">
-
-            <h4 class="text-center">
-              Change Information
-            </h4>
-            <br>
-            <br>
-
-
-            <div class="text-center">
-
-
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="First Name" #first value="">
-              </md-input-container>
-
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Last Name" #last value="">
-              </md-input-container>
-              <br>
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Email" #email value="">
-              </md-input-container>
-
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Phone" #phone value="">
-              </md-input-container>
-              <br>
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Address Line 1" #street value="" style="width:400px">
-              </md-input-container>
-              <br>
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Address Line 2" #street2 value="" style="width:400px">
-              </md-input-container>
-              <br>
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="City" #city value="">
-              </md-input-container>
-
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="State" #state value="" style="width:90px">
-              </md-input-container>
-
-              <md-input-container floatPlaceholder="always">
-                <input mdInput placeholder="Zip Code" #postcode value="" style="width:100px">
-              </md-input-container>
-              <br>
-              <br>
-              <button md-raised-button color="default" (click)="onSave(); updateItem2(address.$key, street2.value, street.value, city.value, state.value, postcode.value); updateItem(user.$key, first.value, last.value, email.value, phone.value)"
-                style="float:right; margin-top: 10px; margin-right:5px">Save</button>
-
-            </div>
-          </div>
-
-
-
-          <br>
-          <br>
-
-          <div class="col">
-
-
-            <h4 class="text-center">
-              Payment Method
-            </h4>
-            <br>
-     -->
-
-          <!--<form role="form" (submit)="getCardData(number.value, month.value, year.value, cvc.value)" action="post" id="payment-form">
-              <div class="form-group text-center mx-auto d-block">
-
-                <md-input-container floatPlaceholder="always">
-                  <input #number type="text" class="form-control" id="cardNumber" required autofocus data-stripe="number" mdInput placeholder="Card Number"
-                   style="width:400px">
-                </md-input-container>
-                <br>
-                <md-input-container floatPlaceholder="always">
-                  <input mdInput placeholder="Name on Card"  style="width:400px" required>
-                </md-input-container>
-                <br>
-                <md-select placeholder="MO">
-                  <md-option *ngFor="let month of months" [value]="months.value" id="expMonth"
-                    data-stripe="exp_month" required>
-                    {{ month.viewValue }}
-                  </md-option>
-                </md-select>
-                <md-select placeholder="YR">
-                  <md-option *ngFor="let year of years" [value]="year.value" name="expYear"
-                    data-stripe="exp_year" required>
-                    {{ year.viewValue }}
-                  </md-option>
-                </md-select>
-                <md-input-container floatPlaceholder="always">
-                  <input mdInput placeholder="CVC" style="width:40px" #cvc type="text" id="cvCode" data-stripe="cvc"
-                    required>
-                </md-input-container>
-                <br>
-                <button md-raised-button color="warn" type="submit" style="float:right; margin-top: 5px">Purchase</button>
+                  <br>
+                  <button style="min-width:300px; width:auto; cursor:pointer; float:right" [disabled]="!formData.valid" class="btn btn-lg btn-block btn-success"
+                    type="submit">Pay Now</button>
+                </form>
               </div>
-            </form>-->
 
-          <div style="float:right; margin-right:30px; width:300px">
-            <!--<div class="mx-auto d-block">
-          <div class="panel panel-default">
-            <div class="panel-body">-->
-            <!--<form role="form" action="post" id="payment-form" (submit)="getCardData(number.value, month.value, year.value,cvc.value)">
-                <div class="payment-errors"></div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Cardholder Name</label>
-                      <input class="form-control input-lg" id="name" data-stripe="name" type="text" placeholder="Jimmy Dean" required>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Card Number</label>
-                      <input class="form-control input-lg" id="number" type="tel" size="20" data-stripe="number" value="" placeholder="4242 4242 4242 4242" required>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3 col-sm-3 col-xs-4">
-                    <div class="form-group">
-                      <label>Exp Mo</label>
-                      <input class="form-control input-lg" id="exp_month" type="tel" size="2" data-stripe="exp-month" value="" placeholder="01" required>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-3 col-xs-4">
-                    <div class="form-group">
-                      <label>Exp Year</label>
-                      <input class="form-control input-lg" id="exp_year" type="tel" size="6" data-stripe="exp-year" value="" placeholder="2020" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-3 col-xs-4">
-                    <div class="form-group pull-right">
-                      <label>CVC</label>
-                      <input class="form-control input-lg" id="cvc" type="tel" size="4" data-stripe="cvc" value="" placeholder="555" required>
-                    </div>
-                  </div>-->
-            <!--</div>-->
-
-            <!--<button class="btn btn-lg btn-block btn-success submit" type="submit" (click)="openCheckout()">Continue</button>-->
-
-            <!--</form>-->
-            <!--</div>
+            </div>
           </div>
 
-          
-        </div>-->
-
-
-
-
-
-          </div>
         </div>
-
       </div>
-    </div>

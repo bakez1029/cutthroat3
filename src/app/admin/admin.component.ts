@@ -7,19 +7,38 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  forms: any;
-
-  items: FirebaseListObservable<any>;
-
-  constructor(public af: AngularFire) {  }
+  orders: any;
+  orderStatus: FirebaseListObservable<any[]>;
+  pending: boolean = false;
+  shipped: boolean = false;
+  cancelled: boolean = false;
+  constructor(public af: AngularFire) { }
 
   ngOnInit() {
 
-    
-      this.forms = this.af.database.list('/forms');
-      console.log('Forms', this.forms);
-    
+
+    this.orders = this.af.database.list('/orders');
+    console.log('Forms', this.orders);
+
+
   }
+ifPending(key: string) {
+    this.orderStatus = this.af.database.list('/orders');
+    this.orderStatus.update(key, { status: "Pending" });
   
+  }
+
+
+  ifShipped(key: string) {
+    this.orderStatus = this.af.database.list('/orders');
+    this.orderStatus.update(key, { status: "Shipped" });
+
+  }
+
+  ifCancelled(key: string) {
+    this.orderStatus = this.af.database.list('/orders');
+    this.orderStatus.update(key, { status: "Cancelled" });
+
+  }
 
 }

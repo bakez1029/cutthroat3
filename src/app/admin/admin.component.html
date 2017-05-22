@@ -12,6 +12,46 @@
         style="color:#000">Add New Picture</a>&nbsp;&nbsp;&nbsp;&nbsp;
     </p>
   </div>
+  <br>
+  <br>
+
+
+  <div *ngFor='let item of orders | async' class="mx-auto d-block" style="border: 1px solid #000; background-color: #fff; margin-bottom:5px; margin-right:5px; margin-left:5px; width:500px; height:auto; padding-left:10px">
+    <div class="card" style="float:right; height:100px">
+      <div class="card-block">
+        <h4 class="card-title">Shipping Status</h4>
+        <div *ngIf="(item.status == 'Pending')">
+          <p class="text-center" style="color: #4286f4">{{item.status}}</p>
+        </div>
+        <div *ngIf="(item.status == 'Shipped')">
+          <p class="text-center" style="color: #42f44e">{{item.status}}</p>
+        </div>
+        <div *ngIf="(item.status == 'Cancelled')">
+          <p class="text-center" style="color: red">{{item.status}}</p>
+        </div>
+      </div>
+    </div>
+    <h4 class="text-center">Order {{item.orderNumber}}</h4>
+
+    Customer Id: {{item.userId}}
+    <br> Transaction Id: {{item.transactionId}} 
+    Shipping Address: {{item.address.street}} {{item.address.street2}} {{item.address.city}}
+    {{item.address.state}} {{item.address.postcode}}
+    <br>
+    <a (click)="ifShipped(item.$key)" style="float:right;padding-right:30px; color: #a9a9a9; cursor:pointer"><i>Mark as Shipped&nbsp;</i></a>
+    <br>
+    <a (click)="ifCancelled(item.$key)" style="float:right;padding-right:30px; color:#a9a9a9; cursor:pointer"><i>Mark as Cancelled</i></a>
+    <br> Items Purchased :
+    <div *ngFor="let subitem of item.cartItems">
+      - {{subitem.brand}}, {{subitem.name}}, {{subitem.price}}
+    </div>
+    <br> SubTotal: {{item.subTotal}}
+    <br> Total Paid: {{item.Total}}
+    <br> Date: {{item.date}}
+  </div>
+
+
+
 </div>
 
 
@@ -27,10 +67,41 @@
         <a routerLink="/admin/services/add" style="color:#000">Add New Service</a>
         <br>
         <a routerLink="/admin/barbers/add" style="color:#000">Add New Barber</a>&nbsp;
-        <br>
-        &nbsp;&nbsp;<a routerLink="/admin/photo/add" style="color:#000">Add New Picture</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <br> &nbsp;&nbsp;
+        <a routerLink="/admin/photo/add" style="color:#000">Add New Picture</a>&nbsp;&nbsp;&nbsp;&nbsp;
       </p>
     </div>
+  </div>
+
+
+  <div *ngFor='let item of orders | async' class="mx-auto d-block" style="border: 1px solid #000; background-color: #fff; margin-bottom:5px; margin-right:5px; margin-left:5px; width:auto; height:auto; padding-left:10px">
+    <div class="card" style="float:right; height:100px">
+      <div class="card-block">
+        <h4 class="card-title">Shipping Status</h4>
+        <div *ngIf="(item.status == 'Pending')">
+          <p class="text-center" style="color: #4286f4">{{item.status}}</p>
+        </div>
+        <div *ngIf="(item.status == 'Shipped')">
+          <p class="text-center" style="color: #42f44e">{{item.status}}</p>
+        </div>
+        <div *ngIf="(item.status == 'Cancelled')">
+          <p class="text-center" style="color: red">{{item.status}}</p>
+        </div>
+      </div>
+    </div>
+    <h4 class="text-center" style="margin-top:40px; float:left">Order {{item.orderNumber}}</h4>
+    User:{{item.userId}}
+    <br> Transaction Id: {{item.transactionId}}
+    <br> Date: {{item.date}}
+    <a (click)="ifShipped(item.$key)" style="float:right;padding-right:30px; color: #a9a9a9; cursor:pointer"><i>Mark as Shipped&nbsp;</i></a>
+    <br>
+    <a (click)="ifCancelled(item.$key)" style="float:right;padding-right:30px; color:#a9a9a9; cursor:pointer"><i>Mark as Cancelled</i></a>    SubTotal: {{item.subTotal}}
+    <br> Total Paid: {{item.Total}}
+    <br> Items Purchased :
+    <div *ngFor="let subitem of item.cartItems">
+      - {{subitem.brand}}, {{subitem.name}}, {{subitem.price}}
+    </div>
+    Shipping Address: {{item.address.street}} {{item.address.street2}} {{item.address.city}} {{item.address.state}} {{item.address.postcode}}
   </div>
 
 </div>

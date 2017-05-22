@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, Renderer } from '@angular/core';
 import { AuthService } from '../auth.service'
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 import { Router } from '@angular/router'
+import * as firebase from 'firebase';
 declare var Stripe: any
 
 @Component({
@@ -16,11 +17,13 @@ export class CheckoutComponent implements OnInit {
 
   globalListener: any;
 
+  status: "Pending";
   name: string;
   length: any;
-  cartItems: any;
+  cartItems: any = [];
   allCartItems: any;
 
+  orderNumber = 1000;
 
   months = [
     { value: '1-0', viewValue: '1' },
@@ -86,9 +89,11 @@ export class CheckoutComponent implements OnInit {
   state: string = "";
   postcode: string = "";
   mine: any;
+
+  mine2: any;
   order: any;
   subTotal = 0;
-
+  value = 0;
   shipping = 0;
   tax = 0;
   grandTotal = 0;
@@ -96,21 +101,25 @@ export class CheckoutComponent implements OnInit {
   expiryMonth: string;
   expiryYear: string;
   cvc: string;
+
+  ordersId: any;
   private cardToken: any;
 
   constructor(private authService: AuthService, public af: AngularFire, private router: Router, private cd: ChangeDetectorRef, private renderer: Renderer) {
 
-
-    const stripe = Stripe('pk_test_g28TckkfT61O55rHUCgH7aDO');
-
-    this.items2 = this.ref
   }
 
   ngOnInit() {
 
+    this.af.database.list('/orders').subscribe((orders: any) => {
+      console.log('orders', orders, orders.length);
+
+      this.orderNumber = 1000 + orders.length;
+      console.log('order number', this.orderNumber);
+    });
 
     // Create a Stripe client
-    var stripe = Stripe('pk_test_g28TckkfT61O55rHUCgH7aDO');
+    var stripe = Stripe('pk_live_0C53WDD9YGcPWGpdNgDRr1YW');
 
     // Create an instance of Elements
     var elements = stripe.elements();
@@ -167,7 +176,11 @@ export class CheckoutComponent implements OnInit {
       });
     });
 
-    function stripeTokenHandler(token) {
+
+
+
+
+    var stripeTokenHandler = (token) => {
       // Insert the token ID into the form so it gets submitted to the server
       var form = document.getElementById('payment-form');
       var hiddenInput = document.createElement('input');
@@ -177,10 +190,19 @@ export class CheckoutComponent implements OnInit {
       form.appendChild(hiddenInput);
 
 
+      console.log('trans id', token.id);
+      this.onSubmit(token.id);
 
 
-
-
+      // Charge the user's card:
+      var charge = stripe.charges.create({
+        amount: 1000,
+        currency: "usd",
+        description: "Example charge",
+        source: token.id,
+      }, function (err, charge) {
+        // asynchronously called
+      });
     }
 
 
@@ -201,6 +223,7 @@ export class CheckoutComponent implements OnInit {
   getUser(uid: string) {
     this.af.database.object('/users/' + uid).subscribe((user: any) => {
       this.mine = this.af.database.list('/users/' + uid + '/cart')
+      this.mine2 = this.af.database.list('/users/' + uid + '/cart/orders')
       this.computeCart();
       this.order = this.af.database.list('/orders')
       this.user = user;
@@ -221,22 +244,14 @@ export class CheckoutComponent implements OnInit {
       this.postcode = address.postcode;
       this.user.address = address.street + " " + address.street2 + " " + address.city + " " + address.state + " " + address.postcode;
       this.cd.markForCheck();
-
       this.items2 = this.af.database.list('/users/' + uid)
-
-
-
     });
-
-
   }
 
   updatePassword(newPassword: string) {
     var user = this.authService.getCurrentUser()
     user.updatePassword(newPassword)
   }
-
-
 
   onChangePassword() {
     this.showPasswordPanel = true;
@@ -254,7 +269,6 @@ export class CheckoutComponent implements OnInit {
     this.showEnabledFields = false;
     this.showDisabledFields = true;
   }
-
   addItem(newName: string) {
     this.items2.push({ street2: newName });
   }
@@ -317,7 +331,6 @@ export class CheckoutComponent implements OnInit {
     console.log('key', key);
     this.mine.remove(key);
     this.computeCart();
-
   }
 
   computeCart() {
@@ -327,14 +340,9 @@ export class CheckoutComponent implements OnInit {
     this.mine.subscribe(cart => {
       for (let item of cart) {
         subtotal += parseInt(item.price)
-        // this.cartItems = [{ brand: item.brand, name: item.name, price: item.price }];
-        console.log(this.cartItems, "ITEMS ??")
-
-
-
-
-
+        this.cartItems.push({ brand: item.brand, name: item.name, price: item.price });
       }
+
       console.log(subtotal);
       this.subTotal = subtotal;
       this.shipping = this.shipRate;
@@ -342,61 +350,38 @@ export class CheckoutComponent implements OnInit {
       this.grandTotal = subtotal + this.shipping + this.tax;
       console.log(this.grandTotal, "grandtotal")
     });
-
-
   }
 
-  // openCheckout() {
-  //   var handler = (<any>window).StripeCheckout.configure({
-  //     key: 'pk_test_g28TckkfT61O55rHUCgH7aDO',
-  //     locale: 'auto',
-  //     token: function (token: any) {
-  //       // You can access the token ID with `token.id`.
-  //       // Get the token ID to your server-side code for use.
-  //     }
-  //   });
+  onSubmit(transId) {
 
-  //   handler.open({
-  //     name: 'Cutthroat Barbershop',
-  //     description: 'Checkout',
-  //     amount: this.grandTotal
-  //   });
+    alert("Your transaction was successful. A payment confirmation has been sent to your E-mail.");
 
-  //   this.globalListener = this.renderer.listenGlobal('window', 'popstate', () => {
-  //     handler.close()
 
-  //   });
+    console.log('pooxxxxxxxxxxxxxx', this.cartItems);
 
-  // }
-
-  // ngOnDestroy() {
-  //   this.globalListener();
-  // }
-
-  onSubmit(formData) {
-    if (formData.valid) {
-      // name = formData.value.name,
-      alert("Your transaction was successful. A payment confirmation has been sent to your E-mail.");
-  
-}
-      this.mine.subscribe(cart => {
-        
-        for (let item of cart) {
-          
-          this.cartItems = [{ brand: item.brand, name: item.name, price: item.price }];
-          console.log(this.cartItems, "ITEMS ??")
-        }
+    //pushes the order to database
+    this.order.push(
+      {
+        orderNumber: this.orderNumber,
+        transactionId: transId,
+        userId: this.authService.uid,
+        subTotal: this.subTotal,
+        status: "Pending",
+        total: this.grandTotal,
+        cartItems: this.cartItems,
+        address: this.user.address,
+        date: Date(),
       });
-      this.order.push({ orderNumber: "1", transactionId: "2345521", userId: this.authService.uid, subTotal: this.subTotal, Total: this.grandTotal, cartItems: this.cartItems, address: this.user.address });
-      this.mine.remove();
-      setTimeout((router: Router) => {
-        this.router.navigate(['/home']);
-      }, 1000);  //5s
 
-    }
+    this.mine.remove(); //clears the cart
 
-
+    setTimeout((router: Router) => {
+      this.router.navigate(['/home']);
+    }, 1000);  // Waits 5 seconds and then returns user to the homepage.
   }
+
+
+}
 
 
 
